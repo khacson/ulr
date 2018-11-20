@@ -64,23 +64,12 @@ $route['gioi-thieu'] = "aboutus";
 $route['gioi-thieu/(:any)'] = "aboutus/$1";
 $route['gioi-thieu/(:any)/(:any)'] = "aboutus/$1/$2";
 
-$route['khach-hang'] = "customer";
-$route['khach-hang/(:any)'] = "customer/$1";
-
-$route['thiet-ke'] = "design";
-$route['thiet-ke/(:any)'] = "design/$1";
-$route['thiet-ke/(:any)/(:any)'] = "design/$1/$2";
-
-$route['cong-nghe'] = "technology";
-$route['cong-nghe/(:any)'] = "technology/$1";
-$route['cong-nghe/(:any)/(:any)'] = "technology/$1/$2";
-
-$route['tin-tuc'] = "news";
-$route['tin-tuc/(:any)'] = "news/$1";
-$route['tin-tuc/(:any)/(:any)'] = "news/$1/$2";
-
-$route['tuyen-dung'] = "recruitment";
-$route['tuyen-dung/(:any)'] = "recruitment/$1";
-$route['tuyen-dung/(:any)/(:any)'] = "recruitment/$1/$2";
+/*
+$route['dang-nhap'] = "account";
+$route['dang-nhap/(:any)'] = "account/login/$1";
+$route['dang-nhap/(:any)/(:any)'] = "account/$1/$2";
+*/
+$route['dang-nhap'] = "acount";
+$route['dang-nhap/(:any)'] = "acount/$1";
 
 $route['translate_uri_dashes'] = FALSE;
