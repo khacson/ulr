@@ -41,7 +41,7 @@
 	</head>
 	<body class="skin-orange">
 		<header class="primary">
-			<?php include('header.php');?>
+			<?=$this->load->inc('menu');?>
 		</header>
 		  <!-- #intro -->
 		 <section id="intro">
