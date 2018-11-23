@@ -3,14 +3,8 @@
 	function __construct(){
 		parent::__construct();
 	}
-	function getLanguage(){
-		$query = $this->model->table('mec_language')
-				 ->order_by('ordering')
-				 ->find_all();
-		return $query;
-	}
 	function blogType(){
-		$query = $this->model->table('mec_blog_type')
+		$query = $this->model->table('ndnt_blog_type')
 				 ->select('id,blogtype_name')
 				 ->where('isdelete',0)
 				 ->order_by('ordering')
@@ -22,14 +16,11 @@
 		if (!empty($search['title'])) {
 			$sql .= " AND title LIKE '%".$search['title']."%' ";
 		}
-		if (!empty($search['language'])) {
-			$sql .= " AND p.language LIKE '%".str_replace('"','',$search['language'])."%' ";
-		}
 		return $sql;
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT *
-                        FROM mec_blog
+                        FROM ndnt_blog
                         WHERE isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -43,7 +34,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_blog
+				FROM ndnt_blog
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -55,7 +46,7 @@
 		}
 	}
 	function detail($id){
-		$query = $this->model->table('mec_blog')
+		$query = $this->model->table('ndnt_blog')
 				 ->select('*')
 				 ->where('isdelete',0)
 				 ->where('id',$id)
@@ -71,7 +62,7 @@
 		$sql = "
 		SELECT column_name,column_default
 		FROM information_schema.columns
-		WHERE table_name='mec_blog'; 
+		WHERE table_name='ndnt_blog'; 
 		";
 		//column_name
 		$query = $this->model->query($sql)->execute();
@@ -83,8 +74,7 @@
 		return $obj;
 	}
 	function saves($array){
-		$array['language'] = str_replace('"','',$array['language']);
-		 $check = $this->model->table('mec_blog')
+		 $check = $this->model->table('ndnt_blog')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('title',$array['title'])
@@ -93,13 +83,12 @@
 			 return -1;	
 		 }
 		 $result = $this->model
-						->table('mec_blog')
+						->table('ndnt_blog')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		$array['language'] = str_replace('"','',$array['language']);
-		 $check = $this->model->table('mec_blog')
+		 $check = $this->model->table('ndnt_blog')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('title',$array['title'])
@@ -108,7 +97,7 @@
 		 if(!empty($check->id)){
 			 return -1;	
 		 }//print_r($array);exit;
-		 $result = $this->model->table('mec_blog')->save($id,$array);	
+		 $result = $this->model->table('ndnt_blog')->save($id,$array);	
 		 return $result;
 	}
 	

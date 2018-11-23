@@ -1,14 +1,16 @@
 <style title="" type="text/css">
-    table col.c1 { width: 45px; }
-    table col.c2 { width: 60px; }
-    table col.c3 { width: 200px; }
-	table col.c4 { width: 150px; }
+	table col.c1 { width: 45px; }
+	table col.c2 { width: 45px; }
+	table col.c3 { width: 200px; }
+	table col.c4 { width: 110px; }
 	table col.c5 { width: 200px; }
-	table col.c6 { width: 200px; }
-	table col.c7 { width: 100px; }
-	table col.c8 { width: 90px; }
-	table col.c9 { width: 90px; }
-    table col.c10 { width: auto; }
+	table col.c6 { width: 150px; }
+	table col.c7 { width: 110px; }
+	table col.c8 { width: 110px; }
+	table col.c9 { width: 110px; }
+	table col.c10 { width: 110px; }
+	table col.c11 { width: 70px; }
+	table col.c12 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
@@ -27,12 +29,12 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">Khách hàng (<span class="red">*</span>)</label>
+                        <label class="control-label col-md-4">Tên công ty</label>
                         <div class="col-md-8">
-                            <input type="text" name="customer_name" id="customer_name" class="searchs form-control" />
+                            <input type="text" name="company_name" id="company_name" class="searchs form-control" />
                         </div>
                     </div>
-                </div>
+                </div>  
 				<div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4">Điện thoại</label>
@@ -40,94 +42,45 @@
                             <input type="text" name="phone" id="phone" class="searchs form-control" />
                         </div>
                     </div>
-                </div>
-				<div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Email</label>
-                        <div class="col-md-8">
-                            <input type="text" name="email" id="email" class="searchs form-control" />
-                        </div>
-                    </div>
-                </div>
-			 </div>
-			 <div class="row mtop10">
-				<div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Web site</label>
-                        <div class="col-md-8">
-                            <input type="text" name="website" id="website" class="searchs form-control" />
-                        </div>
-                    </div>
-                </div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label col-md-4">Hình ảnh</label>
-						<div class="col-md-8">
-							<div class="col-md-6" style="padding:0px !important;" >
-								<ul style="margin:0px;" class="button-group">
-									<li class="" onclick ="javascript:document.getElementById('imageEnable').click();"><button type="button" class="btnone">Chọn hình</button></li>
-								</ul>
-								<input style='display:none;' accept="image/*" id ="imageEnable" type="file" name="userfile">
-							</div>
-							<div class="col-md-6" >
-								 <span id="show"></span> 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
+                </div>  
+                <div class="col-md-4">
+                    <div class="mright10" >
                         <input type="hidden" name="id" id="id" />
                         <input type="hidden" id="token" name="<?= $csrfName; ?>" value="<?= $csrfHash; ?>" />
-                        
-					  </div>
-			</div>
+                    </div>		
+                </div>
+            </div>
         </div>
     </div>
 </form>
 <div class="portlet box blue">
     <div class="portlet-title">
-        <div class="caption" style="margin-top:4px;">
-            <i>Có <span class='viewtotal'>0</span> Khách hàng</i>
+        <div class="caption"  style="margin-top:4px;">
+            <i>Có <span class='viewtotal'>0</span> công nghệ</i>
         </div>
         <div class="tools">
-           <ul class="button-group pull-right" style="margin-top:-3px; margin-bottom:5px;">
-                            <li id="search">
-                                <button type="button" class="button">
-                                    <i class="fa fa-search"></i>
-                                    <?= getLanguage('all', 'Search') ?>
-                                </button>
-                            </li>
-                            <li id="refresh">
-                                <button type="button" class="button">
-                                    <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
-                                </button>
-                            </li>
-                            <?php if (isset($permission['add'])) { ?>
-                                <li id="save">
-                                    <button type="button" class="button">
-                                        <i class="fa fa-plus"></i>
-                                        <?= getLanguage('all', 'Add') ?>
-                                    </button>
-                                </li>
-                            <?php } ?>
-                            <?php if (isset($permission['edit'])) { ?>
-                                <li id="edit">
-                                    <button type="button" class="button">
-                                        <i class="fa fa-save"></i>
-                                        <?= getLanguage('all', 'Edit') ?>
-                                    </button>
-                                </li>
-                            <?php } ?>
-                            <?php if (isset($permission['delete'])) { ?>
-                                <li id="delete">
-                                    <button type="button" class="button">
-                                        <i class="fa fa-times"></i>
-                                        <?= getLanguage('all', 'Delete') ?>
-                                    </button>
-                                </li>
-                            <?php } ?>
-                        </ul>
+            <ul class="button-group pull-right" style="margin-top:-3px; margin-bottom:5px;">
+				<li id="search">
+					<button type="button" class="button">
+						<i class="fa fa-search"></i>
+						<?= getLanguage('all', 'Search') ?>
+					</button>
+				</li>
+				<li id="refresh">
+					<button type="button" class="button">
+						<i class="fa fa-refresh"></i>
+						<?= getLanguage('all', 'Refresh') ?>
+					</button>
+				</li>
+				<?php if (isset($permission['delete'])) { ?>
+					<li id="delete">
+						<button type="button" class="button">
+							<i class="fa fa-times"></i>
+							<?= getLanguage('all', 'Delete') ?>
+						</button>
+					</li>
+				<?php } ?>
+			</ul>
         </div>
     </div>
     <div class="portlet-body">
@@ -138,20 +91,22 @@
                 <div id="cHeader">
                     <div id="tHeader">    	
                         <table id="tbheader" width="100%" cellspacing="0" border="1" >
-                            <?php for ($i = 1; $i < 11; $i++) { ?>
+                            <?php for ($i = 1; $i < 13; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tr>
                                 <th width="40px" class="text-center"><input type="checkbox" name="checkAll" id="checkAll" /></th>
                                 <th>STT</th>
-                                <th id="ord_customer_name">Khách hàng</th>
-                                <th>Điện thoại</th>
-								<th>Email</th>
-								<th>Web site</th>
-								<th>Logo</th>
-                                <th id="ord_ishome">Trang chủ</th>
-								<th id="ord_ordering">Vị trí</th>
-								<th></th>
+                                <th id="ord_c.company_name">Công ty</th>
+								<th id="ord_c.phone">Điện thoại</th>
+								<th id="ord_c.enail">Email</th> 
+								<th id="ord_c.address">Địa chỉ</th>
+								<th id="ord_c.count_branch">Chi nhánh</th>
+								<th id="ord_c.count_room">Số phòng</th>
+								<th id="ord_c.datecreate">Ngày bắt đầu</th>
+								<th id="ord_c.expirationdate">Ngày hết hạn</th>
+								<th id="">Trạng thái</th>
+                                <th></th>
                             </tr>
                         </table>
                     </div>
@@ -160,8 +115,8 @@
                 <!--body-->
                 <div id="data">
                     <div id="gridView">
-                        <table id="tbbody"  width="100%" cellspacing="0" border="1">
-                            <?php for ($i = 1; $i < 11; $i++) { ?>
+                        <table id="tbbody" width="100%" cellspacing="0" border="1">
+                            <?php for ($i = 1; $i < 13; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tbody id="grid-rows"></tbody>
@@ -194,32 +149,38 @@
     $(function() {
         $('#imageEnable').change(function(evt) {
             var files = evt.target.files;
-            for (var i = 0, f; f = files[i]; i++){
+            for (var i = 0, f; f = files[i]; i++) {
                 var size = f.size;
                 //if (size < 2048000){
-                    if (!f.type.match('image.*'))
-                    {
-                        continue;
-                    }
-                    var reader = new FileReader();
-                    reader.onload = (function(theFile) {
-                        return function(e) { //size e = e.tatal
-                            $('#show').html('<img src="' + e.target.result + '" style="width:60px; height:40px" />');
-                            $("#img1").val(e.target.result);
-                        };
-                    })(f);
-                    reader.readAsDataURL(f);
+                if (!f.type.match('image.*'))
+                {
+                    continue;
+                }
+                var reader = new FileReader();
+                reader.onload = (function(theFile) {
+                    return function(e) { //size e = e.tatal
+                        $('#show').html('<img src="' + e.target.result + '" style="width:60px; height:40px" />');
+                        $("#img1").val(e.target.result);
+                    };
+                })(f);
+                reader.readAsDataURL(f);
                 /*}
-                else{
-                    $('#fileupload').val(');
-                    $('.showImages').attr('src', ');
-                    alert("File size can't over 2Mb.");
-                }*/
+                 else{
+                 $('#fileupload').val(');
+                 $('.showImages').attr('src', ');
+                 alert("File size can't over 2Mb.");
+                 }*/
             }
+        });
+        $('#companytypeid').multipleSelect({
+        	filter: true,
+            placeholder:"Chọn  loại công nghệ",
+            single:false
         });
         refresh();
         $('#refresh').click(function() {
             $(".loading").show();
+           
             refresh();
         });
         $('#search').click(function() {
@@ -227,21 +188,29 @@
             searchList();
         });
         $('#save').click(function() {
-            save('save', '');
+            //save('save', '');
+			var id = $('#id').val();
+            location.href = '<?=base_url()."admin.php/company/form"?>';
         });
         $('#edit').click(function() {
             var id = $('#id').val();
             if (id == '') {
-                warning('Vui lòng chọn Khách hàng để sửa');
+                error('Please select a item.');
                 return false;
             }
-            save('edit', id);
+            //save('edit', id);			
+            location.href = '<?=base_url()."admin.php/company/edits/"?>'+id;
         });
-        $('#delete').click(function() {
+        $('#delete').click(function(){
+			var id = getCheckedId();
+			 if (id == '') {
+                error('Please select a item.');
+                return false;
+            }
             $.msgBox({
                 title: 'Message',
                 type: 'error',
-                content: 'Bạn muốn xóa Khách hàng?',
+                content: 'Bạn muốn xóa công nghệ?',
                 buttons: [{value: 'Yes'}, {value: 'No'}],
                 success: function(result) {
                     if (result == 'Yes') {
@@ -260,6 +229,7 @@
                                     return false;
                                 }
                                 else {
+                                    
                                     refresh();
                                 }
 
@@ -273,88 +243,64 @@
             });
         });
     });
-    function save(func, id) {
-        search = getSearch();
-        var obj = $.evalJSON(search);
-        var token = $('#token').val();
-
-        if (obj.customer_name == '') {
-            error("Khách hàng <?= getLanguage('all', 'empty') ?>");
-            return false;
-        }
-        $('.loading').show();
-        var data = new FormData();
-		var objectfile = document.getElementById('imageEnable').files;
-		data.append('userfile', objectfile[0]);
-        data.append('csrf_stock_name', token);
-        data.append('search', search);
-        data.append('id', id);
-        $.ajax({
-            url: controller + func,
-            type: 'POST',
-            async: false,
-            data: data,
-            enctype: 'multipart/form-data',
-            processData: false,
-            contentType: false,
-            success: function(datas) {
-                var obj = $.evalJSON(datas);
-                $("#token").val(obj.csrfHash);
-				$('.loading').hide();
-                if (obj.status == 0) {
-                    if (id != '') {
-                        error('<?= getLanguage('all', 'edit-fail') ?>');
-                        return false;
-                    }
-                    else {
-                        error('<?= getLanguage('all', 'add-fail') ?>');
-                        return false;
-                    }
-                }
-                else if (obj.status == -1) {
-                    error("Khách hàng <?= getLanguage('all', 'exits') ?>");
-                    return false;
-                }
-                else {
-					if (id != '') {
-                        success('<?= getLanguage('all', 'edit-suc') ?>');
-                        //return false;
-                    }
-                    else {
-                        success('<?= getLanguage('all', 'add-suc') ?>');
-                        //return false;
-                    }
-                    refresh();
-                }
-            },
-            error: function() {
-				$('.loading').hide();
-            }
-        });
-    }
     function funcList(obj) {
         $('.edit').each(function(e) {
             $(this).click(function() {
-                var customer_name = $('.customer_name').eq(e).html().trim();
-                var phone  = $('.phone').eq(e).html().trim();
-				var email  = $('.email').eq(e).html().trim();
-				var website  = $('.websites').eq(e).html().trim();
-
-				var id = $(this).attr('id');
-                $('#id').val(id);
-                $('#customer_name').val(customer_name);
-				$('#phone').val(phone);
-				$('#email').val(email);
-				$('#website').val(website);
+                var title = $(this).attr('title');
+                var companytypeid = $(this).attr('companytypeid');
+                $('#title').val(title);
+				$('#companytypeid').multipleSelect('setSelects',[companytypeid]);
             });
         });
-		$('.ishome').each(function(e) {
+		 $('.isshow').each(function(e) {
             $(this).click(function() {
 				$('.loading').show();
                 var id = $(this).attr('id');
 				var value = $(this).attr('value'); 
                 $.ajax({ 
-					url: controller + 'isHome',
+					url: controller + 'isshow',
+					type: 'POST',
+					async: false,
+					data: {id:id, value:value},
+					success: function(datas) { $('.loading').hide();}
+				 });
+            });
+        });
+		 $('.isnew').each(function(e) {
+            $(this).click(function() {
+				$('.loading').show();
+                var id = $(this).attr('id');
+				var value = $(this).attr('value'); 
+                $.ajax({ 
+					url: controller + 'isnew',
+					type: 'POST',
+					async: false,
+					data: {id:id, value:value},
+					success: function(datas) { $('.loading').hide();}
+				 });
+            });
+        });
+		 $('.iskm').each(function(e) {
+            $(this).click(function() {
+				$('.loading').show();
+                var id = $(this).attr('id');
+				var value = $(this).attr('value'); 
+                $.ajax({ 
+					url: controller + 'iskm',
+					type: 'POST',
+					async: false,
+					data: {id:id, value:value},
+					success: function(datas) { $('.loading').hide();}
+				 });
+            });
+        });
+		 $('.isnb').each(function(e) {
+            $(this).click(function() {
+				$('.loading').show();
+                var id = $(this).attr('id');
+				var value = $(this).attr('value'); 
+                $.ajax({ 
+					url: controller + 'isnb',
 					type: 'POST',
 					async: false,
 					data: {id:id, value:value},
@@ -388,11 +334,26 @@
 				 });
             });
         });
+		 $('.isshow').each(function(e) {
+            $(this).click(function() {
+				$('.loading').show();
+                var id = $(this).attr('id');
+				var value = $(this).attr('value'); 
+                $.ajax({ 
+					url: controller + 'isshow',
+					type: 'POST',
+					async: false,
+					data: {id:id, value:value},
+					success: function(datas) { $('.loading').hide();}
+				 });
+            });
+        });
     }
     function refresh() {
         $('.loading').show();
         $('.searchs').val('');
         $('#show').html('');
+		$('#companytypeid').multipleSelect('uncheckAll');
         document.getElementById("checkAll").checked=false;
         csrfHash = $('#token').val();
         search = getSearch();//alert(cpage);
@@ -414,3 +375,4 @@
     }
 </script>
 <script src="<?= url_tmpl(); ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?=url_tmpl();?>ckeditor/ckeditor.js" type="text/javascript"></script>

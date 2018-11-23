@@ -1,15 +1,6 @@
 <?php 
 $i= $start;
-$array = array();
-$array['vn'] = 'Việt nam';
-$array['cn'] = 'China';
-$array['en'] = 'English';
-$array['jp'] = 'Japan';
 foreach ($datas as $item) { 
-	$lang = '';
-	if(isset($array[$item->language])){
-		$lang = $array[$item->language];
-	}
 ?>
 
 	<tr class="content edit" img = "<?=$item->img;?>" id="<?=$item->id; ?>" >
@@ -23,7 +14,7 @@ foreach ($datas as $item) {
 			<?=$item->title;?>
 		 <?php }?>
 		</td>
-		<td class=""><?=$lang;?></td>
+		
         <td class="text-center"><img src="<?php echo base_url().'files/blog/'.$item->image?>" alt="img" height="42" width="42"></td>	
 		<td class="text-center"><input value="<?=$item->isshow;?>" class="isshow" id="<?=$item->id;?>" <?php if($item->isshow == 1){?> checked <?php }?> type="checkbox" /></td>
 		<td class="datecreate"><?=$item->datecreate;?></td>

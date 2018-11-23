@@ -4,7 +4,7 @@
 		parent::__construct();
 	}
 	function seowebTypes(){
-		$query = $this->model->table('mec_seoweb_type')
+		$query = $this->model->table('ndnt_seoweb_type')
 				 ->select('id,seoweb_type_name')
 				 ->where('isdelete',0)
 				 ->order_by('ordering')
@@ -14,17 +14,18 @@
 	function getSearch($search){
 		$sql = "";
 		if (!empty($search['title'])) {
-			$sql .= " AND title LIKE '%".$search['title']."%' ";
+			$sql .= " AND s.title LIKE '%".$search['title']."%' ";
 		}
 		return $sql;
 	}
 	function getList($search,$page,$numrows){
-		$sql = "SELECT *
-                        FROM mec_seoweb
-                        WHERE isdelete = 0";
+		$sql = "SELECT s.*, ts.seoweb_type_name
+                        FROM ndnt_seoweb s
+						LEFT JOIN ndnt_seoweb_type ts on ts.id = s.typeid
+                        WHERE s.isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
-			$sql .= " ORDER BY id desc ";
+			$sql .= " ORDER BY s.id desc ";
 		}
 		else{
 			$sql.= " ORDER BY ".$search['order']." ".$search['index']." ";
@@ -34,8 +35,8 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_seoweb
-				WHERE isdelete = 0 ";
+				FROM ndnt_seoweb s
+				WHERE s.isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
 		if(empty($query[0]->total)){
@@ -46,7 +47,7 @@
 		}
 	}
 	function detail($id){
-		$query = $this->model->table('mec_seoweb')
+		$query = $this->model->table('ndnt_seoweb')
 				 ->select('*')
 				 ->where('isdelete',0)
 				 ->where('id',$id)
@@ -62,7 +63,7 @@
 		$sql = "
 		SELECT column_name,column_default
 		FROM information_schema.columns
-		WHERE table_name='mec_seoweb'; 
+		WHERE table_name='ndnt_seoweb'; 
 		";
 		//column_name
 		$query = $this->model->query($sql)->execute();
@@ -74,7 +75,7 @@
 		return $obj;
 	}
 	function saves($array){
-		 $check = $this->model->table('mec_seoweb')
+		 $check = $this->model->table('ndnt_seoweb')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('meta_title',$array['meta_title'])
@@ -83,12 +84,12 @@
 			 return -1;	
 		 }
 		 $result = $this->model
-						->table('mec_seoweb')
+						->table('ndnt_seoweb')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('mec_seoweb')
+		 $check = $this->model->table('ndnt_seoweb')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('meta_title',$array['meta_title'])
@@ -97,7 +98,7 @@
 		 if(!empty($check->id)){
 			 return -1;	
 		 }//print_r($array);exit;
-		 $result = $this->model->table('mec_seoweb')->save($id,$array);	
+		 $result = $this->model->table('ndnt_seoweb')->save($id,$array);	
 		 return $result;
 	}
 	

@@ -3,7 +3,8 @@
 	table col.c2 { width: 60px; }
 	table col.c3 { width: 180px; }
 	table col.c4 { width: 100px; }
-	table col.c5 { width: auto; }
+	table col.c5 { width: 450px; }
+	table col.c6 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
@@ -27,8 +28,16 @@
                             <input type="text" name="slide_name" id="slide_name" class="searchs form-control" />
                         </div>
                     </div>
-                </div>     
-				<div class="col-md-4"></div>     
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-5">Link</label>
+                        <div class="col-md-7">
+                            <input type="text" name="url" id="url" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>             
                 <div class="col-md-4">
                     <div class="" >
                         <input type="hidden" name="id" id="id" />
@@ -54,6 +63,14 @@
                                     </button>
                                 </li>
                             <?php } ?>
+                            <!--<?php if (isset($permission['edit'])) { ?>
+                                <li id="edit">
+                                    <button type="button" class="button">
+                                        <i class="fa fa-save"></i>
+                                        <?= getLanguage('all', 'Edit') ?>
+                                    </button>
+                                </li>
+                            <?php } ?>-->
                             <?php if (isset($permission['delete'])) { ?>
                                 <li id="delete">
                                     <button type="button" class="button">
@@ -72,7 +89,7 @@
 <div class="portlet box blue">
     <div class="portlet-title">
         <div class="caption">
-            <i>Có <span class='viewtotal'>0</span> banner</i>
+            <i>Có <span class='viewtotal'>0</span> bài viết</i>
         </div>
         <div class="tools">
             <a href="javascript:;" class="collapse"></a>
@@ -86,7 +103,7 @@
                 <div id="cHeader">
                     <div id="tHeader">    	
                         <table id="tbheader" width="100%" cellspacing="0" border="1" >
-                            <?php for ($i = 1; $i < 6; $i++) { ?>
+                            <?php for ($i = 1; $i < 7; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tr>
@@ -94,6 +111,7 @@
                                 <th>STT</th>
                                 <th id="ord_slide_name">Tiêu đề</th>
                                 <th id="ord_img">Hình ảnh</th>
+                                <th id="ord_url">Link</th>
                                 <th></th>
                             </tr>
                         </table>
@@ -104,7 +122,7 @@
                 <div id="data">
                     <div id="gridView">
                         <table id="tbbody" width="100%" cellspacing="0" border="1">
-                            <?php for ($i = 1; $i < 6; $i++) { ?>
+                            <?php for ($i = 1; $i < 7; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tbody id="grid-rows"></tbody>

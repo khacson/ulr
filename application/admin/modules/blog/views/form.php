@@ -18,14 +18,14 @@
 							   <a href="<?=admin_url();?>blog">
                                 <button type="button" class="button">
                                     <i class="fa fa-step-backward"></i>
-                                    <?= getLanguage('all', 'Back') ?>
+                                    Quay lại
                                 </button>
 								</a>
                             </li>
                             <li id="refresh">
                                 <button type="button" class="button">
                                     <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
+                                    Làm mới
                                 </button>
                             </li>
                             <?php 
@@ -78,12 +78,12 @@
 			<div class="row mtop10"> 
 				<div class="col-md-4">
 					<div class="form-group">
-						<label class="control-label col-md-4">Ngôn ngữ</label>
+						<label class="control-label col-md-4">Loại tin </label>
 						<div class="col-md-8" >
-							<select name="language" id="language" class="combos" >
+							<select name="typeid" id="typeid" class="combos" >
 								<option value=""></option>
-								<?php foreach ($languages as $item) { ?>
-									<option <?php if($finds->language == $item->lang_code){?> selected <?php }?> value="<?=$item->lang_code;?>"><?=$item->lang_name?></option>
+								<?php foreach ($blogTypes as $item) { ?>
+									<option value="<?=$item->id;?>"><?=$item->blogtype_name?></option>
 								<?php } ?>
 							</select>
 						</div>
@@ -316,11 +316,11 @@
             }
 			
         });        
-		$('#language').multipleSelect({
+		$('#typeid').multipleSelect({
         	filter: true,
-            placeholder:"Chọn ngôn ngữ",
-            single:true
-        });		
+			placeholder:"Chọn loại tin",
+            single: true
+        });
         refresh();addform();
 		//CKEDITOR.instances['description'].setData("111");
         $('#refresh').click(function() {
@@ -350,8 +350,7 @@
             }
             save('edit', id,'1');
         });
-		$('.loading').hide();   
-			
+		$('.loading').hide();        
 	});
     function save(func, id, type) {
         search = getSearch();

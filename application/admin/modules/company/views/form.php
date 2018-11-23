@@ -1,0 +1,353 @@
+<form method="post" enctype="multipart/form-data">
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption" style="margin-top:4px; ">    
+                <i class="fa fa-reorder"></i>
+				<?php
+				if(empty($finds->id)){
+					echo getLanguage('all', 'Add');
+				}
+				else{
+					echo getLanguage('all', 'Edit');
+				}
+				?>
+            </div>
+            <div class="tools">
+                <ul class="button-group pull-right" style="margin-top:-3px; margin-bottom:5px;">    
+							<li id="">
+							   <a href="<?=admin_url();?>company">
+                                <button type="button" class="button">
+                                    <i class="fa fa-step-backward"></i>
+                                    <?= getLanguage('all', 'Back') ?>
+                                </button>
+								</a>
+                            </li>
+                            <li id="refresh">
+                                <button type="button" class="button">
+                                    <i class="fa fa-refresh"></i>
+                                    <?= getLanguage('all', 'Refresh') ?>
+                                </button>
+                            </li>
+                            <?php 
+							if(empty($finds->id)){
+								if (isset($permission['add'])) { ?>
+							<?php } }
+							else{
+								if (isset($permission['edit'])) { ?>
+                                <li id="edit">
+                                    <button type="button" class="button">
+                                        <i class="fa fa-save"></i>
+                                       Sửa
+                                    </button>
+                                </li>
+								 <li id="edits">
+                                    <button type="button" class="button">
+                                        <i class="fa fa-save"></i>
+                                        Sửa và đóng
+                                    </button>
+                                </li>
+                            <?php } 
+							}?>						
+                            
+                        </ul>
+            </div>
+        </div>
+        <div class="portlet-body">
+			<div class="row mtop10"> 
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Tên công ty</label>
+                        <div class="col-md-8">
+                              <input type="text" name="company_name" id="company_name" value="<?=$finds->company_name;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Điện thoại</label>
+                        <div class="col-md-8">
+                              <input type="text" name="phone" id="phone" value="<?=$finds->phone;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Email</label>
+                        <div class="col-md-8">
+                              <input  type="text" name="email" id="email" value="<?=$finds->email;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+			</div>
+			<div class="row mtop10"> 
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Địa chỉ</label>
+                        <div class="col-md-8">
+                              <input type="text" name="address" id="address" value="<?=$finds->address;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Chi nhánh</label>
+                        <div class="col-md-8">
+                              <input type="text" name="count_branch" id="count_branch" value="<?=$finds->count_branch;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Số phòng</label>
+                        <div class="col-md-8">
+                              <input  type="text" name="count_room" id="count_room" value="<?=$finds->count_room;?>" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>  
+			</div>
+			<div class="row mtop10">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label col-md-4">Ngày bắt đầu</label>
+						 <div class="col-md-8 input-group date date-picker" data-date-format="dd-mm-yyyy">
+							<input type="text" id="datecreate" placeholder="dd-mm-yyyy" name="datecreate" class="form-control searchs" value="<?=date('d/m/Y H:i:s',strtotime($finds->datecreate));?>" >
+							<span class="input-group-btn ">
+								<button class="btn default btn-picker" type="button"><i class="fa fa-calendar "></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label col-md-4">Ngày hết hạn</label>
+						 <div class="col-md-8 input-group date date-picker" data-date-format="dd-mm-yyyy">
+							<input type="text" id="datecreate" placeholder="dd-mm-yyyy" name="expirationdate" class="form-control searchs" value="<?=date('d/m/Y',strtotime($finds->expirationdate));?>" >
+							<span class="input-group-btn ">
+								<button class="btn default btn-picker" type="button"><i class="fa fa-calendar "></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="row mtop10">
+                <div class="col-md-12">
+                    <div class="mright10" >
+                        <input type="hidden" name="id" id="id" value="<?=$finds->id;?>"/>
+                        <input type="hidden" id="token" name="<?= $csrfName; ?>" value="<?= $csrfHash; ?>" />
+                        
+                    </div>		
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="<?= url_tmpl() ?>img/ajax_loader.gif" style="z-index: 2;position: absolute;"/>
+    </div>
+</div> 
+<style>
+	.control-label {
+		margin-top: 2px;
+		white-space: nowrap;
+	}
+</style>
+<script>
+    var controller = '<?= $controller; ?>/';
+    var csrfHash = '<?= $csrfHash; ?>';
+    var cpage = 0;
+    var search;
+    var schoolid = 0;
+    $(function() {     
+        refresh();
+		addform();
+		//CKEDITOR.instances['description'].setData("111");
+        $('#refresh').click(function() {
+            $(".loading").show();
+			CKEDITOR.instances['description_sort'].setData('');
+			CKEDITOR.instances['description_long'].setData(''); 
+			$('#imageEnableThumb,#imageEnable').val('');	
+			$('#show,#show2').html(''); 	
+			$('select.combos').multipleSelect('uncheckAll');
+            refresh();
+        });       
+        $('#save').click(function() {
+            save('save', '','');
+        });
+		$('#saves').click(function() {
+            save('save', '','1');
+        });
+        $('#edit').click(function() {
+            var id = $('#id').val();
+            if (id == '') {
+                error('Please select a item.');
+                return false;
+            }
+            save('edit', id,'');
+        });
+		$('#edits').click(function() {
+            var id = $('#id').val();
+            if (id == '') {
+                error('Please select a item.');
+                return false;
+            }
+            save('edit', id,'1');
+        });
+		$('.loading').hide();    
+		$('.imgremove').each(function(){
+			$(this).click(function(){
+				var idimg = $(this).attr('id');
+				var img = $(this).attr('img');
+				var id = '<?=$finds->id;?>';
+				$(this).parent().remove();
+				$.ajax({
+					url: controller + 'deleteimg',
+					type: 'POST',
+					async: false,
+					data: {img:img,idimg:idimg,id:id},
+					success: function(datas) {
+
+					}	
+				})	
+			});
+		});
+	});
+    function save(func, id, type) {
+        search = getSearch();
+        var token = $('#token').val();
+        var description_sort = CKEDITOR.instances['description_sort'].getData();
+		var description_long = CKEDITOR.instances['description_long'].getData();
+        if ($("#title").val() == '') {
+            error("Title <?= getLanguage('all', 'empty') ?>");
+            $("#title").focus();
+            return false;
+        }
+        if(companytypeid == "") {
+            error("Loại sản phẩm <?= getLanguage('all', 'empty') ?>");
+            return false;
+        }      
+		$('.loading').show();
+        var data = new FormData();
+        var objectfile = document.getElementById('imageEnable').files;
+		var length = objectfile.length;
+		var objectfile2 = document.getElementById('imageEnableThumb').files;
+        for(var i = 0; i< length; i++){
+			data.append('userfile'+i, objectfile[i]);
+		}
+		data.append('userfile2', objectfile2[0]);
+        data.append('length', length);
+		data.append('csrf_stock_name', token);
+        data.append('search', search);
+        data.append('description_sort', description_sort); 
+        data.append('description_long', description_long);
+		
+		data.append('id', id);
+        $.ajax({
+            url: controller + func,
+            type: 'POST',
+            async: false,
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function(datas) {
+				$('.loading').hide();
+                var obj = $.evalJSON(datas);
+                $("#token").val(obj.csrfHash);
+                if (obj.status == 0) {
+                    if (id != '') {
+                        error('<?= getLanguage('all', 'edit-fail') ?>');
+                        return false;
+                    }
+                    else {
+                        error('<?= getLanguage('all', 'add-fail') ?>');
+                        return false;
+                    }
+                }
+                else if (obj.status == -1) {
+                    error("company <?= getLanguage('all', 'exits') ?>");
+                    return false;
+                }
+                else {
+                   var id = '<?=$finds->id;?>';	
+				   if(id == ''){
+					   success('Thêm mới thành công');
+				   }
+				   else{
+					   success('Sửa thành công');
+				   }
+                }
+				if(type != ''){
+					window.location = "<?=admin_url();?>company";
+				}
+            },
+            error: function() {
+				$('.loading').hide();
+            }
+        });
+    }
+    function refresh() {
+        $('.loading').hide();
+        $('.searchs').val(''); 
+		
+        csrfHash = $('#token').val();  
+    }
+    function getCheckedId() {
+        var del_list = '';
+        $('#grid-rows input.noClick:checked').each(function() {
+            var id = $(this).attr('id');
+            del_list += ',' + id;
+        });
+        del_list = del_list.substr(1);
+        return del_list;
+    }
+    function addslashes(string) {
+        return string.replace(/\\/g, '\\\\').
+            replace(/\u0008/g, '\\b').
+            replace(/\t/g, '\\t').
+            replace(/\n/g, '\\n').
+            replace(/\f/g, '\\f').
+            replace(/\r/g, '\\r').
+            replace(/'/g, '\\\'').
+            replace(/"/g, '\\"');
+    }
+	function addform(){
+	   $("#title").val("<?=$finds->title;?>")
+		
+		var thumb  = '<?= base_url() ?>files/company/thumb/' + '<?=$finds->thumb;?>';
+		var id = '<?=$finds->id;?>';		
+		//$('#id').val(id);
+		$('#title').val('<?=$finds->title;?>');//console.log(CKEDITOR.instances);
+		$('#meta_title').val('<?=$finds->meta_title;?>');
+		$('#meta_keyword').val('<?=$finds->meta_keyword;?>');
+		$('#mete_description').val('<?=$finds->mete_description;?>');
+		$('#code').val('<?=$finds->code;?>');
+		$('#price').val('<?=$finds->price;?>');
+		$('#url').val('<?=$finds->url;?>');
+		$('#url_register').val('<?=$finds->url_register;?>');
+		$('#friendlyurl').val('<?=$finds->friendlyurl;?>');
+		
+		$('#face_title').val('<?=$finds->face_title;?>');
+		$('#face_description').val('<?=$finds->face_description;?>');
+		$('#face_url').val('<?=$finds->face_url;?>');
+		$('#face_site_name').val('<?=$finds->face_site_name;?>');
+		$('#url_video').val('<?=$finds->url_video;?>');
+		
+		if(id!=''){
+			<?php 
+			$arrImg = explode(';',$finds->image);
+			?>
+			<?php foreach($arrImg as $k=>$val){?>
+				<?php if(!empty($val)){?>
+				var img = '<?= base_url() ?>files/company/' + '<?=$val;?>';
+				$('#show').append('<div class="showMultiImg" id="imglist<?=$k;?>" ><div class="imglist"><img src="' + img + '" style="width:60px; height:40px; float:left; margin-left:5px;" /></div><div id="<?=$k;?>" class="imgremove" img = "<?=$val;?>"><img src="<?=url_tmpl();?>images/remove.png" /></div> </div>');
+			<?php }}?>
+			$('#show2').html('<img src="' + thumb + '" style="width:60px; height:40px; float:left; margin-left:5px;" />');
+		}
+		
+	}
+</script>
+<script src="<?= url_tmpl(); ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?=url_tmpl();?>ckeditor/ckeditor.js" type="text/javascript"></script>

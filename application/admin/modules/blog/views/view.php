@@ -2,12 +2,11 @@
 	table col.c1 { width: 45px; }
 	table col.c2 { width: 60px; }
 	table col.c3 { width: 280px; }
-	table col.c4 { width: 120px; }
-	table col.c5 { width: 120px; }
-	table col.c6 { width: 70px; }
+	table col.c4 { width: 150px; }
+	table col.c5 { width: 70px; }
+	table col.c6 { width: 150px; }
 	table col.c7 { width: 150px; }
-	table col.c8 { width: 150px; }
-	table col.c9 { width: auto; }
+	table col.c8 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
@@ -34,11 +33,12 @@
                 </div>  
 				<div class="col-md-4">
 					<div class="form-group">
-						<label class="control-label col-md-4">Ngôn ngữ</label>
-						<div class="col-md-8" >
-							<select name="language" id="language" class="combos" >
-								<?php foreach ($languages as $item) { ?>
-									<option value="<?=$item->lang_code;?>"><?=$item->lang_name?></option>
+						<label class="control-label col-md-3">Loại tin </label>
+						<div class="col-md-9" >
+							<select name="typeid" id="typeid" class="combos" >
+								<option value=""></option>
+								<?php foreach ($blogTypes as $item) { ?>
+									<option value="<?=$item->id;?>"><?=$item->blogtype_name?></option>
 								<?php } ?>
 							</select>
 						</div>
@@ -65,20 +65,20 @@
                             <li id="search">
                                 <button type="button" class="button">
                                     <i class="fa fa-search"></i>
-                                    <?= getLanguage('all', 'Search') ?>
+                                    Tìm kiếm
                                 </button>
                             </li>
                             <li id="refresh">
                                 <button type="button" class="button">
                                     <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
+                                    Làm mới
                                 </button>
                             </li>
                             <?php if (isset($permission['add'])) { ?>
                                 <li id="save">
                                     <button type="button" class="button">
                                         <i class="fa fa-plus"></i>
-                                        <?= getLanguage('all', 'Add') ?>
+                                        Thêm mới
                                     </button>
                                 </li>
                             <?php } ?>
@@ -87,7 +87,7 @@
                                 <li id="delete">
                                     <button type="button" class="button">
                                         <i class="fa fa-times"></i>
-                                        <?= getLanguage('all', 'Delete') ?>
+                                        Xóa
                                     </button>
                                 </li>
                             <?php } ?>
@@ -109,7 +109,6 @@
                                 <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll" /></th>
                                 <th>STT</th>
                                 <th id="ord_title">Tiêu đề</th>
-								 <th id="ord_language">Ngôn ngữ</th>
                                 <th id="ord_img">Hình ảnh</th>
 								<th id="">Hiển thị</th>
                                 <th id="ord_datecreate">Ngày tạo</th>
@@ -250,12 +249,6 @@
                 }
             });
         });
-		$('#language').multipleSelect({
-        	filter: true,
-            placeholder:"Chọn ngôn ngữ",
-            single:true
-        });
-		$('#language').multipleSelect('uncheckAll');
     });
     function funcList(obj) {
         $('.isshow').each(function(e) {

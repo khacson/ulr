@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * @author 
- * @copyright 2015
+ * @copyright 2018
  */
 class Company extends CI_Controller {
     private $route;
@@ -19,14 +19,12 @@ class Company extends CI_Controller {
         $this->title = $menus[$this->route];
         $this->load->library('upload');
     }
-
     function _remap($method, $params = array()) {
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $params);
         }
         $this->_view();
     }
-
     function _view() {
         $data = new stdClass();
         $permission = $this->base_model->getPermission($this->login, $this->route);
@@ -39,15 +37,31 @@ class Company extends CI_Controller {
         $data->routes = $this->route;
         $data->login = $this->login;
         $data->controller = admin_url() . ($this->uri->segment(1));
-        $data->groups = $this->base_model->getGroup('');
-
-        $content = $this->load->view('view', $data, true);
+		$content = $this->load->view('view', $data, true);
         $this->admin->write('content', $content, true);
         $this->admin->write('title', $this->title, true);
         $this->admin->render();
     }
+	function form($id=''){
+		$data = new stdClass();
+        $permission = $this->base_model->getPermission($this->login, $this->route);
+        if (!isset($permission['view'])) {
+            redirect('authorize');
+        }
+        $data->permission = $permission;
+        $data->csrfName = $this->security->get_csrf_token_name();
+        $data->csrfHash = $this->security->get_csrf_hash();
+        $data->routes = $this->route;
+        $data->login = $this->login;
+        $data->controller = admin_url() . ($this->uri->segment(1));
+        $data->groups = $this->base_model->getGroup(''); 
+		$data->finds = $this->model->detail($id);
+		$content = $this->load->view('form', $data, true);
+        $this->admin->write('content', $content, true);
+        $this->admin->write('title', $this->title, true);
+        $this->admin->render();
+	}
     function getList() {
-
         if (!isset($_POST['csrf_stock_name'])) {
             //show_404();
         }
@@ -66,10 +80,9 @@ class Company extends CI_Controller {
         $search['order'] = $order;
         $query = $this->model->getList($search, $page, $numrows);
         $data->start = empty($page) ? 1 : $page + 1;
-
         $count = $this->model->getTotal($search);
         $data->datas = $query;
-        $page_view = $this->admin->pagination($count, $numrows, 5, 'manufacture/', $page);
+        $page_view = $this->admin->pagination($count, $numrows, 5, 'product/', $page);
         $data->permission = $this->base_model->getPermission($this->login, $this->route);
         $result = new stdClass();
         $result->paging = $page_view;
@@ -79,37 +92,29 @@ class Company extends CI_Controller {
         $result->content = $this->load->view('list', $data, true);
         echo json_encode($result);
     }
-    function getDetail() {
-        $id = $this->input->get('id');
-        if (!empty($id)) {
-            $user = $this->model->table('hr_users')->where('id', $id)->find();
-            echo json_encode($user);
-        }
-    }
     function save() {
-
         $permission = $this->base_model->getPermission($this->login, $this->route);
         $token = $this->security->get_csrf_hash();
         $array = json_decode($this->input->post('search'), true);
-        
         if (!isset($permission['add'])) {
             $result['status'] = 0;
             $result['csrfHash'] = $token;
             echo json_encode($result);
             exit;
         }
-        if(isset($_FILES['userfile']) && $_FILES['userfile']['name'] != "") {
-			$imge_name = $_FILES['userfile']['name'];
-			$this->upload->initialize($this->set_upload_options());
-			$image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
-			$array['img']  = $image_data;
-			//$resize = $this->resizeImg($image_data);	
-		}
         $login = $this->login;
-        $array['friendlyurl'] = $this->admin->friendlyURL($array['customer_name']);
+		$array['friendlyurl'] = $this->admin->friendlyURL($array['title']);
+        $array['description_sort'] = $this->input->post('description_sort');
+		$array['description_long'] = $this->input->post('description_long');
         $array['datecreate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
-        $array['usercreate'] = $login->username;
-        $result['status'] = $this->model->saves($array);
+        $array['usercreate'] = $login->username;//print_r($array);exit;
+		$arr = array();
+		foreach($array as $key=>$val){
+			if(!empty($val)){
+				$arr[$key] = $val;
+			}
+		}
+        $result['status'] = $this->model->saves($arr);
         $result['csrfHash'] = $token;
         echo json_encode($result);
     }
@@ -122,23 +127,72 @@ class Company extends CI_Controller {
             echo json_encode($result);
             exit;
         }
-		$array = json_decode($this->input->post('search'), true);
-		if(isset($_FILES['userfile']) && $_FILES['userfile']['name'] != "") {
-			$imge_name = $_FILES['userfile']['name'];
-			$this->upload->initialize($this->set_upload_options());
-			$image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
-			$array['img']  = $image_data;
-			//$resize = $this->resizeImg($image_data);	
-		}
+        $array = json_decode($this->input->post('search'), true);
         $id = $this->input->post('id');
-        $login = $this->login;
-        $array['friendlyurl'] = $this->admin->friendlyURL($array['customer_name']);
+		$finds = $this->model->table('hotel_company')
+					  ->select('image,thumb')
+					  ->where('id',$id)
+					  ->find();
+		$login = $this->login;
+        $array['description_sort'] = $this->input->post('description_sort');
+		$array['description_long'] = $this->input->post('description_long');
         $array['dateupdate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
         $array['userupdate'] = $login->username;
-
         $result['status'] = $this->model->edits($array, $id);
         $result['csrfHash'] = $token;
         echo json_encode($result);
+    }
+	function deleteimg(){
+		$id = $this->input->post('id');
+		$idimg = $this->input->post('idimg');
+		$img = $this->input->post('img');
+		$finds = $this->model->table('hotel_company')
+					  ->select('image')
+					  ->where('id',$id)
+					  ->find();
+		if(!empty($finds->image)){
+			$arr = explode(';',$finds->image);
+			unset($arr[$idimg]);
+			$array['image'] = implode(';',$arr);
+			$this->model->table('hotel_company')->save($id,$array);
+			unlink('files/product/'.$img);
+		}	
+	}
+    function resizeImg($image_data,$width='',$height='') {
+        $this->load->library('image_lib');
+        $configz = array();
+        $configz['image_library'] = 'gd2';
+        $configz['source_image'] = './files/product/thumb/' . $image_data;
+        $configz['new_image'] = './files/product/thumb/' . $image_data;
+        $configz['create_thumb'] = TRUE;
+        $configz['maintain_ratio'] = TRUE;
+		if(!empty($width)){
+			 $configz['width'] = $width;
+		}
+		if(!empty($height)){
+			 $configz['height'] = $height;
+		}
+        $this->image_lib->initialize($configz);
+        $this->image_lib->resize();
+        $this->image_lib->clear();
+    }
+    private function set_upload_options() {
+        $config = array();
+        $config['allowed_types'] = 'jpg|jpeg|gif|png';
+        $config['upload_path'] = './files/product/';
+        $config['encrypt_nam'] = 'TRUE';
+        $config['remove_spaces'] = TRUE;
+        //$config['max_size'] = 0024;
+        return $config;
+    }
+	private function set_upload_options2() {
+        $config = array();
+        $config['allowed_types'] = 'jpg|jpeg|gif|png';
+        $config['upload_path'] = './files/product/thumb/';
+        $config['encrypt_nam'] = 'TRUE';
+        $config['remove_spaces'] = TRUE;
+        //$config['max_size'] = 0024;
+        return $config;
     }
     function deletes() {
         $token = $this->security->get_csrf_hash();
@@ -152,51 +206,61 @@ class Company extends CI_Controller {
         }
         $login = $this->login;
         $array['dateupdate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
-        $array['userupdate'] = $login->username;
-        //$array['ipupdate'] = $this->base_model->getMacAddress();
+        $array['userupdate'] = $login->username;        
         $array['isdelete'] = 1;
-        $this->model->table('mec_customer')->save($id, $array);
-
-        $result['status'] = 1;
+		$finds = $this->model->table('hotel_company')
+					  ->select('image,thumb')
+					  ->where('id',$id)
+					  ->find();
+		if(!empty($finds->image)){
+			$arrImg = explode(';',$finds->image);
+			foreach($arrImg as $k=>$v){
+				if(file_exists('files/product/'.$v) && !empty($v)){
+					unlink('files/product/'.$v);
+				}
+			}
+		}	
+		if(file_exists('files/product/thumb/'.$finds->thumb) && !empty($finds->thumb)){
+			unlink('files/product/thumb/'.$finds->thumb);
+		}		
+		$this->model->table('hotel_company')->where("id in ($id)")->delete();	
+		$result['status'] = 1;
         $result['csrfHash'] = $token;
         echo json_encode($result);
     }
-    function resizeImg($image_data) {
-        $this->load->library('image_lib');
-        $configz = array();
-        $configz['image_library'] = 'gd2';
-        $configz['source_image'] = './files/customer/' . $image_data;
-        $configz['new_image'] = './files/customer/' . $image_data;
-        $configz['create_thumb'] = TRUE;
-        $configz['maintain_ratio'] = TRUE;
-        $configz['width'] = 190;
-        $configz['height'] = 150;
-		
-        $this->image_lib->initialize($configz);
-        $this->image_lib->resize();
-        $this->image_lib->clear();
-    }
-	private function set_upload_options() {
-        $config = array();
-        $config['allowed_types'] = 'jpg|jpeg|gif|png';
-        $config['upload_path'] = './files/customer/';
-        $config['encrypt_nam'] = 'TRUE';
-        $config['remove_spaces'] = TRUE;
-        //$config['max_size'] = 0024;
-        return $config;
-    }
-    function isHome(){
+	function isshow(){
 		$array = array();
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
-		$array['ishome'] = $value * -1 + 1;
-		$this->model->table('mec_customer')->save($id,$array);	
+		$array['isshow'] = $value * -1 + 1;
+		$this->model->table('hotel_company')->save($id,$array);	
+	}
+	function isnew(){
+		$array = array();
+		$id = $this->input->post('id');
+		$value = $this->input->post('value');
+		$array['isnew'] = $value * -1 + 1;
+		$this->model->table('hotel_company')->save($id,$array);	
+	}
+	function iskm(){
+		$array = array();
+		$id = $this->input->post('id');
+		$value = $this->input->post('value');
+		$array['iskm'] = $value * -1 + 1;
+		$this->model->table('hotel_company')->save($id,$array);	
+	}
+	function isnb(){
+		$array = array();
+		$id = $this->input->post('id');
+		$value = $this->input->post('value');
+		$array['isnb'] = $value * -1 + 1;
+		$this->model->table('hotel_company')->save($id,$array);	
 	}
 	function ordering(){
 		$array = array();
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
 		$array['ordering'] = $value;
-		$this->model->table('mec_customer')->save($id,$array);	
+		$this->model->table('hotel_company')->save($id,$array);	
 	}
 }

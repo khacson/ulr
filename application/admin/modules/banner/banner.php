@@ -53,24 +53,14 @@ class Banner extends CI_Controller {
                 $slide_check = $this->model->getSlitetop($idaction);
                 $data->slide_name = $slide_check[0]->slide_name;
                 $data->description = trim($slide_check[0]->description);
-				$arrImg = explode(";",$slide_check[0]->img);
-				$data->url = trim($slide_check[0]->url);
-				$data->thumb_img = trim($slide_check[0]->thumb_img);			
-				$str = '';
-				foreach($arrImg as $k => $v){
-					if(!empty($v)){
-						$imgLink = base_url().'files/banner/' . $v;
-						$str.= '<div class="oneimg newimg" name="'.$v.'"><img height="40" width="50" src="' .$imgLink. '" class="imgupload" /><div class="rmoneimg"><i class="fa fa-times" aria-hidden="true"></i></div></div>';
-					}
-				}
-				$data->img = $str;
+				$data->img = $slide_check[0]->img;
+				$data->url = trim($slide_check[0]->url);	//print_r($data	);exit;			
             }
             else{//print_r($action);exit;
                 $data->slide_name = "";
                 $data->description = "";
 				$data->img = "";
-                $data->url = "";  
-				$data->thumb_img = "";  
+                $data->url = "";          				
             }
             $content = $this->load->view('form', $data, true);
         }
@@ -124,7 +114,6 @@ class Banner extends CI_Controller {
         $permission = $this->base_model->getPermission($this->login, $this->route);
         $token = $this->security->get_csrf_hash();
         $array = json_decode($this->input->post('search'), true);
-		$length1 = $this->input->post('length1');
         
         if (!isset($permission['add'])) {
             $result['status'] = 0;
@@ -136,19 +125,24 @@ class Banner extends CI_Controller {
             $imge_name = $_FILES['userfile']['name'];
             $this->upload->initialize($this->set_upload_options());
             $image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
-            $array['thumb_img'] = $image_data;
+            /*$data = getimagesize(base_url().'files/slidetop/'.$image_data);
+            $width = $data[0];
+            $height = $data[1];
+            if($width < 100){
+                $result['status'] = 2;
+                $result['csrfHash'] = $token;
+                echo json_encode($result);
+                exit;
+            }
+            if($height < 50){
+                $result['status'] = 3;
+                $result['csrfHash'] = $token;
+                echo json_encode($result);
+                exit;
+            }*/
+            $array['img'] = $image_data;
+            //$resize = $this->resizeImg($image_data);
         }
-		$car_images = '';
-		for($i=0;$i< $length1; $i++){
-			if(isset($_FILES['car_images'.$i]) && $_FILES['car_images'.$i]['name'] != "") {
-				$imge_name = $_FILES['car_images'.$i]['name'];
-				$this->upload->initialize($this->set_upload_options());
-				$image_data = $this->upload->do_upload('car_images'.$i, $imge_name); //Ten hinh 
-				$car_images.= $image_data.';';		
-			}
-		}
-		$array['img']  = $car_images;
-		
         $login = $this->login;
         $array['description'] = $this->input->post('description');
         $array['datecreate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
@@ -167,7 +161,7 @@ class Banner extends CI_Controller {
             echo json_encode($result);
             exit;
         }
-		$length1 = $this->input->post('length1');
+
         $array = json_decode($this->input->post('search'), true);
         $id = $this->input->post('id');
         $login = $this->login;
@@ -175,23 +169,24 @@ class Banner extends CI_Controller {
             $imge_name = $_FILES['userfile']['name'];
             $this->upload->initialize($this->set_upload_options());
             $image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
-            $array['thumb_img'] = $image_data;
+            /*$data = getimagesize(base_url().'files/slidetop/'.$image_data);
+            $width = $data[0];
+            $height = $data[1];
+            if($width < 100){
+                $result['status'] = 2;
+                $result['csrfHash'] = $token;
+                echo json_encode($result);
+                exit;
+            }
+            if($height < 50){
+                $result['status'] = 3;
+                $result['csrfHash'] = $token;
+                echo json_encode($result);
+                exit;
+            }*/
+            $array['img'] = $image_data;
             //$resize = $this->resizeImg($image_data);
         }
-		
-		$car_images = '';
-		for($i=0;$i< $length1; $i++){
-			if(isset($_FILES['car_images'.$i]) && $_FILES['car_images'.$i]['name'] != "") {
-				$imge_name = $_FILES['car_images'.$i]['name'];
-				$this->upload->initialize($this->set_upload_options());
-				$image_data = $this->upload->do_upload('car_images'.$i, $imge_name); //Ten hinh 
-				$car_images.= $image_data.';';		
-			}
-		}
-		if(!empty($car_images)){
-			$array['img'] = $car_images;
-		}
-		
         $array['description'] = $this->input->post('description');
         $array['dateupdate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
         $array['userupdate'] = $login->username;
@@ -225,7 +220,7 @@ class Banner extends CI_Controller {
         $array['userupdate'] = $login->username;
         //$array['ipupdate'] = $this->base_model->getMacAddress();
         $array['isdelete'] = 1;
-		$sql=" UPDATE `mec_baners` 
+		$sql=" UPDATE `ndnt_baners` 
 					SET `dateupdate` = '".$array['dateupdate']."', 
 					`userupdate` = '".$login->username."', 
 					`isdelete` = 1

@@ -8,17 +8,17 @@
 		parent::__construct();
 	}
 	function login($u, $p = null) {
-		$query = $this->model->table('mec_users')
-		->select("mec_users.*,mec_groups.params")
-		->join('mec_groups', 'mec_groups.id = mec_users.groupid', 'inner')
-		->where('mec_users.isdelete',0)	
-		->where('mec_groups.isdelete',0)	
-		->where('mec_users.username',$u)
+		$query = $this->model->table('ndnt_users')
+		->select("ndnt_users.*,ndnt_groups.params")
+		->join('ndnt_groups', 'ndnt_groups.id = ndnt_users.groupid', 'inner')
+		->where('ndnt_users.isdelete',0)	
+		->where('ndnt_groups.isdelete',0)	
+		->where('ndnt_users.username',$u)
 		->find();
 		return $query;
 	}
 	function getListMenu(){
-		$menu = $this->model->table('mec_menus')
+		$menu = $this->model->table('ndnt_menus')
 							->select('name,route')
 							->where('isdelete',0)
 							->where('route <>','')
@@ -32,7 +32,7 @@
 	}
 	function getRouter($str){
 		$json = json_decode($str);
-		$menu = $this->model->table('mec_menus')
+		$menu = $this->model->table('ndnt_menus')
 							->select('id,route')
 							->where('isdelete',0)
 							->where('route <>','')
@@ -56,7 +56,7 @@
 		$data['timelogin'] = $GMTTime;
 		$data['ipaddress'] = $address;
 		$data['username'] = $uid;	
-		$id = $this->model->table('mec_time_login')->save('', $data);
+		$id = $this->model->table('ndnt_time_login')->save('', $data);
 		return $id;
 	}
 	function getLanguage($lang=''){
@@ -66,7 +66,7 @@
 		else{
 			$langs = "vn";	
 		}
-		$query = $this->model->table('mec_language')
+		$query = $this->model->table('ndnt_language')
 					  ->select('keyword,translation,langpage')
 					  ->where('isdelete',0)
 					  ->where('language',$langs)

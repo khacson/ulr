@@ -95,7 +95,7 @@ class Group extends CI_Controller {
 		$array['params'] = trim($this->input->post('right'));
 		$acction_before = $this->model->findID($id);
 		
-		$this->model->table('mec_groups')->save($id, $array);
+		$this->model->table('ndnt_groups')->save($id, $array);
 		$result['status'] = 1;
 		$result['csrfHash'] = $this->security->get_csrf_hash();
 		echo json_encode($result);
@@ -155,7 +155,7 @@ class Group extends CI_Controller {
 		$array['dateupdate']  = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
 		$array['userupdate'] = $login->username;
 		$array['isdelete'] = 1;
-		$this->model->table('mec_groups')->where("id in ($id)")->update($array);	
+		$this->model->table('ndnt_groups')->where("id in ($id)")->update($array);	
 		
 		$result['status'] = 1;	
 		$result['csrfHash'] = $token;

@@ -26,8 +26,8 @@
 		$sql = " SELECT u.id,u.username, u.fullname, u.groupid, u.image, 
 				 u.mobile, u.email, u.datecreate,
 				 g.groupname,g.grouptype
-				FROM mec_users AS u 
-				LEFT JOIN mec_groups AS g ON g.id = u.groupid
+				FROM ndnt_users AS u 
+				LEFT JOIN ndnt_groups AS g ON g.id = u.groupid
 				WHERE u.isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		if(empty($search['order'])){
@@ -42,8 +42,8 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_users AS u 
-				LEFT JOIN mec_groups AS g ON g.id = u.groupid
+				FROM ndnt_users AS u 
+				LEFT JOIN ndnt_groups AS g ON g.id = u.groupid
 				WHERE u.isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -58,7 +58,7 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		 $check = $this->model->table('mec_users')
+		 $check = $this->model->table('ndnt_users')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('username',$array['username'])
@@ -69,12 +69,12 @@
 		 $pass = md5("firefuma.com").md5($array['password']);
 		 $array['password'] = $pass;
 		 $result = $this->model
-						->table('mec_users')
+						->table('ndnt_users')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('mec_users')
+		 $check = $this->model->table('ndnt_users')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('username',$array['username'])
@@ -88,7 +88,7 @@
 			$array['password'] = $pass;
 		 }
 		 
-		 $result = $this->model->table('mec_users')->save($id,$array);	
+		 $result = $this->model->table('ndnt_users')->save($id,$array);	
 		 return $result;
 	}
 	function changueSearch($search){//print_r($search);exit;

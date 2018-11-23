@@ -256,11 +256,10 @@
                                 var obj = $.evalJSON(datas);
                                 $('#token').val(obj.csrfHash);
                                 if (obj.status == 0) {
-                                    error('Xóa không thành công');
+                                    error('<?= getLanguage('all', 'delete_suc') ?>');
                                     return false;
                                 }
                                 else {
-									success('Xóa thành công');
                                     refresh();
                                 }
 
@@ -280,7 +279,7 @@
         var token = $('#token').val();
 
         if (obj.customer_name == '') {
-            error("Khách hàng không được trống");
+            error("Khách hàng <?= getLanguage('all', 'empty') ?>");
             return false;
         }
         $('.loading').show();
@@ -304,25 +303,25 @@
 				$('.loading').hide();
                 if (obj.status == 0) {
                     if (id != '') {
-                        error('Sửa không thành công');
+                        error('<?= getLanguage('all', 'edit-fail') ?>');
                         return false;
                     }
                     else {
-                        error('Thêm mới không thành công');
+                        error('<?= getLanguage('all', 'add-fail') ?>');
                         return false;
                     }
                 }
                 else if (obj.status == -1) {
-                    error("Khách hàng đã tồn tại");
+                    error("Khách hàng <?= getLanguage('all', 'exits') ?>");
                     return false;
                 }
                 else {
 					if (id != '') {
-                        success('Sửa thành công');
+                        success('<?= getLanguage('all', 'edit-suc') ?>');
                         //return false;
                     }
                     else {
-                        success('Thêm mới thành công');
+                        success('<?= getLanguage('all', 'add-suc') ?>');
                         //return false;
                     }
                     refresh();

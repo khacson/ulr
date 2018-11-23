@@ -9,7 +9,7 @@ class Account extends CI_Controller {
 	function __construct(){
 		parent::__construct();			
 	    $this->load->model('base_model');
-		
+		$this->site->setTemplate('account');
 	}
     function  _remap($method, $params = array()){
         if(method_exists($this, $method)){
@@ -19,7 +19,6 @@ class Account extends CI_Controller {
     }
 	function _view(){
 		$data = new stdClass();
-		
 		
 		$content = $this->load->view('view',$data,true);
         $this->site->write('content',$content,true);
@@ -36,10 +35,29 @@ class Account extends CI_Controller {
         $this->site->render();
 	}
 	function login(){
-		$this->site->setTemplate('login');
+		
 		$data = new stdClass();
 		
 		$content = $this->load->view('login',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+		$this->site->write('image','',true);
+		$this->site->write('face_title','',true);
+		$this->site->write('face_description','',true);
+		$this->site->write('face_url','',true);
+		$this->site->write('face_site_name','',true);
+		
+        $this->site->render();
+	}
+	
+	function register(){
+		
+		$data = new stdClass();
+		
+		$content = $this->load->view('register',$data,true);
         $this->site->write('content',$content,true);
 		$this->site->write('title','',true);
 		$this->site->write('description','',true);

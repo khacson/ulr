@@ -40,12 +40,12 @@ class Home extends CI_Controller {
 			$uniqueid = $this->randUniqueid();
 			$this->admin->SetSession("lmd_uniqueid_999999",$uniqueid);
 			$datecreate =  gmdate("Y-m-d", time() + 7 * 3600);
-			$find = $this->model->table('mm_online')
+			$find = $this->model->table('ndnt_online')
 								->where('unqueid',$unqueid)
 								->where('datecreate',$datecreate)
 								->find();
 			if(!empty($find->id)){
-				$this->model->table('mm_online')
+				$this->model->table('ndnt_online')
 							->where('id',$find->id)
 							->update(array('status'=>1));
 			}
@@ -54,13 +54,13 @@ class Home extends CI_Controller {
 				$arr['unqueid'] = $unqueid;
 				$arr['datecreate'] = $datecreate;
 				$arr['status'] = 1;
-				$this->model->table('mm_online')->insert($arr);
+				$this->model->table('ndnt_online')->insert($arr);
 			}
 		}
 	}
 	function offline(){
 		$uniqueid = $this->admin->GetSession("lmd_uniqueid_999999");
-		$this->model->table('mm_online')
+		$this->model->table('ndnt_online')
 							->where('uniqueid',$uniqueid)
 							->update(array('status'=>1));
 		$this->admin->DeleteSession("lmd_uniqueid_999999");

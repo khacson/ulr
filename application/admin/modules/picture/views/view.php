@@ -3,13 +3,11 @@
 	table col.c2 { width: 60px; }
 	table col.c3 { width: 200px; }
 	table col.c4 { width: 220px; }
-	table col.c5 { width: 150px; }
-	table col.c6 { width: 120px; }
-	table col.c7 { width: 70px; }
-	table col.c8 { width: 90px; }
-	table col.c9 { width: 150px; }
-	table col.c10 { width: 150px; }
-	table col.c11 { width: auto; }
+	table col.c5 { width: 100px; }
+	table col.c6 { width: 70px; }
+	table col.c7 { width: 150px; }
+	table col.c8 { width: 150px; }
+	table col.c9 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
@@ -17,7 +15,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="fa fa-reorder"></i>
-                Tìm kiếm
+                <?= getLanguage('all', 'Search') ?>
             </div>
             <div class="tools">
                 <a href="javascript:;" class="collapse">
@@ -28,20 +26,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">Tiêu đề</label>
-                        <div class="col-md-8">
+                        <label class="control-label col-md-3">Tiêu đề</label>
+                        <div class="col-md-9">
                             <input type="text" name="title" id="title" class="searchs form-control" />
                         </div>
                     </div>
                 </div>  
 				<div class="col-md-4">
 					<div class="form-group">
-						<label class="control-label col-md-4">Công nghệ</label>
-						<div class="col-md-8" >
+						<label class="control-label col-md-3">Loại hình</label>
+						<div class="col-md-9" >
 							<select name="typeid" id="typeid" class="combos" >
 								<option value=""></option>
-								<?php foreach ($technologys as $item) { ?>
-									<option value="<?=$item->id;?>"><?=$item->title;?></option>
+								<?php foreach ($blogTypes as $item) { ?>
+									<option value="<?=$item->id;?>"><?=$item->picturetype_name?></option>
 								<?php } ?>
 							</select>
 						</div>
@@ -68,20 +66,20 @@
                             <li id="search">
                                 <button type="button" class="button">
                                     <i class="fa fa-search"></i>
-                                   Tìm kiếm
+                                    <?= getLanguage('all', 'Search') ?>
                                 </button>
                             </li>
                             <li id="refresh">
                                 <button type="button" class="button">
                                     <i class="fa fa-refresh"></i>
-                                   Làm mới
+                                    <?= getLanguage('all', 'Refresh') ?>
                                 </button>
                             </li>
                             <?php if (isset($permission['add'])) { ?>
                                 <li id="save">
                                     <button type="button" class="button">
                                         <i class="fa fa-plus"></i>
-                                       Thêm mới
+                                        <?= getLanguage('all', 'Add') ?>
                                     </button>
                                 </li>
                             <?php } ?>
@@ -90,7 +88,7 @@
                                 <li id="delete">
                                     <button type="button" class="button">
                                         <i class="fa fa-times"></i>
-                                        Xóa
+                                        <?= getLanguage('all', 'Delete') ?>
                                     </button>
                                 </li>
                             <?php } ?>
@@ -105,18 +103,16 @@
                 <div id="cHeader">
                     <div id="tHeader">    	
                         <table id="tbheader" width="100%" cellspacing="0" border="1" >
-                            <?php for ($i = 1; $i < 12; $i++) { ?>
+                            <?php for ($i = 1; $i < 10; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tr>
                                 <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll" /></th>
                                 <th>STT</th>
                                 <th id="ord_title">Tiêu đề</th>
-								 <th id="ord_title">Công nghệ</th>
-                                <th id="ord_img">Hình ảnh/ video</th>
-								<th id="ord_img">Loại</th>
+								 <th id="ord_title">Link</th>
+                                <th id="ord_img">Hình ảnh</th>
 								<th id="">Hiển thị</th>
-								<th id="ord_ordering">Vị trí</th>
                                 <th id="ord_datecreate">Ngày tạo</th>
                                 <th id="ord_usercreate">Người tạo</th>
                                 <th></th>
@@ -129,7 +125,7 @@
                 <div id="data">
                     <div id="gridView">
                         <table id="tbbody" width="100%" cellspacing="0" border="1">
-                            <?php for ($i = 1; $i < 12; $i++) { ?>
+                            <?php for ($i = 1; $i < 10; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tbody id="grid-rows"></tbody>
@@ -187,7 +183,7 @@
         });
         $('#typeid').multipleSelect({
         	filter: true,
-			placeholder:"Chọn công nghê",
+			placeholder:"Chọn loại hình",
             single: true
         });
         refresh();
@@ -266,32 +262,6 @@
 					url: controller + 'isshow',
 					type: 'POST',
 					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		$('.ordering').each(function(e) {
-            $(this).click(function() {
-				//$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).val(); 
-                $.ajax({ 
-					url: controller + 'ordering',
-					type: 'POST',
-					//async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-			$(this).keyup(function() {
-				//$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).val(); 
-                $.ajax({ 
-					url: controller + 'ordering',
-					type: 'POST',
-					//async: false,
 					data: {id:id, value:value},
 					success: function(datas) { $('.loading').hide();}
 				 });

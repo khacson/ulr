@@ -5,30 +5,34 @@
 	}
 	function getSearch($search){
 		$sql = "";
-		if (!empty($search['customer_name'])) {
-			$sql .= " AND customer_name LIKE '%".$search['customer_name']."%' ";
+		if (!empty($search['title'])) {
+			$sql .= " AND p.title LIKE '%".$search['title']."%' ";
+		}
+		if (!empty($search['producttypeid'])) {
+			$sql .= " AND p.producttypeid in (".$search['producttypeid'].") ";
 		}
 		return $sql;
 	}
 	function getList($search,$page,$numrows){
-		$sql = "SELECT id,customer_name,friendlyurl,datecreate,usercreate,website,phone,email, img, ordering, ishome
-                        FROM mec_customer
-                        WHERE isdelete = 0";
+		$sql = "SELECT p.*
+					FROM hotel_company p
+					WHERE p.isdelete = 0
+					";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
-			$sql .= " ORDER BY ordering ASC ";
+			$sql .= " ORDER BY p.datecreate desc";
 		}
 		else{
 			$sql.= " ORDER BY ".$search['order']." ".$search['index']." ";
 		} 
-                $sql.= ' limit '.$page.','.$numrows;
-		
+        $sql.= ' limit '.$page.','.$numrows;
 		return $this->model->query($sql)->execute();
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_customer
-				WHERE isdelete = 0 ";
+					FROM hotel_company p
+					WHERE p.isdelete = 0
+					";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
 		if(empty($query[0]->total)){
@@ -38,39 +42,40 @@
 			return $query[0]->total;
 		}
 	}
-	function export($search){
-		return $this->getList($search);
+	function detail($id){
+		$query = $this->model->table('hotel_company')
+				 ->select('*')
+				 ->where('isdelete',0)
+				 ->where('id',$id)
+				 ->find();
+		if(!empty($query->id)){
+			return $query;
+		}
+		else{
+			return $this->getNone();
+		}
+	}
+	function getNone(){
+		$sql = "
+		SELECT column_name,column_default
+		FROM information_schema.columns
+		WHERE table_name='hotel_company'; 
+		";
+		$query = $this->model->query($sql)->execute();
+		$obj = new stdClass();
+		foreach($query as $item){
+			$clm = $item->column_name;
+			$obj->$clm = $item->column_default;
+		}
+		return $obj;
 	}
 	function saves($array){
-		 $check = $this->model->table('mec_customer')
-		 ->select('id')
-		 ->where('isdelete',0)
-		 ->where('customer_name',$array['customer_name'])
-		 ->find();
-		 if(!empty($check->id)){
-			 return -1;	
-		 }
-                 unset($array['fromdate']);
-                 unset($array['todate']);
-		 $result = $this->model
-						->table('mec_customer')
+		 $result = $this->model->table('hotel_company')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('mec_customer')
-		 ->select('id')
-		 ->where('isdelete',0)
-		 ->where('customer_name',$array['customer_name'])
-		 ->where('id <>',$id)
-		 ->find();
-		 if(!empty($check->id)){
-			 return -1;	
-		 }//print_r($array);exit;
-		 unset($array['fromdate']);
-                 unset($array['todate']);
-		 $result = $this->model->table('mec_customer')->save($id,$array);	
+		 $result = $this->model->table('hotel_company')->save($id,$array);	
 		 return $result;
 	}
-	
 }

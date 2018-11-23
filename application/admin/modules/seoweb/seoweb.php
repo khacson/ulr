@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * @author 
- * @copyright mec_
+ * @copyright ndnt_
  */
 class Seoweb extends CI_Controller {
 
@@ -142,7 +142,7 @@ class Seoweb extends CI_Controller {
         $array = json_decode($this->input->post('search'), true);
         $id = $this->input->post('id');
         $login = $this->login;
-		$finds = $this->model->table('mec_seoweb')
+		$finds = $this->model->table('ndnt_seoweb')
 					  ->select('image')
 					  ->where('id',$id)
 					  ->find();
@@ -201,32 +201,5 @@ class Seoweb extends CI_Controller {
         //$config['max_size'] = 0024;
         return $config;
     }
-    function deletes() {
-        $token = $this->security->get_csrf_hash();
-        $id = $this->input->post('id');
-        $permission = $this->base_model->getPermission($this->login, $this->route);
-        if (!isset($permission['delete'])) {
-            $result['status'] = 0;
-            $result['csrfHash'] = $token;
-            echo json_encode($result);
-            exit;
-        }
-        $login = $this->login;
-		$finds = $this->model->table('mec_seoweb')
-					  ->select('image,thumb')
-					  ->where('id',$id)
-					  ->find();
-					  
-		if(file_exists('files/seoweb/'.$finds->image) && !empty($finds->image)){
-			unlink('files/seoweb/'.$finds->image);
-		}
-		/*if(file_exists('files/blog/thumb/'.$finds->thumb) && !empty($finds->thumb)){
-			unlink('files/blog/thumb/'.$finds->thumb);	
-		}*/
-		$this->model->table('mec_seoweb')->where("id in ($id)")->delete();	
-		
-        $result['status'] = 1;
-        $result['csrfHash'] = $token;
-        echo json_encode($result);
-    }
+   
 }

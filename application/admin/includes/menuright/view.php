@@ -7,6 +7,9 @@
 	</a>
 	<ul class="dropdown-menu">
 		<li>
+			<a href="<?=admin_url()?>changepass">
+				<i class="fa fa-user"></i>My profile
+			</a>
 			<a href="<?=admin_url()?>authorize/logout">
 				<i class="fa fa-key"></i> Logout
 			</a>

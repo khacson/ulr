@@ -7,7 +7,7 @@
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT id,phone,email,url_facebook,url_google,url_twitter,skype,postal,datecreate,usercreate
-                        FROM mec_contact
+                        FROM ndnt_contact
                         WHERE isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -22,7 +22,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_contact
+				FROM ndnt_contact
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -37,7 +37,7 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		 $check = $this->model->table('mec_contact')
+		 $check = $this->model->table('ndnt_contact')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('phone',$array['phone'])
@@ -47,12 +47,12 @@
 		 }
                  
 		 $result = $this->model
-						->table('mec_contact')
+						->table('ndnt_contact')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('mec_contact')
+		 $check = $this->model->table('ndnt_contact')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('phone',$array['phone'])
@@ -62,12 +62,12 @@
 			 return -1;	
 		 }//print_r($array);exit;
 		 
-		 $result = $this->model->table('mec_contact')->save($id,$array);	
+		 $result = $this->model->table('ndnt_contact')->save($id,$array);	
 		 return $result;
 	}
 	function getContacus(){
             $sql = "SELECT *
-                    FROM mec_contact
+                    FROM ndnt_contact
                     WHERE isdelete=0 limit 1";
             $query = $this->model->query($sql)->execute();
             return $query;

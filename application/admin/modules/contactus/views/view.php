@@ -27,7 +27,7 @@
 						<li id="edit">
 							<button type="button" class="button btnone">
 								<i class="fa fa-save"></i>
-								<?= getLanguage('all', 'Edit') ?>
+								Sửa
 							</button>
 						</li>
 					<?php } ?>
@@ -64,6 +64,15 @@
                 </div>
             </div>
             <div class="row mtop10">
+                
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Skype</label>
+                        <div class="col-md-8">
+                            <input type="text" name="skype" id="skype" class="searchs form-control" value="<?=isset($skype)?$skype:""?>"/>
+                        </div>
+                    </div>
+                </div>
 				<div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4">Google Map</label>
@@ -80,6 +89,8 @@
                         </div>
                     </div>
                 </div>
+			</div>
+            <div class="row mtop10">
 				<div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4">Sologan</label>
@@ -88,9 +99,122 @@
                         </div>
                     </div>
                 </div>
-			</div>
+				<!--<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Sologan 2</label>
+                        <div class="col-md-8">
+                            <input type="text" name="slogan2" id="slogan2" class="searchs form-control" value="<?=isset($slogan2)?$slogan2:""?>"/>
+                        </div>
+                    </div>
+                </div>-->
+				
+                
+            </div>
         </div>
     </div>
+    
+	<!--<div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                Tiếng anh
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+			<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Công ty (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="company_name_2" id="company_name_2" class="searchs form-control" value="<?=isset($company_name_2)?$company_name_2:""?>" />
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Điện thoại (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="phone_2" id="phone_2" class="searchs form-control" value="<?=isset($phone_2)?$phone_2:""?>" />
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Email (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="email_2" id="email_2" class="searchs form-control" value="<?=isset($email_2)?$email_2:""?>"/>
+                        </div>
+                    </div>
+                </div>
+                
+			</div>
+            <div class="row mtop10">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Địa chỉ</label>
+                        <div class="col-md-8">
+                            <input type="text" name="address_2" id="address_2" class="searchs form-control" value="<?=isset($address_2)?$address_2:""?>"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-reorder"></i>
+                Tiếng trung
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+			<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Công ty (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="company_name_3" id="company_name_3" class="searchs form-control" value="<?=isset($company_name_3)?$company_name_3:""?>" />
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Điện thoại (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="phone_3" id="phone_3" class="searchs form-control" value="<?=isset($phone_3)?$phone_3:""?>" />
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Email (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="email_3" id="email_3" class="searchs form-control" value="<?=isset($email_3)?$email_3:""?>"/>
+                        </div>
+                    </div>
+                </div>
+                
+			</div>
+            <div class="row mtop10">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Địa chỉ</label>
+                        <div class="col-md-8">
+                            <input type="text" name="address_3" id="address_3" class="searchs form-control" value="<?=isset($address_3)?$address_3:""?>"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
 	<div class="col-md-12">
 		<div class="mright10" >
 			<input type="hidden" name="id" id="id" value="<?=isset($id)?$id:""?>"/>
@@ -123,7 +247,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-4">Điện thoại kỹ thuật</label>
+							<label class="control-label col-md-4">Điện thoại</label>
 							<div class="col-md-8">
 								<input type="text" name="phone" id="phone" class="searchs form-control" value="<?=isset($phone)?$phone:""?>" />
 							</div>
@@ -131,9 +255,9 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-4">Điện thoại kinh doanh </label>
+							<label class="control-label col-md-4">Fax</label>
 							<div class="col-md-8">
-								<input type="text" name="hotline" id="hotline" class="searchs form-control" value="<?=isset($hotline)?$hotline:""?>"/>
+								<input type="text" name="fax" id="fax" class="searchs form-control" value="<?=isset($fax)?$fax:""?>" />
 							</div>
 						</div>
 					</div>
@@ -149,7 +273,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-4">Email kỹ thuật</label>
+							<label class="control-label col-md-4">Email </label>
 							<div class="col-md-8">
 								<input type="text" name="email" id="email" class="searchs form-control" value="<?=isset($email)?$email:""?>"/>
 							</div>
@@ -157,14 +281,22 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-4">Email kinh doanh</label>
+							<label class="control-label col-md-4">Hotline </label>
 							<div class="col-md-8">
-								<input type="text" name="email_2" id="email_2" class="searchs form-control" value="<?=isset($email_2)?$email_2:""?>" />
+								<input type="text" name="hotline" id="hotline" class="searchs form-control" value="<?=isset($hotline)?$hotline:""?>"/>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row mtop10">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-4">Tìm kiếm </label>
+							<div class="col-md-8">
+								<input type="text" name="searchkey" id="searchkey" class="searchs form-control" value="<?=isset($searchkey)?$searchkey:""?>"/>
+							</div>
+						</div>
+					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="control-label col-md-4">Logo</label>
@@ -183,23 +315,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label col-md-4">Skype kỹ thuật</label>
-							<div class="col-md-8">
-								<input type="text" name="skype" id="skype" class="searchs form-control" value="<?=isset($skype)?$skype:""?>"/>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label col-md-4">Skype kinh doanh</label>
-							<div class="col-md-8">
-								<input type="text" name="skype_2" id="skype_2" class="searchs form-control" value="<?=isset($skype_2)?$skype_2:""?>"/>
-							</div>
-						</div>
-					</div>
+					
 				</div>
+				<!--<div class="row mtop10">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-4">ĐT tư vấn</label>
+							<div class="col-md-8">
+								<input type="text" name="phone_contact" id="phone_contact" class="searchs form-control" value="<?=isset($phone_contact)?$phone_contact:""?>"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-4">ĐT góp ý</label>
+							<div class="col-md-8">
+								<input type="text" name="phone_help" id="phone_help" class="searchs form-control" value="<?=isset($phone_help)?$phone_help:""?>"/>
+							</div>
+						</div>
+					</div>
+				</div>-->
 			</div>
         </div>
     </div>	

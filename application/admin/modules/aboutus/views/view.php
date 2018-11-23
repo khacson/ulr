@@ -18,22 +18,15 @@
             </div>
             <div class="tools">
                 <ul class="button-group pull-right" style="margin-top:-3px; margin-bottom:5px;">
-                            <li id="refresh">
-                                <button type="button" class="button">
-                                    <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
-                                </button>
-                            </li>
-                            <?php if (isset($permission['add'])) { ?>
-                                <li id="save">
-                                    <button type="button" class="button">
-                                        <i class="fa fa-plus"></i>
-                                        Lưu
-                                    </button>
-                                </li>
-                            <?php } ?>
-
-                        </ul>
+					<?php if (isset($permission['add'])) { ?>
+						<li id="save">
+							<button type="button" class="button">
+								<i class="fa fa-plus"></i>
+								Lưu
+							</button>
+						</li>
+					<?php } ?>
+				</ul>
             </div>
         </div>
         <div class="portlet-body">
@@ -50,6 +43,26 @@
 						<input type="text" name="about_title" id="about_title" class="searchs form-control" value="<?=$finds->about_title;?>" />
 					</div>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Hình ảnh</label>
+                        <div class="col-md-8">
+                            <div class="col-md-6" style="padding:0px !important;" >
+                                <ul style="margin:0px;" class="button-group">
+                                    <li class="" onclick ="javascript:document.getElementById('imageEnableThumb').click();"><button type="button" class="btnone">Chọn hình</button></li>
+                                </ul>
+                                <input style='display:none;' accept="image/*" id ="imageEnableThumb" type="file" name="userfile2">
+                            </div>
+                            <div class="col-md-6" >
+                                <span id="show2">
+									<img src="<?=base_url();?>files/aboutus/<?=$finds->image; ?>" style="width:60px; height:40px; " />
+								</span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
             <div class="row mtop10">
                 <div class="col-md-12">
@@ -121,6 +134,24 @@
         $('#save').click(function() {
             save('save', '');
         });
+		$('#imageEnableThumb').change(function(evt) {
+            var files = evt.target.files;
+            for (var i = 0, f; f = files[i]; i++) {
+                var size = f.size;
+                //if (size < 2048000){
+                if (!f.type.match('image.*'))
+                {
+                    continue;
+                }
+                var reader = new FileReader();
+                reader.onload = (function(theFile) {
+                    return function(e) { //size e = e.tatal
+                       $('#show2').html('<img src="' + e.target.result + '" style="width:60px; height:40px; " />');
+                    };
+                })(f);
+                reader.readAsDataURL(f);
+            }
+        });
     });
     function save(func, id) {
         search = getSearch();
@@ -140,6 +171,8 @@
 		var description_short = CKEDITOR.instances['description_short'].getData();
 		//console.log(description_short); return false;
         var data = new FormData();
+		var objectfile2 = document.getElementById('imageEnableThumb').files;
+		data.append('userfile2', objectfile2[0]);
         data.append('csrf_stock_name', token);
         data.append('about_title', about_title);
 		data.append('meta_title', meta_title);

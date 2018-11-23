@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * @author 
- * @copyright mec_
+ * @copyright ndnt_
  */
 class Blog extends CI_Controller {
 
@@ -42,7 +42,7 @@ class Blog extends CI_Controller {
         $data->login = $this->login;
         $data->controller = admin_url() . ($this->uri->segment(1));
         $data->blogTypes = $this->model->blogType('');
-		$data->languages = $this->model->getLanguage();
+		
         
 		$content = $this->load->view('view', $data, true);
         $this->admin->write('content', $content, true);
@@ -64,7 +64,7 @@ class Blog extends CI_Controller {
         $data->groups = $this->base_model->getGroup(''); 
 		$data->finds = $this->model->detail($id);
         $data->blogTypes = $this->model->blogType('');
-		$data->languages = $this->model->getLanguage();
+		
 		$content = $this->load->view('form', $data, true);
         $this->admin->write('content', $content, true);
         $this->admin->write('title', $this->title, true);
@@ -151,7 +151,7 @@ class Blog extends CI_Controller {
         $array = json_decode($this->input->post('search'), true);
         $id = $this->input->post('id');
         $login = $this->login;
-		$finds = $this->model->table('mec_blog')
+		$finds = $this->model->table('ndnt_blog')
 					  ->select('image,thumb')
 					  ->where('id',$id)
 					  ->find();
@@ -234,7 +234,7 @@ class Blog extends CI_Controller {
             exit;
         }
         $login = $this->login;
-		$finds = $this->model->table('mec_blog')
+		$finds = $this->model->table('ndnt_blog')
 					  ->select('image,thumb')
 					  ->where('id',$id)
 					  ->find();
@@ -245,7 +245,7 @@ class Blog extends CI_Controller {
 		if(file_exists('files/blog/thumb/'.$finds->thumb) && !empty($finds->thumb)){
 			unlink('files/blog/thumb/'.$finds->thumb);	
 		}
-		$this->model->table('mec_blog')->where("id in ($id)")->delete();	
+		$this->model->table('ndnt_blog')->where("id in ($id)")->delete();	
 		
         $result['status'] = 1;
         $result['csrfHash'] = $token;
@@ -256,6 +256,6 @@ class Blog extends CI_Controller {
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
 		$array['isshow'] = $value * -1 + 1;
-		$this->model->table('mec_blog')->save($id,$array);	
+		$this->model->table('ndnt_blog')->save($id,$array);	
 	}
 }

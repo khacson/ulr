@@ -4,10 +4,10 @@
             <div class="caption"  style="margin-top:4px;">
 				<?php
 				if(empty($finds->id)){
-					echo getLanguage('all', 'Add');
+					echo "Thêm mới";
 				}
 				else{
-					echo getLanguage('all', 'Edit');
+					echo "Lưu";
 				}
 				?>
             </div>
@@ -17,15 +17,9 @@
 							   <a href="<?=admin_url();?>seoweb">
                                 <button type="button" class="button">
                                     <i class="fa fa-step-backward"></i>
-                                    <?= getLanguage('all', 'Back') ?>
+                                    Quay lại
                                 </button>
 								</a>
-                            </li>
-                            <li id="refresh">
-                                <button type="button" class="button">
-                                    <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
-                                </button>
                             </li>
                             <?php 
 							if(empty($finds->id)){
@@ -99,7 +93,9 @@
                                 <input style='display:none;' accept="image/*" id ="imageEnable" type="file" name="userfile">
                             </div>
                             <div class="col-md-6" >
-                                <span id="show"></span> 
+                                <span id="show">
+									<img src="<?php echo base_url().'files/seoweb/'.$finds->image?>" alt="img" height="70" width="100">
+								</span> 
                             </div>
                         </div>
                     </div>
@@ -260,7 +256,7 @@
 			placeholder:"Chọn trang",
             single: true
         });
-        refresh();addform();
+       addform();
 		//CKEDITOR.instances['description'].setData("111");
         $('#refresh').click(function() {
             $(".loading").show();
@@ -385,24 +381,8 @@
     }
 	function addform(){
 	   
-		var img = '<?= base_url() ?>files/seoweb/' + '<?=$finds->image;?>';
-		var id = '<?=$finds->id;?>';		
-		$('#meta_title').val('<?=$finds->meta_title;?>');
-		$('#meta_keyword').val('<?=$finds->meta_keyword;?>');
-		$('#mete_description').val('<?=$finds->mete_description;?>');
-		
-		$('#face_title').val('<?=$finds->face_title;?>');
-		$('#face_description').val('<?=$finds->face_description;?>');
-		$('#face_url').val('<?=$finds->face_url;?>');
-		$('#face_site_name').val('<?=$finds->face_site_name;?>');
-		
 		var typeid = '<?=$finds->typeid;?>';
 		$('#typeid').multipleSelect('setSelects', typeid.split(','));
-		if(id!=''){
-			$('#show').html('<img src="' + img + '" style="width:100px; height:50px" />');
-			
-		}
-		
 	}
 </script>
 <script src="<?= url_tmpl(); ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

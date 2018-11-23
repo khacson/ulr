@@ -70,11 +70,25 @@ class Aboutus extends CI_Controller {
         $array['friendlyurl'] = $this->admin->friendlyURL($array['about_title']);
         $array['datecreate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
         $array['usercreate'] = $login->username;
-        
-		$status = $this->model->table('mec_about')->save($id,$array);	
+		
+		if (isset($_FILES['userfile2']) && $_FILES['userfile2']['name'] != "") {
+            $imge_name = $_FILES['userfile2']['name'];
+            $this->upload->initialize($this->set_upload_options());
+            $image_data = $this->upload->do_upload('userfile2', $imge_name); //Ten hinh 
+            $array['image'] = $image_data;
+        }
+		$status = $this->model->table('ndnt_about')->save($id,$array);	
 		
 	    $result['status'] = $status;
         $result['csrfHash'] = $token;
         echo json_encode($result);
+    }
+	private function set_upload_options() {
+        $config = array();
+        $config['allowed_types'] = 'jpg|jpeg|gif|png';
+        $config['upload_path'] = './files/aboutus/';
+        $config['encrypt_nam'] = 'TRUE';
+        $config['remove_spaces'] = TRUE;
+        return $config;
     }
 }

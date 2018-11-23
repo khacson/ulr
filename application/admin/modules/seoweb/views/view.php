@@ -3,10 +3,8 @@
 	table col.c2 { width: 60px; }
 	table col.c3 { width: 280px; }
 	table col.c4 { width: 150px; }
-	table col.c5 { width: 70px; }
-	table col.c6 { width: 150px; }
-	table col.c7 { width: 150px; }
-	table col.c8 { width: auto; }
+	table col.c5 { width: 150px; }
+	table col.c6 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
@@ -14,7 +12,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="fa fa-reorder"></i>
-                <?= getLanguage('all', 'Search') ?>
+                Tìm kiếm
             </div>
             <div class="tools">
                 <a href="javascript:;" class="collapse">
@@ -65,32 +63,25 @@
                             <li id="search">
                                 <button type="button" class="button">
                                     <i class="fa fa-search"></i>
-                                    <?= getLanguage('all', 'Search') ?>
+                                   Tìm kiếm
                                 </button>
                             </li>
                             <li id="refresh">
                                 <button type="button" class="button">
                                     <i class="fa fa-refresh"></i>
-                                    <?= getLanguage('all', 'Refresh') ?>
+                                   Làm mới
                                 </button>
                             </li>
                             <?php if (isset($permission['add'])) { ?>
                                 <li id="save">
                                     <button type="button" class="button">
                                         <i class="fa fa-plus"></i>
-                                        <?= getLanguage('all', 'Add') ?>
+                                        Lưu
                                     </button>
                                 </li>
                             <?php } ?>
                            
-                            <?php if (isset($permission['delete'])) { ?>
-                                <li id="delete">
-                                    <button type="button" class="button">
-                                        <i class="fa fa-times"></i>
-                                        <?= getLanguage('all', 'Delete') ?>
-                                    </button>
-                                </li>
-                            <?php } ?>
+                            
                         </ul>
         </div>
     </div>
@@ -102,7 +93,7 @@
                 <div id="cHeader">
                     <div id="tHeader">    	
                         <table id="tbheader" width="100%" cellspacing="0" border="1" >
-                            <?php for ($i = 1; $i < 9; $i++) { ?>
+                            <?php for ($i = 1; $i < 7; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tr>
@@ -110,9 +101,7 @@
                                 <th>STT</th>
                                 <th id="ord_title">Tiêu đề</th>
                                 <th id="ord_img">Hình ảnh</th>
-								<th id="">Hiển thị</th>
-                                <th id="ord_datecreate">Ngày tạo</th>
-                                <th id="ord_usercreate">Người tạo</th>
+								<th id="">Trang</th>
                                 <th></th>
                             </tr>
                         </table>
@@ -123,7 +112,7 @@
                 <div id="data">
                     <div id="gridView">
                         <table id="tbbody" width="100%" cellspacing="0" border="1">
-                            <?php for ($i = 1; $i < 8; $i++) { ?>
+                            <?php for ($i = 1; $i < 7; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tbody id="grid-rows"></tbody>

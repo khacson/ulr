@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 /**
  * @author 
- * @copyright mec_
+ * @copyright ndnt_
  */
 class Picture extends CI_Controller {
 
@@ -41,7 +41,7 @@ class Picture extends CI_Controller {
         $data->routes = $this->route;
         $data->login = $this->login;
         $data->controller = admin_url() . ($this->uri->segment(1));
-        $data->technologys = $this->model->blogTechnology();
+        $data->blogTypes = $this->model->blogType('');
 		
         
 		$content = $this->load->view('view', $data, true);
@@ -63,7 +63,7 @@ class Picture extends CI_Controller {
         $data->controller = admin_url() . ($this->uri->segment(1));
         $data->groups = $this->base_model->getGroup(''); 
 		$data->finds = $this->model->detail($id);
-        $data->technologys = $this->model->blogTechnology();
+        $data->blogTypes = $this->model->blogType('');
 		
 		$content = $this->load->view('form', $data, true);
         $this->admin->write('content', $content, true);
@@ -71,6 +71,7 @@ class Picture extends CI_Controller {
         $this->admin->render();
 	}
     function getList() {
+
         if (!isset($_POST['csrf_stock_name'])) {
             //show_404();
         }
@@ -103,6 +104,7 @@ class Picture extends CI_Controller {
         echo json_encode($result);
     }
     function save() {
+
         $permission = $this->base_model->getPermission($this->login, $this->route);
         $token = $this->security->get_csrf_hash();
         $array = json_decode($this->input->post('search'), true);
@@ -113,12 +115,19 @@ class Picture extends CI_Controller {
             echo json_encode($result);
             exit;
         }
-        if (isset($_FILES['userfile2']) && $_FILES['userfile2']['name'] != "") {
-            $imge_name = $_FILES['userfile2']['name'];
+        if (isset($_FILES['userfile']) && $_FILES['userfile']['name'] != "") {
+            $imge_name = $_FILES['userfile']['name'];
             $this->upload->initialize($this->set_upload_options());
-            $image_data = $this->upload->do_upload('userfile2', $imge_name); //Ten hinh 
+            $image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
             $array['image'] = $image_data;
-            //$resize = $this->resizeImg($image_data);
+            $resize = $this->resizeImg($image_data);
+        }
+		if (isset($_FILES['userfile2']) && $_FILES['userfile2']['name'] != "") {
+            $imge_name = $_FILES['userfile2']['name'];
+            $this->upload->initialize($this->set_upload_options2());
+            $image_data = $this->upload->do_upload('userfile2', $imge_name); //Ten hinh 
+            $array['thumb'] = $image_data;
+            $resize = $this->resizeImg($image_data,400,300);
         }
         $login = $this->login;
 		$array['linkweb'] = $this->input->post('linkweb');
@@ -143,19 +152,29 @@ class Picture extends CI_Controller {
         $array = json_decode($this->input->post('search'), true);
         $id = $this->input->post('id');
         $login = $this->login;
-		$finds = $this->model->table('mec_picture')
+		$finds = $this->model->table('ndnt_blog')
 					  ->select('image,thumb')
 					  ->where('id',$id)
 					  ->find();
-        if (isset($_FILES['userfile2']) && $_FILES['userfile2']['name'] != "") {
+        if (isset($_FILES['userfile']) && $_FILES['userfile']['name'] != "") {
 			if(file_exists('files/picture/'.$finds->image)){
 				unlink('files/picture/'.$finds->image);
 			}
-			$imge_name = $_FILES['userfile2']['name'];
+			$imge_name = $_FILES['userfile']['name'];
             $this->upload->initialize($this->set_upload_options());
-            $image_data = $this->upload->do_upload('userfile2', $imge_name); //Ten hinh 
+            $image_data = $this->upload->do_upload('userfile', $imge_name); //Ten hinh 
             $array['image'] = $image_data;
             //$resize = $this->resizeImg($image_data);
+        }
+		if (isset($_FILES['userfile2']) && $_FILES['userfile2']['name'] != "") {
+			if(file_exists('files/picture/thumb/'.$finds->thumb)){
+				unlink('files/picture/thumb/'.$finds->thumb);
+			}
+			$imge_name = $_FILES['userfile2']['name'];
+            $this->upload->initialize($this->set_upload_options2());
+            $image_data = $this->upload->do_upload('userfile2', $imge_name); //Ten hinh 
+            $array['thumb'] = $image_data;
+            $resize = $this->resizeImg($image_data,400,300);
         }
 		$array['linkweb'] = $this->input->post('linkweb');
 		$array['friendlyurl'] = $this->admin->friendlyURL($array['title']);
@@ -190,7 +209,7 @@ class Picture extends CI_Controller {
 
     private function set_upload_options() {
         $config = array();
-        $config['allowed_types'] = 'jpg|jpeg|gif|png|mp4|avi|flv|wmv|mov';
+        $config['allowed_types'] = 'jpg|jpeg|gif|png';
         $config['upload_path'] = './files/picture/';
         $config['encrypt_nam'] = 'TRUE';
         $config['remove_spaces'] = TRUE;
@@ -199,7 +218,7 @@ class Picture extends CI_Controller {
     }
 	private function set_upload_options2() {
         $config = array();
-        $config['allowed_types'] = 'jpg|jpeg|gif|png|mp4|avi|flv|wmv|mov';
+        $config['allowed_types'] = 'jpg|jpeg|gif|png';
         $config['upload_path'] = './files/picture/thumb/';
         $config['encrypt_nam'] = 'TRUE';
         $config['remove_spaces'] = TRUE;
@@ -217,7 +236,7 @@ class Picture extends CI_Controller {
             exit;
         }
         $login = $this->login;
-		$finds = $this->model->table('mec_picture')
+		$finds = $this->model->table('ndnt_blog')
 					  ->select('image,thumb')
 					  ->where('id',$id)
 					  ->find();
@@ -228,7 +247,7 @@ class Picture extends CI_Controller {
 		if(file_exists('files/picture/thumb/'.$finds->thumb) && !empty($finds->thumb)){
 			unlink('files/picture/thumb/'.$finds->thumb);	
 		}
-		$this->model->table('mec_picture')->where("id in ($id)")->delete();	
+		$this->model->table('ndnt_blog')->where("id in ($id)")->delete();	
 		
         $result['status'] = 1;
         $result['csrfHash'] = $token;
@@ -239,13 +258,6 @@ class Picture extends CI_Controller {
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
 		$array['isshow'] = $value * -1 + 1;
-		$this->model->table('mec_picture')->save($id,$array);	
-	}
-	function ordering(){
-		$array = array();
-		$id = $this->input->post('id');
-		$value = $this->input->post('value');
-		$array['ordering'] = $value;
-		$this->model->table('mec_picture')->save($id,$array);	
+		$this->model->table('ndnt_blog')->save($id,$array);	
 	}
 }

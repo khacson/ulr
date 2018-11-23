@@ -17,7 +17,9 @@ foreach ($datas as $item) {
 			<?=$item->slide_name;?>
 		<?php }?>
 		</td>
-        <td class="text-center"><img src="<?php echo base_url().'files/banner/'.$item->thumb_img?>" alt="img" height="45" width="60"></td>
+        <td class="text-center"><img src="<?php echo base_url().'files/banner/'.$item->img?>" alt="img" height="45" width="60"></td>
+		<td class="url"><a href="<?=base_url();?>files/banner/<?=$item->img;?>" download><?=base_url();?>files/banner/<?=$item->img;?></td>
+		
 		<td></td>
 	</tr>
 <?php	

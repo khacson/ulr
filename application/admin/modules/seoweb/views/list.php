@@ -15,10 +15,8 @@ foreach ($datas as $item) {
 		 <?php }?>
 		</td>
 		
-        <td class="text-center"><img src="<?php echo base_url().'files/seoweb/'.$item->image?>" alt="img" height="42" width="42"></td>	
-		<td class="text-center"><input value="<?=$item->isshow;?>" class="isshow" id="<?=$item->id;?>" <?php if($item->isshow == 1){?> checked <?php }?> type="checkbox" /></td>
-		<td class="datecreate"><?=$item->datecreate;?></td>
-		<td class="usercreate"><?=$item->usercreate;?></td>
+        <td class="text-center"><img src="<?php echo base_url().'files/seoweb/'.$item->image?>" alt="img" height="70" width="100"></td>	
+		<td class="seoweb_type_name"><?=$item->seoweb_type_name;?></td>
 		<td></td>
 	</tr>
 <?php	

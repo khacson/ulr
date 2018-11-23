@@ -1,26 +1,51 @@
 <style title="" type="text/css">
 	table col.c1 { width: 45px; }
-	table col.c2 { width: 45px; }
-	table col.c3 { width: 300px; }
-	table col.c4 { width: 120px; }
-	table col.c5 { width: 70px; }
-	table col.c6 { width: 70px; }
-	table col.c7 { width: 100px; }
-	table col.c8 { width: 150px; }
-	table col.c9 { width: 150px; }
-	table col.c10 { width: auto; }
+	table col.c2 { width: 60px; }
+	table col.c3 { width: 180px; }
+	table col.c4 { width: 350px; }
+	table col.c5 { width: 80px; }
+	table col.c6 { width: 200px; }
+	table col.c7 { width: auto; }
 </style>
 <!-- BEGIN PORTLET-->
 <form method="post" enctype="multipart/form-data">
     <div class="portlet box blue">
         <div class="portlet-title">
-            <div class="caption">
+            <div class="caption" style="margin-top:4px;">
                 <i class="fa fa-reorder"></i>
                 <?= getLanguage('all', 'Search') ?>
             </div>
             <div class="tools">
-                <a href="javascript:;" class="collapse">
-                </a>
+                <ul class="button-group pull-right"  style="margin-top:-3px; margin-bottom:5px;">
+                            <li id="search">
+                                <button type="button" class="button">
+                                    <i class="fa fa-search"></i>
+                                    <?= getLanguage('all', 'Search') ?>
+                                </button>
+                            </li>
+                            <li id="refresh">
+                                <button type="button" class="button">
+                                    <i class="fa fa-refresh"></i>
+                                    <?= getLanguage('all', 'Refresh') ?>
+                                </button>
+                            </li>
+                            <?php if (isset($permission['add'])) { ?>
+                                <li id="save">
+                                    <button type="button" class="button">
+                                        <i class="fa fa-plus"></i>
+                                        <?= getLanguage('all', 'Add') ?>
+                                    </button>
+                                </li>
+                            <?php } ?>
+                            <?php if (isset($permission['delete'])) { ?>
+                                <li id="delete">
+                                    <button type="button" class="button">
+                                        <i class="fa fa-times"></i>
+                                        <?= getLanguage('all', 'Delete') ?>
+                                    </button>
+                                </li>
+                            <?php } ?>
+                        </ul>
             </div>
         </div>
         <div class="portlet-body">
@@ -29,24 +54,21 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">Tiêu đề</label>
                         <div class="col-md-8">
-                            <input type="text" name="title" id="title" class="searchs form-control" />
+                            <input type="text" name="slide_name" id="slide_name" class="searchs form-control" />
                         </div>
                     </div>
-                </div> 
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label col-md-4">Ngôn ngữ</label>
-						<div class="col-md-8" >
-							<select name="language" id="language" class="combos" >
-								<?php foreach ($languages as $item) { ?>
-									<option value="<?=$item->lang_code;?>"><?=$item->lang_name?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
-				</div>
+                </div>
+                
                 <div class="col-md-4">
-                    <div class="mright10" >
+                    <div class="form-group">
+                        <label class="control-label col-md-5">Link</label>
+                        <div class="col-md-7">
+                            <input type="text" name="url" id="url" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>             
+                <div class="col-md-4">
+                    <div class="" >
                         <input type="hidden" name="id" id="id" />
                         <input type="hidden" id="token" name="<?= $csrfName; ?>" value="<?= $csrfHash; ?>" />
                         
@@ -58,41 +80,11 @@
 </form>
 <div class="portlet box blue">
     <div class="portlet-title">
-        <div class="caption"  style="margin-top:4px;">
-            <i>Có <span class='viewtotal'>0</span> công nghệ</i>
+        <div class="caption">
+            <i>Có <span class='viewtotal'>0</span> slide</i>
         </div>
         <div class="tools">
-            <ul class="button-group pull-right" style="margin-top:-3px; margin-bottom:5px;">
-				<li id="search">
-					<button type="button" class="button">
-						<i class="fa fa-search"></i>
-						Tìm kiếm
-					</button>
-				</li>
-				<li id="refresh">
-					<button type="button" class="button">
-						<i class="fa fa-refresh"></i>
-						Làm mới
-					</button>
-				</li>
-				<?php if (isset($permission['add'])) { ?>
-					<li id="save">
-						<button type="button" class="button">
-							<i class="fa fa-plus"></i>
-							Thêm mới
-						</button>
-					</li>
-				<?php } ?>
-			   
-				<?php if (isset($permission['delete'])) { ?>
-					<li id="delete">
-						<button type="button" class="button">
-							<i class="fa fa-times"></i>
-							Xóa
-						</button>
-					</li>
-				<?php } ?>
-			</ul>
+            <a href="javascript:;" class="collapse"></a>
         </div>
     </div>
     <div class="portlet-body">
@@ -103,19 +95,16 @@
                 <div id="cHeader">
                     <div id="tHeader">    	
                         <table id="tbheader" width="100%" cellspacing="0" border="1" >
-                            <?php for ($i = 1; $i < 11; $i++) { ?>
+                            <?php for ($i = 1; $i < 8; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tr>
                                 <th width="40px" class="text-center"><input type="checkbox" name="checkAll" id="checkAll" /></th>
                                 <th>STT</th>
-                                <th id="ord_p.title">Tiêu đề</th>
-								<th id="ord_p.language">Ngôn ngữ</th>
-								<th >Hình ảnh</th> 
-								<th id="ord_ordering">Vị trí</th>
-								<th id="">Hiển thị</th>
-                                <th id="ord_p.datecreate">Ngày tạo</th>
-                                <th id="ord_p.usercreate">Người tạo</th>
+                                <th id="ord_slide_name">Tiêu đề</th>
+                                <th id="ord_description">Mô tả</th>
+                                <th id="ord_img">Hình ảnh</th>
+                                <th id="ord_url">Link</th>
                                 <th></th>
                             </tr>
                         </table>
@@ -126,7 +115,7 @@
                 <div id="data">
                     <div id="gridView">
                         <table id="tbbody" width="100%" cellspacing="0" border="1">
-                            <?php for ($i = 1; $i < 11; $i++) { ?>
+                            <?php for ($i = 1; $i < 8; $i++) { ?>
                                 <col class="c<?= $i; ?>">
                             <?php } ?>
                             <tbody id="grid-rows"></tbody>
@@ -182,10 +171,11 @@
                  }*/
             }
         });
+        
         refresh();
         $('#refresh').click(function() {
             $(".loading").show();
-           
+            //CKEDITOR.instances['description'].setData("");
             refresh();
         });
         $('#search').click(function() {
@@ -193,29 +183,18 @@
             searchList();
         });
         $('#save').click(function() {
-            //save('save', '');
-			var id = $('#id').val();
-            location.href = '<?=base_url()."admin.php/aboutslide/form"?>';
+			location.href = '<?=admin_url()."aboutslide/add/"?>';
         });
-        $('#edit').click(function() {
-            var id = $('#id').val();
-            if (id == '') {
-                error('Please select a item.');
-                return false;
-            }
-            //save('edit', id);			
-            location.href = '<?=base_url()."admin.php/aboutslide/edits/"?>'+id;
-        });
-        $('#delete').click(function(){
+        $('#delete').click(function() {
 			var id = getCheckedId();
-			 if (id == '') {
+            if (id == '') {
                 error('Please select a item.');
                 return false;
             }
             $.msgBox({
                 title: 'Message',
                 type: 'error',
-                content: 'Bạn muốn xóa công nghệ?',
+                content: 'Do you want to delete this item?',
                 buttons: [{value: 'Yes'}, {value: 'No'}],
                 success: function(result) {
                     if (result == 'Yes') {
@@ -234,7 +213,7 @@
                                     return false;
                                 }
                                 else {
-                                    
+                                    //CKEDITOR.instances['description'].setData("");
                                     refresh();
                                 }
 
@@ -247,116 +226,90 @@
                 }
             });
         });
-		$('#language').multipleSelect({
-        	filter: true,
-            placeholder:"Chọn ngôn ngữ",
-            single:true
-        });
-		$('#language').multipleSelect('uncheckAll');
     });
+    function save(func, id) {
+        search = getSearch();
+        var token = $('#token').val();
+        var description = CKEDITOR.instances['description'].getData();
+        if ($("#slide_name").val() == '') {
+            error("Slide name <?= getLanguage('all', 'empty') ?>");
+            $("#slide_name").focus();
+            return false;
+        }
+        if (description == "") {
+            error("Description <?= getLanguage('all', 'empty') ?>");
+            return false;
+        }
+        if ($("#url").val() == "") {
+            error("Url <?= getLanguage('all', 'empty') ?>");
+            return false;
+        }
+        
+        var data = new FormData();
+        var objectfile = document.getElementById('imageEnable').files;
+        data.append('userfile', objectfile[0]);
+        data.append('csrf_stock_name', token);
+        data.append('search', search);
+        data.append('description', description);
+        data.append('id', id);
+        $.ajax({
+            url: controller + func,
+            type: 'POST',
+            async: false,
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function(datas) {
+                var obj = $.evalJSON(datas);
+                $("#token").val(obj.csrfHash);
+                if (obj.status == 0) {
+                    if (id != '') {
+                        error('<?= getLanguage('all', 'edit-fail') ?>');
+                        return false;
+                    }
+                    else {
+                        error('<?= getLanguage('all', 'add-fail') ?>');
+                        return false;
+                    }
+                }
+                else if (obj.status == -1) {
+                    error("Slide <?= getLanguage('all', 'exits') ?>");
+                    return false;
+                }
+                /*else if (obj.status == 2) {
+                    error("Width of image must >= 100");
+                    return false;
+                }
+                else if (obj.status == 3) {
+                    error("Height of image must >= 50");
+                    return false;
+                }*/
+                else {
+                    CKEDITOR.instances['description'].setData("");
+                    refresh();
+                }
+            },
+            error: function() {
+
+            }
+        });
+    }
     function funcList(obj) {
         $('.edit').each(function(e) {
             $(this).click(function() {
-                var title = $(this).attr('title');
-                var aboutslidetypeid = $(this).attr('aboutslidetypeid');
-                $('#title').val(title);
-				$('#aboutslidetypeid').multipleSelect('setSelects',[aboutslidetypeid]);
-            });
-        });
-		 $('.isshow').each(function(e) {
-            $(this).click(function() {
-				$('.loading').show();
+                //var slidename = $('.slide_name').eq(e).html().trim();
+                //var description = $('.description').eq(e).html().trim();
+                var url = $('.url').eq(e).html().trim();
+               // var img = '<?= base_url() ?>files/aboutslide/' + $(this).attr('img');
+				
                 var id = $(this).attr('id');
-				var value = $(this).attr('value'); 
-                $.ajax({ 
-					url: controller + 'isshow',
-					type: 'POST',
-					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		 $('.isnew').each(function(e) {
-            $(this).click(function() {
-				$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).attr('value'); 
-                $.ajax({ 
-					url: controller + 'isnew',
-					type: 'POST',
-					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		 $('.iskm').each(function(e) {
-            $(this).click(function() {
-				$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).attr('value'); 
-                $.ajax({ 
-					url: controller + 'iskm',
-					type: 'POST',
-					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		 $('.isnb').each(function(e) {
-            $(this).click(function() {
-				$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).attr('value'); 
-                $.ajax({ 
-					url: controller + 'isnb',
-					type: 'POST',
-					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		$('.ordering').each(function(e) {
-            $(this).click(function() {
-				//$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).val(); 
-                $.ajax({ 
-					url: controller + 'ordering',
-					type: 'POST',
-					//async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-			$(this).keyup(function() {
-				//$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).val(); 
-                $.ajax({ 
-					url: controller + 'ordering',
-					type: 'POST',
-					//async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
-            });
-        });
-		 $('.isshow').each(function(e) {
-            $(this).click(function() {
-				$('.loading').show();
-                var id = $(this).attr('id');
-				var value = $(this).attr('value'); 
-                $.ajax({ 
-					url: controller + 'isshow',
-					type: 'POST',
-					async: false,
-					data: {id:id, value:value},
-					success: function(datas) { $('.loading').hide();}
-				 });
+				var slide_name = $(this).attr('slide_name');
+                $('#id').val(id);
+                $('#slide_name').val(slide_name);
+                //CKEDITOR.instances['description'].setData(description);
+                $('#url').val(url);
+               //$('#show').html('<img src="' + img + '" style="width:100px; height:50px" />');
             });
         });
     }
@@ -364,7 +317,6 @@
         $('.loading').show();
         $('.searchs').val('');
         $('#show').html('');
-		$('#aboutslidetypeid').multipleSelect('uncheckAll');
         document.getElementById("checkAll").checked=false;
         csrfHash = $('#token').val();
         search = getSearch();//alert(cpage);
@@ -384,5 +336,36 @@
         csrfHash = $('#token').val();
         getList(0, csrfHash);
     }
+    /*function getSearch() { 
+        var str = '';
+        $('input.searchs').each(function() {
+            str += ',"' + $(this).attr('id') + '":"' + $(this).val().trim() + '"';
+        })
+        $('select.combos').each(function() {
+            str += ',"' + $(this).attr('id') + '":"' + getCombo($(this).attr('id')) + '"';
+        })
+        return '{' + str.substr(1) + '}';
+    }*/
+    function validateEmail(email) {
+        var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        var valid = emailReg.test(email);
+
+        if (!valid) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function addslashes(string) {
+        return string.replace(/\\/g, '\\\\').
+            replace(/\u0008/g, '\\b').
+            replace(/\t/g, '\\t').
+            replace(/\n/g, '\\n').
+            replace(/\f/g, '\\f').
+            replace(/\r/g, '\\r').
+            replace(/'/g, '\\\'').
+            replace(/"/g, '\\"');
+    }
 </script>
 <script src="<?= url_tmpl(); ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?=url_tmpl();?>ckeditor/ckeditor.js" type="text/javascript"></script>

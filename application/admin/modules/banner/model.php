@@ -18,8 +18,8 @@
 		return $sql;
 	}
 	function getList($search,$page,$numrows){
-		$sql = "SELECT id,img,slide_name,description,url,datecreate,usercreate, thumb_img
-                        FROM mec_baners
+		$sql = "SELECT id,img,slide_name,description,url,datecreate,usercreate
+                        FROM ndnt_baners
                         WHERE isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -34,7 +34,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_baners
+				FROM ndnt_baners
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -49,7 +49,7 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		 $check = $this->model->table('mec_baners')
+		 $check = $this->model->table('ndnt_baners')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('slide_name',$array['slide_name'])
@@ -58,17 +58,17 @@
 			 return -1;	
 		 }
 		 $result = $this->model
-						->table('mec_baners')
+						->table('ndnt_baners')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $result = $this->model->table('mec_baners')->save($id,$array);	
+		 $result = $this->model->table('ndnt_baners')->save($id,$array);	
 		 return $result;
 	}
 	function getSlitetop($idaction){
             $sql = "SELECT *
-                    FROM mec_baners
+                    FROM ndnt_baners
                     WHERE isdelete=0 and id = ".$idaction;
             $query = $this->model->query($sql)->execute();
             return $query;

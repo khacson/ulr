@@ -4,7 +4,7 @@
 		parent::__construct();
 	}
 	function getCatalog(){
-		$query = $this->model->table('mec_blog_type')
+		$query = $this->model->table('ndnt_blog_type')
 					  ->select('id,blogtype_name')
 					  ->where('isdelete',0)
 					  ->order_by('blogtype_name')
@@ -20,7 +20,7 @@
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT p.id,p.blogtype_name,p.friendlyurl,p.datecreate,p.usercreate, p.img, p.ordering, p.ishome
-                        FROM mec_blog_type p
+                        FROM ndnt_blog_type p
                         WHERE p.isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -35,7 +35,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_blog_type
+				FROM ndnt_blog_type
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -50,18 +50,35 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-        unset($array['fromdate']);
-        unset($array['todate']);
-		$result = $this->model
-						->table('mec_blog_type')
+		 $check = $this->model->table('ndnt_blog_type')
+		 ->select('id')
+		 ->where('isdelete',0)
+		 ->where('blogtype_name',$array['blogtype_name'])
+		 ->find();
+		 if(!empty($check->id)){
+			 return -1;	
+		 }
+                 unset($array['fromdate']);
+                 unset($array['todate']);
+		 $result = $this->model
+						->table('ndnt_blog_type')
 						->insert($array);	
-		return $result;
+		 return $result;
 	}
 	function edits($array,$id){
-		unset($array['fromdate']);
-        unset($array['todate']);
-		$result = $this->model->table('mec_blog_type')->save($id,$array);	
-		return $result;
+		 $check = $this->model->table('ndnt_blog_type')
+		 ->select('id')
+		 ->where('isdelete',0)
+		 ->where('blogtype_name',$array['blogtype_name'])
+		 ->where('id <>',$id)
+		 ->find();
+		 if(!empty($check->id)){
+			 return -1;	
+		 }//print_r($array);exit;
+		 unset($array['fromdate']);
+                 unset($array['todate']);
+		 $result = $this->model->table('ndnt_blog_type')->save($id,$array);	
+		 return $result;
 	}
 	
 }

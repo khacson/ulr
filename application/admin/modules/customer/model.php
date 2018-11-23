@@ -1,5 +1,5 @@
 <?php
- class CustomerModel extends CI_Model{
+ class EmployeeModel extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}
@@ -12,7 +12,7 @@
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT id,customer_name,friendlyurl,datecreate,usercreate,website,phone,email, img, ordering, ishome
-                        FROM mec_customer
+                        FROM ndnt_customer
                         WHERE isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -27,7 +27,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM mec_customer
+				FROM ndnt_customer
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -42,26 +42,35 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		/*$check = $this->model->table('mec_customer')
+		 $check = $this->model->table('ndnt_customer')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('customer_name',$array['customer_name'])
 		 ->find();
 		 if(!empty($check->id)){
 			 return -1;	
-		 }*/
-        unset($array['fromdate']);
-        unset($array['todate']);
-		$result = $this->model
-						->table('mec_customer')
+		 }
+                 unset($array['fromdate']);
+                 unset($array['todate']);
+		 $result = $this->model
+						->table('ndnt_customer')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		unset($array['fromdate']);
-        unset($array['todate']);
-		$result = $this->model->table('mec_customer')->save($id,$array);	
-		return $result;
+		 $check = $this->model->table('ndnt_customer')
+		 ->select('id')
+		 ->where('isdelete',0)
+		 ->where('customer_name',$array['customer_name'])
+		 ->where('id <>',$id)
+		 ->find();
+		 if(!empty($check->id)){
+			 return -1;	
+		 }//print_r($array);exit;
+		 unset($array['fromdate']);
+                 unset($array['todate']);
+		 $result = $this->model->table('ndnt_customer')->save($id,$array);	
+		 return $result;
 	}
 	
 }

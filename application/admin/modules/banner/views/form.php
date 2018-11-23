@@ -22,10 +22,10 @@
                     </div>
                 </div>
                
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-5">Hình banner</label>
-                        <div class="col-md-7">
+                        <label class="control-label col-md-4">Hình ảnh</label>
+                        <div class="col-md-8">
                             <div class="col-md-6" style="padding:0px !important;" >
                                 <ul style="margin:0px;" class="button-group">
                                     <li class="" onclick ="javascript:document.getElementById('imageEnable').click();"><button type="button" class="btnone">Chọn hình</button></li>
@@ -38,28 +38,6 @@
                         </div>
                     </div>
                 </div>
-				
-				<div class="col-md-5">
-					<div class="form-group">
-						<label class="control-label col-md-4">Hình ảnh</label>
-						<div class="col-md-8">
-							<div class="col-md-3" style="padding:0px !important;" >
-								<ul style="margin:0px;" class="button-group">
-									<li class="" onclick ="javascript:document.getElementById('car_images').click();"><button type="button" class="btnone">Chọn hình</button></li>
-								</ul>
-								<input class="tab-event" style='display:none;' accept="image/*" id ="car_images" type="file" name="userfile" multiple>
-							</div>
-							<div class="col-md-9" >
-								 <div class="row">
-									 <span id="show_car_images">
-										<img height="50" src="" >
-									 </span> 
-								 </div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
             </div>
 
             <div class="row mtop10">
@@ -86,7 +64,7 @@
 								<a href="<?=admin_url();?><?=$routes;?>">
                                 <button type="button" class="button">
                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                   Quy lại
+                                    <?= getLanguage('all', 'Back') ?>
                                 </button>
 								</a>
                             </li> 		
@@ -96,7 +74,7 @@
                                 <li id="save">
                                     <button type="button" class="button">
                                         <i class="fa fa-plus"></i>
-                                        Thêm mới
+                                        <?= getLanguage('all', 'Add') ?>
                                     </button>
                                 </li>
 							<?php } }
@@ -105,7 +83,7 @@
                                 <li id="edit">
                                     <button type="button" class="button">
                                         <i class="fa fa-save"></i>
-                                        Lưu
+                                        <?= getLanguage('all', 'Edit') ?>
                                     </button>
                                 </li>
                             <?php } 
@@ -125,52 +103,13 @@
         <img src="<?= url_tmpl() ?>img/ajax_loader.gif" style="z-index: 2;position: absolute;"/>
     </div>
 </div> 
-<style>
-	.oneimg{
-		float: left;
-		display: inline-flex;
-		text-align: left;
-		width: 70px;
-	}
-	.rmoneimg{
-		width: 18px;
-		position: relative;
-		margin-top: -10px;
-		border: 1px solid #333;
-		height: 18px;
-		padding: 3px;
-		border-radius: 50% !important;
-		margin-left:-5px;
-	}
-	.rmoneimg i{
-		margin-top: -2px !important;
-		float: left;
-	}
-	.rmoneimg2{
-		width: 18px;
-		position: relative;
-		margin-top: -10px;
-		border: 1px solid #333;
-		height: 18px;
-		padding: 3px;
-		border-radius: 50% !important;
-		margin-left:-5px;
-	}
-	.rmoneimg2 i{
-		margin-top: -2px !important;
-		float: left;
-	}
-</style>
 <script>
     var controller = '<?= $controller; ?>/';
     var csrfHash = '<?= $csrfHash; ?>';
     var cpage = 0;
     var search;
     var schoolid = 0;
-	var storedOldNameFiles = [];
-	var listimg = {};
     $(function() {
-		car_images_picture();
         $('#imageEnable').change(function(evt) {
             var files = evt.target.files;
             for (var i = 0, f; f = files[i]; i++) {
@@ -196,6 +135,8 @@
                  }*/
             }
         });
+        
+        addform();
         $('#refresh').click(function() {
             $(".loading").show();
             CKEDITOR.instances['description'].setData("");
@@ -212,45 +153,8 @@
                 return false;
             }
             save('edit', id);
-        });   
-		
-		addform();		
+        });        
     });
-	function car_images_picture() { 
-        $('#car_images').change(function (evt) { 
-            var files = evt.target.files;
-            for (var i = 0, f; f = files[i]; i++) {
-                if (!f.type.match('image.*')){
-                    continue;
-				}
-                var reader = new FileReader();
-                reader.onload = (function (theFile) {
-                    return function (e) {
-                        listimg[theFile.name] = e.target.result;
-                        $("#noimg").css("display", "none");
-                        $("#show_car_images").append('<div class="oneimg newimg" name="' + theFile.name + '"><img height="40" width="50" src="' + e.target.result + '" class="imgupload" /><div class="rmoneimg"><i class="fa fa-times" aria-hidden="true"></i></div></div>');
-                    };
-                })(f);
-                reader.readAsDataURL(f);
-            }
-        });
-        $(document.body).on("click", ".rmoneimg", function () {
-            // lay index cua phan tu moi remove
-            var index = $(".newimg").index($(this).parent());
-            // ghi lai ten nhung file bi xoa de xoa file trong thu muc
-            if ($(this).parent().hasClass("oldimg")) {
-                storedOldNameFiles.push($(this).parent().attr("name"));
-            }
-            // remove phan tu vua click
-            $(this).parent().remove();
-            // xoa file bi remove ra khoi mang        
-            storedFiles.splice(index, 1);
-            // kiem tra neu khong co img nao thi hien no image
-            if ($(".oneimg").length === 0) {
-                $("#noimg").css("display", "");
-            }
-        });
-    }
     function save(func, id) {
         search = getSearch();
         var token = $('#token').val();
@@ -262,15 +166,6 @@
         }
         $('.loading').show();
         var data = new FormData();
-		
-		//car_images
-		var objectfile = document.getElementById('car_images').files;
-		var length1 = objectfile.length; 
-		for (var i = 0; i < length1; i++) {
-			data.append('car_images' + i, objectfile[i]);
-		}
-		data.append('length1', length1);
-		
         var objectfile = document.getElementById('imageEnable').files;
         data.append('userfile', objectfile[0]);
         data.append('csrf_stock_name', token);
@@ -291,14 +186,18 @@
 				$('.loading').hide();
                 if (obj.status == 0) {
                     if (id != '') {
-                        error('Sửa không thành công');
+                        error('<?= getLanguage('all', 'edit-fail') ?>');
                         return false;
                     }
                     else {
-                        error('Thêm mới không thành công');
+                        error('<?= getLanguage('all', 'add-fail') ?>');
                         return false;
                     }
-                }             
+                }
+                else if (obj.status == -1) {
+                    error("Slide <?= getLanguage('all', 'exits') ?>");
+                    return false;
+                }              
                 else {
                     CKEDITOR.instances['description'].setData("");
                     location.href = '<?=base_url()."admin.php/banner"?>';
@@ -333,6 +232,16 @@
         }
         return '{' + str.substr(1) + '}';
     }
+    function validateEmail(email) {
+        var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        var valid = emailReg.test(email);
+
+        if (!valid) {
+            return false;
+        } else {
+            return true;
+        }
+    }
     function addslashes(string) {
         return string.replace(/\\/g, '\\\\').
             replace(/\u0008/g, '\\b').
@@ -344,12 +253,11 @@
             replace(/"/g, '\\"');
     }
 	function addform(){		
-	    var img = '<?= base_url() ?>files/banner/' + '<?=$thumb_img; ?>';
+	    var img = '<?= base_url() ?>files/banner/' + '<?=$img?>';
 		var id = $("#id").val();//alert(id);
 		$('#id').val(id);
 		if(id!=''){
 			$('#show').html('<img src="' + img + '" style="width:100px; height:50px" />');
-			$("#show_car_images").html('<?=$img; ?>');
 		}
 	    
 	}

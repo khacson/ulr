@@ -188,7 +188,7 @@ class Contactus extends CI_Controller {
         $array['userupdate'] = $login->username;
         //$array['ipupdate'] = $this->base_model->getMacAddress();
         $array['isdelete'] = 1;
-        $this->model->table('mec_contact')->save($id, $array);
+        $this->model->table('ndnt_contact')->save($id, $array);
 
         $result['status'] = 1;
         $result['csrfHash'] = $token;

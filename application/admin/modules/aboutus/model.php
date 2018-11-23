@@ -5,7 +5,7 @@
 		$this->login = $this->admin->getSession('login');
 	}
 	function finds(){
-		 $query = $this->model->table('mec_about')
+		 $query = $this->model->table('ndnt_about')
 					   ->select('*')
 					   ->where('isdelete',0)
 					   ->find();
@@ -18,8 +18,8 @@
 			 $arr['description_long'] = '';
 			 $arr['datecreate'] = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
 			 $arr['usercreate'] = $this->login->username;
-			 $this->model->table('mec_about')->insert($arr);
-			 $query = $this->model->table('mec_about')
+			 $this->model->table('ndnt_about')->insert($arr);
+			 $query = $this->model->table('ndnt_about')
 					   ->select('*')
 					   ->where('isdelete',0)
 					   ->find();

@@ -1,39 +1,26 @@
 <?php 
 $i= $start;
-$array = array();
-$array['vn'] = 'Việt nam';
-$array['cn'] = 'China';
-$array['en'] = 'English';
-$array['jp'] = 'Japan';
 foreach ($datas as $item) { 
-	$lang = '';
-	if(isset($array[$item->language])){
-		$lang = $array[$item->language];
-	}
 ?>
 
-	<tr class="content edit" img = "<?=$item->thumb;?>" 
-		id="<?=$item->id; ?>" 
-		title = "<?=$item->title;?>" 
-		>
+	<tr class="content edit" img = "<?=$item->img;?>" 
+	id="<?=$item->id; ?>" 
+	slide_name="<?=$item->slide_name; ?>"
+	>
 		<td style="text-align: center;">
-		<input class="noClick" type="checkbox" name="keys[]" id="<?=$item->id;?>"></td>
+		<input class="noClick" type="checkbox" name="keys[]" id="<?=$item->id; ?>"></td>
 		<td class="center"><?=$i;?></td>
-		<td class="title">
-		 <?php if (isset($permission['edit'])) { ?>
-		   <a href="<?=admin_url();?>aboutslide/form/<?=$item->id;?>"><?=$item->title;?></a>
-		 <?php }else{?>
-			<?=$item->title;?>
-		 <?php }?>
+		<td class="slide_name">
+		<?php if (isset($permission['edit'])) { ?>
+			<a href="<?=admin_url();?>/aboutslide/edits/<?=$item->id; ?>"><?=$item->slide_name;?></a>
+		<?php }else{?>
+			<?=$item->slide_name;?>
+		<?php }?>
 		</td>
-		<td class=""><?=$lang;?></td>
-        <td class="text-center"><img src="<?php echo base_url().'files/aboutslide/thumb/'.$item->thumb;?>" alt="img" height="45" width="60"></td>	
-		<td>
-			<input class="ordering search text-center" id="<?=$item->id;?>" type="number" value="<?=$item->ordering;?>" />
-		</td>
-		<td class="text-center"><input value="<?=$item->isshow;?>" class="isshow" id="<?=$item->id;?>" <?php if($item->isshow == 1){?> checked <?php }?> type="checkbox" /></td>
-		<td class="datecreate"><?=$item->datecreate;?></td>
-		<td class="usercreate"><?=$item->usercreate;?></td>
+		<td class="description"><?=$item->description;?></td>
+        <td class="text-center"><img src="<?php echo base_url().'files/aboutslide/'.$item->img?>" alt="img" height="45" width="60"></td>
+		<td class="url"  ><?=$item->url;?></td>
+		
 		<td></td>
 	</tr>
 <?php	
