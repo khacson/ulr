@@ -22,9 +22,9 @@ class Home extends CI_Controller {
 		
 		$content = $this->load->view('view',$data,true);
         $this->site->write('content',$content,true);
-		$this->site->write('title',$title,true);
-		$this->site->write('description',$description,true);
-		$this->site->write('keywords',$keywords,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
 		
         $this->site->render();
 	}
