@@ -64,11 +64,15 @@ $route['gioi-thieu'] = "aboutus";
 $route['gioi-thieu/(:any)'] = "aboutus/$1";
 $route['gioi-thieu/(:any)/(:any)'] = "aboutus/$1/$2";
 
-/*
-$route['dang-nhap'] = "account";
-$route['dang-nhap/(:any)'] = "account/login/$1";
-$route['dang-nhap/(:any)/(:any)'] = "account/$1/$2";
-*/
+
+$route['ban'] = "sell";
+$route['ban/(:any)'] = "sell/login/$1";
+$route['ban/(:any)/(:any)'] = "sell/$1/$2";
+
+$route['cho-thue'] = "lease";
+$route['cho-thue/(:any)'] = "lease/login/$1";
+$route['cho-thue/(:any)/(:any)'] = "lease/$1/$2";
+
 $route['dang-nhap'] = "acount";
 $route['dang-nhap/(:any)'] = "acount/$1";
 
