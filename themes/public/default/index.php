@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="Magz is a HTML5 & CSS3 magazine template is based on Bootstrap 3.">
 		<meta name="author" content="Kodinger">
-		<meta name="keyword" content="magz, html5, css3, template, magazine template">
+		<meta name="keyword" content="">
 		<!-- Shareable -->
-		<meta property="og:title" content="HTML5 & CSS3 magazine template is based on Bootstrap 3" />
+		<meta property="og:title" content="" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="http://github.com/nauvalazhar/Magz" />
-		<meta property="og:image" content="https://raw.githubusercontent.com/nauvalazhar/Magz/master/<?=url_tmpl();?>images/preview.png" />
+		<meta property="og:url" content="" />
+		<meta property="og:image" content="" />
 		<title>Template</title>
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/bootstrap/bootstrap.min.css">
