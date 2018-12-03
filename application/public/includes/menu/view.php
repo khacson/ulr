@@ -44,7 +44,7 @@
 	<div class="container">
 		<div class="brand">
 			<a href="#">
-				<a href="index.php"><img style="height:45px; margin-top:10px;" src="images/logo.png" alt="Magz Logo"></a>
+				<a href="index.php"><img style="height:45px; margin-top:10px;" src="<?=url_tmpl();?>images/logo.png" alt="Magz Logo"></a>
 			</a>
 		</div>
 		<div class="mobile-toggle">
