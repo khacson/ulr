@@ -32,7 +32,7 @@ class Group extends CI_Controller {
 		$data->csrfName = $this->security->get_csrf_token_name();
 		$data->csrfHash = $this->security->get_csrf_hash();		
 	    $data->controller = admin_url().$this->route;
-		$data->routes = $this->route;
+		$data->routes = $this->route; 
 		$content = $this->load->view('view',$data,true);
 		$this->admin->write('content',$content,true);
 		$this->admin->write('title',$this->title,true);
@@ -95,7 +95,7 @@ class Group extends CI_Controller {
 		$array['params'] = trim($this->input->post('right'));
 		$acction_before = $this->model->findID($id);
 		
-		$this->model->table('ndnt_groups')->save($id, $array);
+		$this->model->table('vland_groups')->save($id, $array);
 		$result['status'] = 1;
 		$result['csrfHash'] = $this->security->get_csrf_hash();
 		echo json_encode($result);
@@ -155,7 +155,7 @@ class Group extends CI_Controller {
 		$array['dateupdate']  = gmdate("Y-m-d H:i:s", time() + 7 * 3600);
 		$array['userupdate'] = $login->username;
 		$array['isdelete'] = 1;
-		$this->model->table('ndnt_groups')->where("id in ($id)")->update($array);	
+		$this->model->table('vland_groups')->where("id in ($id)")->update($array);	
 		
 		$result['status'] = 1;	
 		$result['csrfHash'] = $token;

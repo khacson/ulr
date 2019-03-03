@@ -9,7 +9,7 @@
 		parent::__construct();
 	}
 	function findID($id) {
-        $query = $this->model->table('ndnt_groups')
+        $query = $this->model->table('vland_groups')
 					  ->where('isdelete',0)
 					  ->where('id',$id)
 					  ->find();
@@ -25,7 +25,7 @@
         #region Lấy danh cha
         
         $sql = "  SELECT m.name, m.parent, m.route, m.id, m.params 
-                        FROM ndnt_menus m                      
+                        FROM vland_menus m                      
                         WHERE m.parent = 0 
 						and m.isdelete = 0 
 						order by m.ordering ASC";
@@ -114,7 +114,7 @@
     function getChildren($id, $current, $level = 0) {
         
         $sql = "  SELECT m.name, m.parent, m.route, m.id, m.params 
-                        FROM ndnt_menus m                      
+                        FROM vland_menus m                      
                         WHERE m.parent = $id 
 						and m.isdelete = 0
 						order by m.ordering ASC";
@@ -214,7 +214,7 @@
 	function getList($search,$page,$rows){
 		$searchs = $this->getSearch($search);
 		$sql = " SELECT *  
-				FROM ndnt_groups AS g
+				FROM vland_groups AS g
 				WHERE g.isdelete = 0 
 				$searchs
 				ORDER BY g.groupname ASC 
@@ -226,7 +226,7 @@
 	function getTotal($search){
 		$searchs = $this->getSearch($search);
 		$sql = " SELECT count(1) total  
-		FROM ndnt_groups AS g
+		FROM vland_groups AS g
 		WHERE g.isdelete = 0
 		$searchs	
 		";
@@ -234,7 +234,7 @@
 		return $query[0]->total;	
 	}
 	function saves($array){
-		$check = $this->model->table('ndnt_groups')
+		$check = $this->model->table('vland_groups')
 					  ->select('id')
 					  ->where('isdelete',0)
 					  ->where('groupname',$array['groupname'])
@@ -242,11 +242,11 @@
 		if(!empty($check->id)){
 			return -1;	
 		}
-		$result = $this->model->table('ndnt_groups')->insert($array);	
+		$result = $this->model->table('vland_groups')->insert($array);	
 		return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('ndnt_groups')
+		 $check = $this->model->table('vland_groups')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('id',$id)
@@ -254,7 +254,7 @@
 		 if(empty($check->id)){
 			 return -1;	
 		 }
-		 $result = $this->model->table('ndnt_groups')->save($id,$array);	
+		 $result = $this->model->table('vland_groups')->save($id,$array);	
 		 return $result;
 	 }
 }

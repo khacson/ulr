@@ -4,7 +4,7 @@
 		parent::__construct();
 	}
 	function getCatalog(){
-		$query = $this->model->table('ndnt_picturetype')
+		$query = $this->model->table('vland_picturetype')
 					  ->select('id,picturetype_name')
 					  ->where('isdelete',0)
 					  ->order_by('picturetype_name')
@@ -20,7 +20,7 @@
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT p.id,p.picturetype_name,p.friendlyurl,p.datecreate,p.usercreate, p.img, p.ordering, p.ishome
-                        FROM ndnt_picturetype p
+                        FROM vland_picturetype p
                         WHERE p.isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -35,7 +35,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM ndnt_picturetype
+				FROM vland_picturetype
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -50,7 +50,7 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		 $check = $this->model->table('ndnt_picturetype')
+		 $check = $this->model->table('vland_picturetype')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('picturetype_name',$array['picturetype_name'])
@@ -61,12 +61,12 @@
                  unset($array['fromdate']);
                  unset($array['todate']);
 		 $result = $this->model
-						->table('ndnt_picturetype')
+						->table('vland_picturetype')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('ndnt_picturetype')
+		 $check = $this->model->table('vland_picturetype')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('picturetype_name',$array['picturetype_name'])
@@ -77,7 +77,7 @@
 		 }//print_r($array);exit;
 		 unset($array['fromdate']);
                  unset($array['todate']);
-		 $result = $this->model->table('ndnt_picturetype')->save($id,$array);	
+		 $result = $this->model->table('vland_picturetype')->save($id,$array);	
 		 return $result;
 	}
 	

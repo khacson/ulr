@@ -5,44 +5,36 @@
 				<h4>Đăng nhập</h4>
 				<form>
 					<div class="form-group">
-						<label>Số điện thoại hoạc email</label>
+						<label>Email hoạc số điện thoại</label>
 						<input type="text" name="username" class="form-control">
 					</div>
 					<div class="form-group">
 						<label class="fw">Mật khẩu
-							<a href="forgot.html" class="pull-right">Quên mật khẩu?</a>
+							<a href="<?=base_url();?>quen-mat-khau.html" class="pull-right">Quên mật khẩu?</a>
 						</label>
 						<input type="password" name="password" class="form-control">
 					</div>
 					<div class="form-group text-right">
-						<button class="btn btn-primary btn-block">Đăng nhập</button>
+						<button  type="button" class="btn btn-primary btn-block">Đăng nhập</button>
 					</div>
 					<div class="form-group text-center">
-						<span class="text-muted">Bạn chưa có tài khoản?</span> <a href="register.html">Tạo tài khoản</a>
+						<span class="text-muted">Bạn chưa có tài khoản?</span>
 					</div>
-					<div class="title-line">
-						Hoặc
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<a href="<?=filter_var($facebookUrl, FILTER_SANITIZE_URL)?>" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i>Facebook</a>
-						</div>
-						<div class="col-md-6">
-							<a href="<?=filter_var($authUrl, FILTER_SANITIZE_URL)?>" class="btn btn-social btn-block googleplus "><i class="ion-social-googleplus"></i> Google+</a>
-						</div>
+					<div class="form-group text-right">
+						<button id="register" type="button" data-href="<?=base_url();?>dang-ky.html" class="btn btn-info btn-block">Đăng ký</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<script type='text/javascript' src="<?= url_tmpl() ?>js/jquery.json.js"></script>
 <script type="text/javascript">
 	var url = '<?= base_url() ?>';
 	var suffix = '';
     var control = 'account';
 	$(function(){
-		
+		$('#register').click(function(){
+			window.location = url + 'dang-ky.html';
+		});
 	});
-	
 </script>

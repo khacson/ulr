@@ -46,7 +46,7 @@ class base_model extends CI_Model {
     }
 
     public function getGroup($schoolid) {
-        $query = $this->model->table('mec_groups')
+        $query = $this->model->table('vland_groups')
                 ->select('id,groupname')
                 ->where('isdelete', 0);
 
@@ -58,7 +58,7 @@ class base_model extends CI_Model {
     }
 
     public function getAllProduct() {
-        $query = $this->model->table('mec_product')
+        $query = $this->model->table('vland_product')
                 ->select('id,product_name,manufactureid,default_img')
                 ->where('isdelete', 0);
         $query = $query->find_all();
@@ -66,7 +66,7 @@ class base_model extends CI_Model {
     }
 
     public function getAllCarrier() {
-        $query = $this->model->table('mec_supplier')
+        $query = $this->model->table('vland_supplier')
                 ->select('id,supplier_name,supplier_image')
                 ->where('isdelete', 0);
         $query = $query->find_all();
@@ -74,7 +74,7 @@ class base_model extends CI_Model {
     }
 
     public function getAllColor() {
-        $query = $this->model->table('mec_color')
+        $query = $this->model->table('vland_color')
                 ->select('id,colorname')
                 ->where('isdelete', 0);
         $query = $query->find_all();
@@ -116,13 +116,13 @@ class base_model extends CI_Model {
 		return $frefer;
 	}
 	function getLang(){
-		$query = $this->model->table('mec_language')
+		$query = $this->model->table('vland_language')
 			->order_by('ordering','asc')
 			->find_all();
 		return $query;
 	}
 	function getTranslation($language){
-		$query = $this->model->table('mec_translate')
+		$query = $this->model->table('vland_translate')
 					  ->select('keyword, translation')
 					  ->where('isdelete',0)
 					  ->where('language',$language)

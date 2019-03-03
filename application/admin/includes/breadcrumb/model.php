@@ -14,7 +14,7 @@ class incModelBreadcrumb extends CI_Model{
 			return '<li></li>';
 		}
 		$sql = "SELECT parent, name,keylang
-		FROM ndnt_menus 
+		FROM vland_menus 
 		WHERE route = '$controller' 
 		AND isdelete = 0 ";
 		$pid = $this->model->query($sql)->execute();
@@ -36,7 +36,7 @@ class incModelBreadcrumb extends CI_Model{
 
 	function getParent($id, &$arr,$lang) {
 		$sql = " SELECT id, route, name, parent ,keylang
-					FROM ndnt_menus 
+					FROM vland_menus 
 					WHERE id = '$id'
 					AND isdelete = 0  ";
 		$parent = $this->model->query($sql)->execute();

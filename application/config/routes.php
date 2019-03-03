@@ -66,14 +66,48 @@ $route['gioi-thieu/(:any)/(:any)'] = "aboutus/$1/$2";
 
 
 $route['ban'] = "sell";
-$route['ban/(:any)'] = "sell/login/$1";
+$route['ban/(:any)'] = "sell/$1";
 $route['ban/(:any)/(:any)'] = "sell/$1/$2";
 
 $route['cho-thue'] = "lease";
-$route['cho-thue/(:any)'] = "lease/login/$1";
+$route['cho-thue/(:any)'] = "lease/$1";
 $route['cho-thue/(:any)/(:any)'] = "lease/$1/$2";
 
-$route['dang-nhap'] = "acount";
-$route['dang-nhap/(:any)'] = "acount/$1";
+$route['sang-mat-bang'] = "sangmatbant";
+$route['sang-mat-bang/(:any)'] = "sangmatbant/login/$1";
+$route['sang-mat-bang/(:any)/(:any)'] = "sangmatbant/$1/$2";
+
+$route['xay-dung'] = "xaydung";
+$route['xay-dung/(:any)'] = "xaydung/login/$1";
+$route['xay-dung/(:any)/(:any)'] = "xaydung/$1/$2";
+
+$route['noi-ngoai-that'] = "noingoaithat";
+$route['noi-ngoai-that/(:any)'] = "noingoaithat/login/$1";
+$route['noi-ngoai-that/(:any)/(:any)'] = "noingoaithat/$1/$2";
+
+$route['tin-tuc'] = "news";
+$route['tin-tuc/(:any)'] = "news/login/$1";
+$route['tin-tuc/(:any)/(:any)'] = "news/$1/$2";
+
+$route['danh-ba'] = "menu";
+$route['danh-ba/(:any)'] = "menus/login/$1";
+$route['danh-ba/(:any)/(:any)'] = "menus/$1/$2";
+
+$route['tu-van'] = "tuvan";
+$route['tu-van/(:any)'] = "tuvan/login/$1";
+$route['tu-van/(:any)/(:any)'] = "tuvan/$1/$2";
+
+$route['du-an'] = "project";
+$route['du-an/(:any)'] = "project/login/$1";
+$route['du-an/(:any)/(:any)'] = "project/$1/$2";
+
+$route['dang-nhap'] = "account/login";
+$route['dang-nhap/(:any)'] = "account/login/$1";
+
+$route['dang-ky'] = "account/register";
+$route['dang-ky/(:any)'] = "account/register/$1";
+
+$route['quen-mat-khau'] = "account/forgot";
+$route['quen-mat-khau/(:any)'] = "account/forgot/$1";
 
 $route['translate_uri_dashes'] = FALSE;

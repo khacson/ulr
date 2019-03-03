@@ -4,15 +4,17 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="description" content="Magz is a HTML5 & CSS3 magazine template is based on Bootstrap 3.">
-		<meta name="author" content="Kodinger">
-		<meta name="keyword" content="">
+		
+		<meta name="description" content="<?=$description; ?>">
+		<meta name="author" content="<?=$author; ?>">
+		<meta name="keyword" content="<?=$keywords; ?>">
 		<!-- Shareable -->
-		<meta property="og:title" content="" />
+		<meta property="og:title" content="<?=$title; ?>" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="" />
-		<meta property="og:image" content="" />
-		<title>Template</title>
+		<meta property="og:url" content="<?=$url; ?>" />
+		<meta property="og:image" content="<?=$image; ?>" />
+		<title><?=$title; ?></title>
+		
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/bootstrap/bootstrap.min.css">
 		<!-- IonIcons -->
@@ -32,6 +34,7 @@
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/custom.css">
 		<link rel="stylesheet" type="text/css" href="<?=url_tmpl();?>scripts/select2/select2.css"/>
 		<link rel="stylesheet" type="text/css" href="<?=url_tmpl();?>scripts/select2/select2-metronic.css"/>
+		<link href='<?=url_tmpl();?>css/fonts.css' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="<?=url_tmpl();?>js/jquery.js"></script>
 		<style>
 			.nav-tabs > li {

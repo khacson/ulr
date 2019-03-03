@@ -10,7 +10,7 @@ class incFooter extends CI_Include {
         parent::__construct();
         $this->load->incModel();
 		$data = new stdClass();
-		$data->finds = $this->model->getInfor();
+		//$data->finds = $this->model->getInfor();
 		$lang = $this->site->GetSession('langs'); 
 		if(empty($lang)){
 			$lang = 'vn';

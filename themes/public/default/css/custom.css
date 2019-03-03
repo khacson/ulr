@@ -1,15 +1,32 @@
+.body-login{
+	background:#edf4f4;
+}
+.container{
+	width:98% !important;
+}
 .mtop3{ margin-top:3px;}
 .mtop5{ margin-top:5px;}
 .mtop10{ margin-top:10px;}
-.w100pt{
-	width:100%;
-}
+
+.fleft{ float:left !important;}
+.fright{ float:right !important;}
+
+.fRoboto{ 'Oswald', sans-serif;}
+
+.w100pt{width:100%;}
+.w80pt{ width:80%; }
+
+.f12{ font-size: 12px; }
+.f14{ font-size: 14px; }
+.f16{ font-size: 16px; }
+.f18{ font-size: 18px; }
+
 .select2me{
 	width:100%;
 	text-align:left;
 }
 .form-control{
-	border:0px solid #f00;
+	
 }
 .form-register .form-control{
 	border:1px solid #c5ccd1;
@@ -18,8 +35,9 @@
 	opacity:0.75;
 }
 .searcatalog{
-	background:#e3e1e1;
 	padding:20px;
+	padding: 20px;
+	border: 2px solid #e3e1e1;
 }
 .searcatalog .form-control.select2-container {
     border: 1px solid #c5ccd1;
@@ -27,3 +45,109 @@
 .searcatalog .select2-container-active{
 	border: 0px solid #c5ccd1 !important;
 }
+.menusearch{
+	width:100%;
+	border-bottom: 1px solid #DDDDDD;
+	padding-bottom:10px;
+	margin-top: -10px;
+}
+/* S customeselect */
+.customeselect .select2-container .select2-choice .select2-arrow{
+	border:0px;
+}
+.customeselect .form-control .select2-choice{
+	height:39px;
+	line-height:30px;
+	background:none;
+}
+.customeselect .select2-container .select2-choice > .select2-chosen{
+	background: #e5eaeb;
+	border-radius: 18px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:1px;
+}
+.customeselect .select2-search{
+	border-top:1px soild #f00;
+}
+.customeselect .select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+	-webkit-box-shadow: none !important;        
+	box-shadow: none !important;
+	border:1px solid #fff !important;
+}
+.customeselect .select2-container .select2-choice abbr{
+	top:12px;
+}
+.customeselect .select2-container .select2-choice .select2-arrow b{
+	margin-top:2px;
+}
+.form-input{
+	border: 1px solid #d7e1e3 !important;
+	height:33px;
+	margin-top:3px;
+	width:100%;
+	padding:0 15px;
+	border-radius: 18px;
+	
+}
+.customeselect .btn{
+	border-radius: 18px;
+	height: 33px;
+	margin-top: 3px;
+	padding:3px 12px;
+	background: #ff6766;
+	color:#fff;
+}
+.customeselect .select2-container{
+	background:none !important;
+}
+.customeselect .form-control .select2-choice{
+	border: 0!important;
+}
+.customeselect .select2-container .select2-choice .select2-arrow{
+	background:none !important;
+}
+.customeselect .form-control{
+	-webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+	box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+.btn-more{
+	width:80%;
+	padding:0 10px !important;
+	
+}
+.pleft{
+	background:#f9f9f9;
+	padding-top:15px;
+}
+.img_post{
+	margin-top:-5px;
+}
+.img_register{
+	margin-top:-5px;
+}
+.logo-company{
+	height:51px;
+	margin-top:7px;
+}
+.btn-dang-tin{
+	width:130px; 
+	float:right;
+	margin-bottom:0px;
+}
+.home{
+	padding-top:11px !important; 
+}
+/* E customeselect */
+/* S Sell */
+ul.price{
+	margin:0;
+	padding:0;
+	margin-bottom:5px;
+}
+ul.price li{
+	list-style:none;
+	padding:3px;
+}
+/* E Sell*/

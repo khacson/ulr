@@ -1,3 +1,4 @@
+	
 <section id="intro">
 			<div class="intro-content">
 				<div class="container">
@@ -39,8 +40,14 @@
 		<section class="home">
 			<div class="container">
 				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<a href="" class="btn btn-info btn-sm btn-rounded btn-dang-tin"><i class="ion-edit"></i> Đăng tin</a>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-8 col-sm-12 col-xs-12">
-						<div class="line" style="margin-top:120px;">
+						<div class="line">
 							<div>Bất động sản mới</div>
 						</div>
 						<div class="row">
@@ -348,7 +355,7 @@
 							</div>
 							<div class="col-md-6 col-sm-6">
 								<h1 class="title-col">
-									Tin tức
+									<div>Giải pháp xây dựng</div>
 									<div class="carousel-nav" id="hot-news-nav">
 										<div class="prev">
 											<i class="ion-ios-arrow-left"></i>
@@ -459,7 +466,7 @@
 							</div>
 						</div>
 						<div class="line top">
-							<div>Dự án</div>
+							<div>Tin tức</div>
 						</div>
 						<div class="row">
 							<article class="col-md-12 article-list">
@@ -549,7 +556,7 @@
 							</article>
 						</div>
 					</div>
-					<div class="col-xs-6 col-md-4 sidebar" id="sidebar" style="margin-top:120px;">
+					<div class="col-xs-6 col-md-4 sidebar" id="sidebar" style="margin-top:10px;">
 						<div class="sidebar-title for-tablet">Sidebar</div>
 						<aside>
 							<div class="aside-body">
@@ -697,57 +704,20 @@
 							</div>
 						</aside>
 						<aside>
-							<div class="aside-body">
-								<form class="newsletter">
-									<div class="icon">
-										<i class="ion-ios-email-outline"></i>
-										<h1>Newsletter</h1>
-									</div>
-									<div class="input-group">
-										<input type="email" class="form-control email" placeholder="Your mail">
-										<div class="input-group-btn">
-											<button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
-										</div>
-									</div>
-									<p>By subscribing you will receive new articles in your email.</p>
-								</form>
-							</div>
-						</aside>
-						<aside>
 							<ul class="nav nav-tabs nav-justified" role="tablist">
 								<li class="active">
 									<a href="#recomended" aria-controls="recomended" role="tab" data-toggle="tab">
-										<i class="ion-android-star-outline"></i> Recomended
+										<i class="ion-android-star-outline"></i> Công ty môi giới
 									</a>
 								</li>
 								<li>
 									<a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">
-										<i class="ion-ios-chatboxes-outline"></i> Comments
+										<i class="ion-ios-chatboxes-outline"></i> Cá nhân môi giới
 									</a>
 								</li>
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="recomended">
-									<article class="article-fw">
-										<div class="inner">
-											<figure>
-												<a href="detail.php">
-													<img src="<?=url_tmpl();?>images/news/img16.jpg" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="details">
-												<div class="detail">
-													<div class="time">December 31, 2016</div>
-													<div class="category"><a href="detail.php">Sport</a></div>
-												</div>
-												<h1><a href="detail.php">Donec congue turpis vitae mauris</a></h1>
-												<p>
-													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis. 
-												</p>
-											</div>
-										</div>
-									</article>
-									<div class="line"></div>
 									<article class="article-mini">
 										<div class="inner">
 											<figure>
@@ -846,18 +816,20 @@
 							</div>
 						</aside>
 						<aside>
-							<h1 class="aside-title">Videos
-								<div class="carousel-nav" id="video-list-nav">
-									<div class="prev"><i class="ion-ios-arrow-left"></i></div>
-									<div class="next"><i class="ion-ios-arrow-right"></i></div>
-								</div>
-							</h1>
 							<div class="aside-body">
-								<ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-									<li><a data-youtube-id="SBjQ9tuuTJQ" data-action="magnific"></a></li>
-									<li><a data-youtube-id="9cVJr3eQfXc" data-action="magnific"></a></li>
-									<li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
-								</ul>
+								<form class="newsletter">
+									<div class="icon">
+										<i class="ion-ios-email-outline"></i>
+										<h1>Đăng ký nhận tin</h1>
+									</div>
+									<div class="input-group">
+										<input type="email" class="form-control email" placeholder="Your mail">
+										<div class="input-group-btn">
+											<button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
+										</div>
+									</div>
+									<p>Đăng ký ngay để nhận bản tin điện tử từ viewlan.vn.</p>
+								</form>
 							</div>
 						</aside>
 					</div>
@@ -867,7 +839,7 @@
 
 		<section class="best-of-the-week">
 			<div class="container">
-				<h1><div class="text">Nhà môi giới tiêu biểu</div>
+				<h1><div class="text">Dự án</div>
 					<div class="carousel-nav" id="best-of-the-week-nav">
 						<div class="prev">
 							<i class="ion-ios-arrow-left"></i>

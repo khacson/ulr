@@ -166,12 +166,12 @@ Version: 3.4.5 Timestamp: Mon Nov  4 08:22:42 PST 2013
 }
 
 .select2-drop-active {
-    border: 1px solid #5897fb;
+    border: 1px solid #c5ccd1 !important;
     border-top: none;
 }
 
 .select2-drop.select2-drop-above.select2-drop-active {
-    border-top: 1px solid #5897fb;
+    border-top: 1px solid #c5ccd1 !important;
 }
 
 .select2-container .select2-choice .select2-arrow {

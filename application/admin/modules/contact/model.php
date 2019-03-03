@@ -21,7 +21,7 @@
 	}
 	function getList($search,$page,$numrows){
 		$sql = "SELECT *
-                        FROM ndnt_contacus
+                        FROM vland_contacus
                         WHERE isdelete = 0";
 		$sql.= $this->getSearch($search);
                 if(empty($search['order'])){
@@ -36,7 +36,7 @@
 	}
 	function getTotal($search){
 		$sql = " SELECT COUNT(1) AS total
-				FROM ndnt_contacus
+				FROM vland_contacus
 				WHERE isdelete = 0 ";
 		$sql.= $this->getSearch($search);
 		$query = $this->model->query($sql)->execute();
@@ -51,7 +51,7 @@
 		return $this->getList($search);
 	}
 	function saves($array){
-		 $check = $this->model->table('ndnt_contacus')
+		 $check = $this->model->table('vland_contacus')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('phone',$array['phone'])
@@ -60,12 +60,12 @@
 			 return -1;	
 		 }
 		 $result = $this->model
-						->table('ndnt_contacus')
+						->table('vland_contacus')
 						->insert($array);	
 		 return $result;
 	}
 	function edits($array,$id){
-		 $check = $this->model->table('ndnt_contacus')
+		 $check = $this->model->table('vland_contacus')
 		 ->select('id')
 		 ->where('isdelete',0)
 		 ->where('phone',$array['phone'])
@@ -75,7 +75,7 @@
 			 return -1;	
 		 }//print_r($array);exit;
 		 
-		 $result = $this->model->table('ndnt_contacus')->save($id,$array);	
+		 $result = $this->model->table('vland_contacus')->save($id,$array);	
 		 return $result;
 	}
 	

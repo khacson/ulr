@@ -150,7 +150,7 @@ class Picturetype extends CI_Controller {
         $array['userupdate'] = $login->username;
         //$array['ipupdate'] = $this->base_model->getMacAddress();
         $array['isdelete'] = 1;
-        $this->model->table('ndnt_picturetype')->where('id',$id)->delete();
+        $this->model->table('vland_picturetype')->where('id',$id)->delete();
 
         $result['status'] = 1;
         $result['csrfHash'] = $token;
@@ -185,13 +185,13 @@ class Picturetype extends CI_Controller {
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
 		$array['ishome'] = $value * -1 + 1;
-		$this->model->table('ndnt_picturetype')->save($id,$array);	
+		$this->model->table('vland_picturetype')->save($id,$array);	
 	}
 	function ordering(){
 		$array = array();
 		$id = $this->input->post('id');
 		$value = $this->input->post('value');
 		$array['ordering'] = $value;
-		$this->model->table('ndnt_picturetype')->save($id,$array);	
+		$this->model->table('vland_picturetype')->save($id,$array);	
 	}
 }

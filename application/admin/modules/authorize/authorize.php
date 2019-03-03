@@ -24,14 +24,14 @@ class authorize extends CI_Controller {
 		$data = new stdClass();
 		$data->token = $this->security->get_csrf_hash();
 		$data->routes = $this->route;
-		if(isset($_COOKIE['sellndnt_user'])){
-			$data->username = $_COOKIE['sellndnt_user'];
+		if(isset($_COOKIE['sellvland_user'])){
+			$data->username = $_COOKIE['sellvland_user'];
 		}
 		else{
 			$data->username = '';
 		}
-		if(isset($_COOKIE['sellndnt_pass'])){
-			$data->password = $_COOKIE['sellndnt_pass'];
+		if(isset($_COOKIE['sellvland_pass'])){
+			$data->password = $_COOKIE['sellvland_pass'];
 		}
 		else{
 			$data->password = '';
@@ -78,12 +78,12 @@ class authorize extends CI_Controller {
 				//$this->admin->SetSession("keylang","vn");
 				$result['status'] = 1;
 				if($remember == 1){
-					setcookie('sellndnt_user',$u, time() + (86400 * 7),"/"); 
-					setcookie('sellndnt_pass',$p, time() + (86400 * 7),"/"); 
+					setcookie('sellvland_user',$u, time() + (86400 * 7),"/"); 
+					setcookie('sellvland_pass',$p, time() + (86400 * 7),"/"); 
 				}
 				else{
-					setcookie('sellndnt_user','', time() + (86400 * 7),"/"); 
-					setcookie('sellndnt_pass','', time() + (86400 * 7),"/"); 
+					setcookie('sellvland_user','', time() + (86400 * 7),"/"); 
+					setcookie('sellvland_pass','', time() + (86400 * 7),"/"); 
 				}
 				$result['token'] = $this->security->get_csrf_hash();
 				echo json_encode($result);

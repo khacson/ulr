@@ -137,7 +137,7 @@ class Contact extends CI_Controller {
     function deletes() {
         //$token = $this->security->get_csrf_hash();
         $id = $this->input->post('id');
-        $this->model->table('ndnt_contacus')->where("id in ($id) and id > 0")->delete();
+        $this->model->table('vland_contacus')->where("id in ($id) and id > 0")->delete();
         $result['status'] = 1;
         echo json_encode($result);
     }

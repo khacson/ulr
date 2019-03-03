@@ -24,7 +24,7 @@ class incModelMenu extends CI_Model{
 			$right = '';
 			$sql = "
 					select gm.`name` as menuName, gm.keylang, gm.ordering, gm.route as controller, gm.classicon, gm.id as pageid
-					from ndnt_menus gm
+					from vland_menus gm
 					where gm.parent = 0
 					and gm.isdelete = 0
 					order by gm.ordering asc
@@ -59,7 +59,7 @@ class incModelMenu extends CI_Model{
 		$controller = 'route';
 		$sql = "
 				select gm.`name` as menuName, gm.keylang, gm.ordering, gm.route as controller, gm.classicon, gm.id as pageid
-				from ndnt_menus gm
+				from vland_menus gm
 				where gm.parent = $id
 				and gm.isdelete = 0
 				and gm.route in ($right_page)

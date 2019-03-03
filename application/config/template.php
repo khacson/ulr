@@ -69,6 +69,7 @@ $template['default']['regions'] = array(
    'robots',
    'url',
    'app_id',
+   'author',
    
    'description',
    'face_title',

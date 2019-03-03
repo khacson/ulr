@@ -19,11 +19,10 @@
 				<h1 class="block-title">Bất động sản<div class="right"><a href="#"><i class="ion-ios-arrow-thin-right"></i></a></div></h1>
 				<div class="block-body">
 					<ul class="tags">
-						<li><a href="#">Nhà đất bán</a></li>
+						<li><a href="#">Bán</a></li>
 						<li><a href="#">Cho thuê</a></li>
-						<li><a href="#">Cần mua</a></li>
-						<li><a href="#">Cần thuê</a></li>
-						<li><a href="#">Dự án</a></li>
+						<li><a href="#">Sang mặt bằng</a></li>
+						<li><a href="#">Xây dựng</a></li>
 						<li><a href="#">Danh bạ</a></li>
 						<li><a href="#">Tư vấn</a></li>
 					</ul>

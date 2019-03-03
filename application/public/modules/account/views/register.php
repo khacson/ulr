@@ -25,13 +25,26 @@
 						<input type="password" name="cfpassword" class="form-control">
 					</div>
 					<div class="form-group text-right">
-						<button class="btn btn-primary btn-block">Đăng ký</button>
+						<button type="button" class="btn btn-primary btn-block">Đăng ký</button>
 					</div>
 					<div class="form-group text-center">
-						<span class="text-muted">Bạn đã có tài khoản?</span> <a href="dangnhap.html">Đăng nhập</a>
+						<span class="text-muted">Bạn đã có tài khoản?</span> 
+					</div>
+					<div class="form-group text-right">
+						<button id="login" type="button" class="btn btn-info btn-block">Đăng nhập</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	var url = '<?= base_url() ?>';
+	var suffix = '';
+    var control = 'account';
+	$(function(){
+		$('#login').click(function(){
+			window.location = url + 'dang-nhap.html';
+		});
+	});
+</script>
