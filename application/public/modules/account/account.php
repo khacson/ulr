@@ -23,7 +23,7 @@ class Account extends CI_Controller {
     }
 
     function _view() {
-        
+
     }
 
     function login() {
@@ -40,7 +40,6 @@ class Account extends CI_Controller {
 
     function register() {
         $data = new stdClass();
-
         $content = $this->load->view('register', $data, true);
         $this->site->write('content', $content, true);
         $this->site->write('title', '', true);
@@ -52,7 +51,6 @@ class Account extends CI_Controller {
 
     function forgot() {
         $data = new stdClass();
-
         $content = $this->load->view('forgot', $data, true);
         $this->site->write('content', $content, true);
         $this->site->write('title', '', true);
@@ -63,15 +61,9 @@ class Account extends CI_Controller {
     }
 
     function resetpassword() {
-        $data = new stdClass();
-
-        $content = $this->load->view('reset', $data, true);
-        $this->site->write('content', $content, true);
-        $this->site->write('title', '', true);
-        $this->site->write('description', '', true);
-        $this->site->write('keywords', '', true);
-
-        $this->site->render();
+        $token = $this->input->get('token');
+        // echo $token; die;
+        $this->processResetPassword($token);
     }
 
     /*
@@ -90,7 +82,7 @@ class Account extends CI_Controller {
         $config['newline'] = "\r\n";
         $config['validate'] = TRUE;
         $this->email->initialize($config);
-        $this->email->from($email_from, 'viewland.vn');
+        $this->email->from($email_from, 'Test');
         $this->email->to($email_to);
         $this->email->subject($subject);
         $this->email->message($content);
@@ -108,10 +100,10 @@ class Account extends CI_Controller {
         return '';
         $subject = 'Kích hoạt tài khoản';
         $content = '
-            <div><strong>Cảm ơn bạn đã đăng ký thành viên tại viewland.vn</strong></div>
-            <div>Đễ kích hoạt tài khoản vui lòng nhấn vào link bên dưới</div>
-            <div>http://viewland.vn/account/active?afsdfasdfsadfadpoioprt-9890-alkdsfasdffasdipasidfasfdkfasdslaf</div>           
-            ';
+        <div><strong>Cảm ơn bạn đã đăng ký thành viên tại viewland.vn</strong></div>
+        <div>Đễ kích hoạt tài khoản vui lòng nhấn vào link bên dưới</div>
+        <div>http://viewland.vn/account/active?afsdfasdfsadfadpoioprt-9890-alkdsfasdffasdipasidfasfdkfasdslaf</div>           
+        ';
         $rt = $this->sendEmail($subject, $content, $email_to);
         return $rt;
     }
@@ -141,10 +133,10 @@ class Account extends CI_Controller {
         if (!empty($data['fullname']) && !empty($data['phone']) && !empty($data['email']) && !empty($data['password'])) {
             // Kiem tra xem email va so phone này tồn tại chưa
             $check = $this->db->select('id, phone, email, isactive')
-                    ->from('vland_member')
-                    ->where('email', $data['email'])
-                    ->get()
-                    ->row();
+            ->from('vland_member')
+            ->where('email', $data['email'])
+            ->get()
+            ->row();
             // nếu đã tồn tại rồi
             if (!empty($check)) {
                 $rt = array('status' => 'fail', 'errcode' => '2', 'msg' => 'Email này đã tồn tại trong hệ thống');
@@ -166,6 +158,19 @@ class Account extends CI_Controller {
         exit();
     }
 
+    function accountChangePassword() {
+        $token = $this->input->post('token');
+        $password = $this->input->post('pass');
+        // khoi tao thong tin update vao db       
+        $data['prefix'] = uniqid(mt_rand(), true); // tạo salt
+        $data['password'] = md5($data['prefix'] . $password);// tạo password với salt
+        $data['rp_token'] = '';
+        $data['rp_token_expired'] = 0;
+        $this->db->where('rp_token', $token)->update('vland_member',$data);
+        echo json_encode(array('status' => 'success', 'errcode' => '1', 'msg' => 'Thay đổi mật khẩu thành công'));
+        exit();
+    }
+
     function accountLogin() {
         $data['username'] = $this->input->post('username');
         $data['password'] = $this->input->post('password');
@@ -175,10 +180,10 @@ class Account extends CI_Controller {
         if (!empty($data['username']) && !empty($data['password'])) {
             // lấy những dòng theo email và số phone
             $query = $this->db->select('id, phone, email, password, prefix, isactive')
-                    ->from('vland_member')
-                    ->where('email', $data['username'])
-                    ->or_where('phone', $data['username'])
-                    ->get();
+            ->from('vland_member')
+            ->where('email', $data['username'])
+            ->or_where('phone', $data['username'])
+            ->get();
             // không có dòng nào
             if ($query->num_rows() == 0) {
                 $rt = array('status' => 'fail', 'errcode' => '0', 'msg' => 'Thông tin đăng nhập không tồn tại');
@@ -202,32 +207,79 @@ class Account extends CI_Controller {
         exit();
     }
 
-    /*
-     * Hàm tạo link reset password và gửi email tới thành viên
+    /**
+     * Tao email reset password gửi tới member
+     * 
+     * Tạo token, thời gian hết hạn token và lưu vào theo email của member
+     * Gửi email tới member đường link kèm token
+     * errcode: 1=>Thành công, 0=>Lưu DB fail, 2=>gửi email fail
      */
-
-    function accountResetPassword() {
-        $email_to = $this->input->post('email');
-        $rt = '';
-        if (!empty($email_to)) {
-            $subject = "Có một yêu cầu thay đổi mật khẩu của bạn từ website viewland.vn";
-            $content = "Nếu bạn quên mật khẩu hãy nhấn vào link bên dưới để đổi mật khẩu http://viewland.vn/account/resetpassword?email=$email&sec=1123091238043243fasdfasdf90";
-            $rt = $this->sendEmail($subject, $content, $email_to);
-            // Gửi email thành công
-            if ($rt == "1") {
-                // update thông tin vào DB đánh dấu user này muốn reset pass
-                // save log sent request change pass
-            } else {
-                // save log sent request change pass
-            }
+    function createResetPassword() {
+        // chỉ cho phép gọi từ ajax
+        if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
         }
-        return $rt;
+        // Truyền email tới mới xử lý
+        $email_to = $this->input->post('email'); // email của member
+        if (empty($email_to)) {
+            exit('Email not empty');
+        }
+        // Kiểm tra xem email này có tồn tại không
+        $check_exist = $this->db->select('id')->where('email', $email_to)->get('vland_member')->num_rows();
+        if($check_exist != 1) {
+            exit(json_encode(array('status' => 'fail', 'errcode' => '0', 'msg' => 'Email này chưa được đăng ký')));
+        }
+        $token = bin2hex(random_bytes(128)); // tạo token
+        $token_expired = strtotime("+1 week", time()); // token có thời hạn 1 tuần        
+        // Cập nhập vào DB
+        $data['rp_token'] = $token;
+        $data['rp_token_expired'] = $token_expired;
+        $rt = array('status' => 'fail', 'errcode' => '0', 'msg' => 'Cập nhập DB lỗi'); // chuỗi trả về      
+        if($this->db->where('email', $email_to)->update('vland_member',$data)) {
+            // Tạo thông tin email gửi đi
+            $rp_data = new stdClass();
+            $rp_data->rp_link = base_url().'account/resetpassword?token='.$token; // tạo link reset password
+            $content = $this->load->view('email_reset_password', $rp_data, true);
+            $subject = "Quên mật khẩu";
+            // Gửi email
+            $rs_email = $this->sendEmail($subject, $content, $email_to);
+        }        
+        if($rs_email == 1) {
+            $rt = array('status' => 'success', 'errcode' => '1', 'msg' => 'Gửi email thành công');
+        } else {
+            $rt = array('status' => 'fail', 'errcode' => '2', 'msg' => 'Gửi email bị lỗi');
+        }
+        echo json_encode($rt);
+        exit();
     }
 
-    function resetPassword() {
-        $email = $this->input->get('email');
-        $sec = $this->input->get('sec');
-        
+    function processResetPassword($token) {
+        $query_token = $this->db->select('id, email, rp_token_expired')
+            ->where('rp_token', $token)
+            ->get('vland_member');
+        $num_token = $query_token->num_rows();     
+        // Chỉ xử lý khi có duy nhất 1 token
+        // echo $num_token; die;
+        if($num_token == 1) {
+            $row = $query_token->row();
+            // Nếu thời gian hết hạn token hãy còn hiệu lưc
+            if(time() <= $row->rp_token_expired) {
+               // Điều hướng tới trang reset password
+               $data = new stdClass();
+               $data->token = $token;
+               $content = $this->load->view('reset_password', $data, true);
+               $this->site->write('content', $content, true);
+               $this->site->write('title', '', true);
+               $this->site->write('description', '', true);
+               $this->site->write('keywords', '', true);
+               $this->site->render();
+            } else {
+                echo 'Token đã hết hạn';
+            }
+        } else {
+            echo 'Token không hợp lệ';
+        }
+
     }
 
 }
