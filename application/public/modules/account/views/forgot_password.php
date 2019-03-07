@@ -55,7 +55,7 @@
                 f_run = true;
                 $.ajax({
                     type: "POST",
-                    url: url + control + '/createResetPassword' + suffix,
+                    url: url + control + '/forgot_password_process' + suffix,
                     data: {email: fg_username}
                 }).done(function (r) {
                     f_run = false;

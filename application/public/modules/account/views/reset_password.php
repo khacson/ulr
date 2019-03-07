@@ -7,7 +7,7 @@
                     <div class="form-group">
                         <label class="fw">Mật khẩu mới</label>
                         <input type="password" name="password" id="reset_pass" class="form-control f-rp" value="123456">
-                        <input type="hidden" id="reset_token" value="<?=$token;?>">
+                        <input type="hidden" id="reset_token" value="<?= $token; ?>">
                     </div>
                     <div class="form-group">
                         <label class="fw">Xác nhận mật khẩu</label>
@@ -54,7 +54,7 @@
                 f_run = true;
                 $.ajax({
                     type: "POST",
-                    url: url + control + '/accountChangePassword' + suffix,
+                    url: url + control + '/reset_password_process' + suffix,
                     data: datas.data
                 }).done(function (r) {
                     f_run = false;

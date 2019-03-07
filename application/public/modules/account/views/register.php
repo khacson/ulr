@@ -71,7 +71,7 @@
                 f_run = true;
                 $.ajax({
                     type: "POST",
-                    url: url + control + '/accountRegister' + suffix,
+                    url: url + control + '/register_process' + suffix,
                     data: datas.data
                 }).done(function (r) {
                     f_run = false;

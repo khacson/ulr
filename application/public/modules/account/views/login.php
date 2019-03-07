@@ -69,7 +69,7 @@
                 f_run = true;
                 $.ajax({
                     type: "POST",
-                    url: url + control + '/accountLogin' + suffix,
+                    url: url + control + '/login_process' + suffix,
                     data: {username: log_username, password: log_password}
                 }).done(function (r) {
                     f_run = false;
