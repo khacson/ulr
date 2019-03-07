@@ -101,13 +101,16 @@ $route['du-an'] = "project";
 $route['du-an/(:any)'] = "project/login/$1";
 $route['du-an/(:any)/(:any)'] = "project/$1/$2";
 
-$route['dang-nhap'] = "account/login";
+$route['dang-nhap'] = "account/login_ui";
 $route['dang-nhap/(:any)'] = "account/login/$1";
 
-$route['dang-ky'] = "account/register";
+$route['dang-ky'] = "account/register_ui";
 $route['dang-ky/(:any)'] = "account/register/$1";
 
-$route['quen-mat-khau'] = "account/forgot";
-$route['quen-mat-khau/(:any)'] = "account/forgot/$1";
+$route['dat-lai-mat-khau'] = "account/reset_password_ui";
+$route['dat-lai-mat-khau/(:any)'] = "account/reset_password_ui/$1";
+
+$route['quen-mat-khau'] = "account/forgot_password_ui";
+$route['quen-mat-khau/(:any)'] = "account/forgot_password_ui/$1";
 
 $route['translate_uri_dashes'] = FALSE;
