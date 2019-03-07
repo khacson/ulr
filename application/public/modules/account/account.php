@@ -101,6 +101,19 @@ class Account extends CI_Controller {
         $this->site->write('keywords', '', true);
         $this->site->render();
     }
+	/**
+	* Đăng ký thành công
+	* 
+	*/
+	function register_success_ui() {
+        $data = new stdClass();
+        $content = $this->load->view('register_success', $data, true);
+        $this->site->write('content', $content, true);
+        $this->site->write('title', '', true);
+        $this->site->write('description', '', true);
+        $this->site->write('keywords', '', true);
+        $this->site->render();
+    }
 
     /*
      * Xử lý đăng ký thành viên
