@@ -148,10 +148,18 @@ class Account extends CI_Controller {
                 $data['prefix'] = uniqid(mt_rand(), true);
                 // tạo password với salt
                 $data['password'] = md5($data['prefix'] . $data['password']);
+				$data['token'] = bin2hex(random_bytes(128)); // tạo token
+                $data['token_expired'] = strtotime("+1 week", time()); // token có thời hạn 1 tuần
                 // lưu vào db
                 if ($this->db->insert('vland_member', $data)) {
-                    $this->_register_email_active(); // gui email active
-                    $rt = array('status' => 'success', 'errcode' => '1', 'msg' => 'Đăng ký thành công, vui lòng check email để kích hoạt tài khoản');
+                    $active_link = base_url() . 'account/register_member_active?token=' . $data['token'];
+                    $content = $this->load->view('email_active_member', array('active_link' => $active_link), true);
+                    $subject = 'Kích hoạt tài khoản';
+                    if ($this->_send_email($subject, $content, $data['email']) == "1") {
+                        $rt = array('status' => 'success', 'errcode' => '1', 'msg' => 'Đăng ký thành công, vui lòng check email để kích hoạt tài khoản');
+                    } else {
+                        $rt = array('status' => 'fail', 'errcode' => '4', 'msg' => 'Không gửi được email kích hoạt');
+                    }
                 } else {
                     $rt = array('status' => 'fail', 'errcode' => '3', 'msg' => 'Đăng ký bị lỗi, vui lòng thực hiện lại');
                 }
@@ -159,16 +167,7 @@ class Account extends CI_Controller {
         }
         echo json_encode($rt);
         exit();
-    }
-
-    /*
-     * Đăng ký thành công gửi email kích hoạt
-     * 
-     */
-
-    function _register_email_active() {
-        return '';
-    }
+    }   
 
     // Hiện giao diện quên password
     function forgot_password_ui() {
