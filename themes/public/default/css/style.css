@@ -2769,6 +2769,9 @@ footer.footer {
   padding-top: 50px;
   border-top: 5px solid #f27423;
   position: absolute;
+  
+  border-top: 5px solid #f27423;
+  background: #252e38 url("../img/bg-footer.jpg") repeat scroll 0% 0%;
 }
 footer.footer a {
   color: #848f9a;

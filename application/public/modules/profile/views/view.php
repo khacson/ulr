@@ -3,21 +3,9 @@
 				<div class="row">
 					<div class="col-md-3">
 						<aside>
-							<h2 class="aside-title">Search</h2>
+							<h2 class="aside-title aside-title-profile">Hồ sơ</h2>
 							<div class="aside-body">
-								<p>Search with other keywords or use filters for more accurate results.</p>
-								<form>
-									<div class="form-group">
-										<div class="input-group">
-											<input type="text" name="q" class="form-control" placeholder="Type something ..." value="hello">
-											<div class="input-group-btn">
-												<button class="btn btn-primary">
-													<i class="ion-search"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</form>
+								
 							</div>
 						</aside>
 						<aside>
