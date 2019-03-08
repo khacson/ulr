@@ -45,7 +45,9 @@
 
 		<!-- Start footer -->
 		<footer class="footer">
-			<?php include('footer.php');?>
+			<div class="footer-area">
+				<?=$this->load->inc('footer');?>
+			</div>
 		</footer>
 		<!-- End Footer -->
 

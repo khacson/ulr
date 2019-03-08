@@ -43,7 +43,9 @@
 		<?=$content;?>
 		<!-- Start footer -->
 		<footer class="footer">
-			<?=$this->load->inc('footer');?>
+			<div class="footer-area">
+				<?=$this->load->inc('footer');?>
+			</div>
 		</footer>
 		<!-- End Footer -->
 		<!-- JS -->
