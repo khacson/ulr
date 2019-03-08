@@ -156,5 +156,12 @@ ul.price li{
 *
 */
 .aside-title-profile{
-	margin-top:20px !important;
+	margin-top:0px !important;
 }
+.sidebar-profile {
+    background-color: #EEE;
+    padding: 15px;
+}
+/**
+* E profile
+*/

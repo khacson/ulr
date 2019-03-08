@@ -1,12 +1,56 @@
 <section class="search">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
-						<aside>
-							<h2 class="aside-title aside-title-profile">Hồ sơ</h2>
-							<div class="aside-body">
-								
-							</div>
+					<div class="col-md-3 sidebar-profile">
+						<aside class="sidebar sidebar-property blog-asside-right">
+                            <div class="dealer-widget">
+                                <div class="dealer-content">
+                                    <div class="inner-wrapper">
+
+                                        <div class="clear">
+                                            <div class="col-xs-4 col-sm-4 dealer-face">
+                                                <a href="">
+                                                    <img src="assets/img/client-face1.png" class="img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-8 ">
+                                                <h3 class="dealer-name">
+                                                    <a href="">Nathan James</a>
+                                                    <span>Real Estate Agent</span>        
+                                                </h3>
+                                                <div class="dealer-social-media">
+                                                    <a class="twitter" target="_blank" href="">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a class="facebook" target="_blank" href="">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a class="gplus" target="_blank" href="">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a class="linkedin" target="_blank" href="">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a> 
+                                                    <a class="instagram" target="_blank" href="">
+                                                        <i class="fa fa-instagram"></i>
+                                                    </a>       
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="clear">
+                                            <ul class="dealer-contacts">                                       
+                                                <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
+                                                <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
+                                                <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                            </ul>
+                                            <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 						</aside>
 						<aside>
 							<h2 class="aside-title">Filter</h2>
