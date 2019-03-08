@@ -13,24 +13,28 @@
                                                     <img src="<?=url_tmpl();?>img/client-face1.png" class="img-circle">
                                                 </a>
                                             </div>
-                                            <div class="col-xs-8 col-sm-8 ">
+											<div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
-                                                    <a href="">Nguyễn Tất Huy</a>
-                                                        
+                                                    <a href="">Nathan James</a>
+                                                    <span>Real Estate Agent</span>        
                                                 </h3>
                                                 <div class="dealer-social-media">
                                                     <a class="twitter" target="_blank" href="">
                                                         <i class="fa fa-twitter"></i>
                                                     </a>
                                                     <a class="facebook" target="_blank" href="">
-                                                        <i class="ion-social-facebook"></i>
+                                                        <i class="fa fa-facebook"></i>
                                                     </a>
                                                     <a class="gplus" target="_blank" href="">
-														<i class="ion-social-instagram-outline"></i>
+                                                        <i class="fa fa-google-plus"></i>
                                                     </a>
-                                            
+                                                    <a class="linkedin" target="_blank" href="">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a> 
+                                                    <a class="instagram" target="_blank" href="">
+                                                        <i class="fa fa-instagram"></i>
+                                                    </a>       
                                                 </div>
-
                                             </div>
                                         </div>
 
