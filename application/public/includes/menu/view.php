@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="brand" style="width:200px;">
 			<a href="<?=base_url();?>" >
-				<img src="images/logo.png" alt="Logo">
+				<img class="main-logo" src="<?=url_tmpl();?>images/logo3.png" alt="Logo">
 			</a>
 		</div>
 		<div class="mobile-toggle">
