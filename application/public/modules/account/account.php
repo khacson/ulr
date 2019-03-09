@@ -123,7 +123,7 @@ class Account extends CI_Controller {
 
     function register_member_active() {
         $token = $this->input->get('token');
-        $query_token = $this->db->select('id, email, token_expired')
+        $query_token = $this->db->select('id, fullname, email, token_expired')
                 ->where('token', $token)
                 ->get('vland_member');
         $num_token = $query_token->num_rows();
@@ -133,7 +133,9 @@ class Account extends CI_Controller {
             $row = $query_token->row();
             // Nếu thời gian hết hạn token hãy còn hiệu lưc
             if (time() <= $row->token_expired) {
-                // Điều hướng tới trang reset password
+                // Bật cờ active, tắt token
+                $this->db->set('isactive', 1)->where('id', $row->id)->update('vland_member');
+                // Điều hướng tới trang thông báo active thành công
                 $data = new stdClass();
                 $data->fullname = $row->fullname;
                 $content = $this->load->view('accive_email_success', $data, true);

@@ -78,7 +78,8 @@
                     var obj = JSON.parse(r);
                     if (obj.errcode === '1') {
                         notify.success(obj.msg);
-                        window.location = url + 'dang-ky-thanh-cong.html?fullname=' + datas.data['name'];
+                        var path_link = url + 'dang-ky-thanh-cong.html?name=' + datas.data['name'];
+                        window.location = path_link;
                     } else if (obj.errcode === '2') {
                         $('#reg_email').addClass('err');
                         notify.error(obj.msg);
