@@ -18,7 +18,7 @@
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/bootstrap/bootstrap.min.css">
 		<!-- IonIcons -->
-		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/ionicons/css/ionicons.min.css">
+		<link rel="stylesheet" href="<?=url_tmpl();?>css/font-awesome.min.css">
 
 		<!-- OwlCarousel -->
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/owlcarousel/dist/assets/owl.carousel.min.css">

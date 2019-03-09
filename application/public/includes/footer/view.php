@@ -73,37 +73,37 @@
 						<li>
 							<a href="#" class="facebook">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-facebook"></i>
+								<i class="fa fa-facebook"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="twitter">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-twitter-outline"></i>
+								<i class="fa fa-twitter"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="youtube">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-youtube-outline"></i>
+								<i class="fa fa-linkedin"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="googleplus">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-googleplus"></i>
+								<i class="fa fa-google-plus"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="instagram">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-instagram-outline"></i>
+								<i class="fa fa-instagram"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" class="skype">
 								<svg><rect width="0" height="0"/></svg>
-								<i class="ion-social-skype"></i>
+								<i class="fa fa-skype"></i>
 							</a>
 						</li>
 						
