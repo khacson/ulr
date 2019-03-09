@@ -136,7 +136,7 @@
 							<form action="" method="">                        
                                
                                 <ul class="nav nav-pills">
-                                    <li class="active" style="width: 25%;"><a href="#step1" >Thông tin cá nhân</a></li>
+                                    <li class="active nav-left" ><a href="#step1" >Thông tin cá nhân</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active mtop10">
@@ -178,7 +178,8 @@
 												</div> 
 												<div class="form-group">
                                                     <label>Quận huyện <span class="red">(*)</span></label>
-                                                    <select class="select2me form-control" id="districid" name="districid" data-placeholder="Chọn tỉnh thành phố" >
+													<select class="select2me form-control" id="districid" name="districid" 
+													data-placeholder="Chọn quận huyện" >
 														<option value=""></option>
 														<option value="1">A</option>
 													</select>
@@ -203,7 +204,7 @@
 							<form action="" method="">                        
                                
                                 <ul class="nav nav-pills">
-                                    <li class="active" style="width: 25%;"><a href="#step1" >Thông tin liên hệ</a></li>
+                                    <li class="active nav-left" ><a href="#step1" >Thông tin liên hệ</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active mtop10">
