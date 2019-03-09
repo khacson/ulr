@@ -21,6 +21,9 @@
 .f16{ font-size: 16px; }
 .f18{ font-size: 18px; }
 
+.fweight600 { font-weight: 600;}
+.cwhite { color: #fff !important}
+
 .select2me{
 	width:100%;
 	text-align:left;
@@ -97,7 +100,7 @@
 	margin-top: 3px;
 	padding:3px 12px;
 	background: #ff6766;
-	color:#fff;
+	color:#fff !important;
 }
 .customeselect .select2-container{
 	background:none !important;
@@ -162,17 +165,32 @@ ul.price li{
     background-color: #EEE;
     padding: 15px;
 }
-.dealer-widget {
-    background-color: #9999;
-    padding: 15px;
-    color: #FFF;
-    padding-bottom: 20px;
-    margin: -15px -15px 25px;
+.sidebar-profile .aside-title{
+	font-size: 14px;
 }
-.dealer-name {
-    margin-top: 6px;
+.sidebar-profile .aside-profile{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.dealer-widget {
+    background-color: #d6dada;
+    padding: 15px;
+    color: #666;
+    padding-bottom: 20px;
+    margin: -15px -15px 0px;
+}
+.dealer-name{
+	margin-top: -5px;
+}
+.dealer-name a{
 	margin-bottom: 5px;
 	font-size: 18px;
+}
+.dealer-name span{
+    margin-top: 6px;
+	margin-bottom: 5px;
+	font-size: 16px;
+	font-weight: 400;
 }
 .dealer-contacts {
     list-style: outside none none;
@@ -181,6 +199,9 @@ ul.price li{
 .clear {
     clear: both;
     overflow: hidden;
+}
+.dealer-social-media a{
+	margin-left: 8px;
 }
 /**
 * E profile
