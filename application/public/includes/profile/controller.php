@@ -2,14 +2,15 @@
 
 /**
  * @author Sonnk
- * @copyright 2015
+ * @copyright 2018
  */
-class incQuickview extends CI_Include {
+class incProfile extends CI_Include {
 
     function __construct() {
         parent::__construct();
         $this->load->incModel();
 		$data = new stdClass();
+		
 		$this->load->incView($data);
     }
 }

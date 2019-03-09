@@ -28,5 +28,48 @@ class Profile extends CI_Controller {
 		
         $this->site->render();
 	}
-	
+	function historypost(){
+		$data = new stdClass();
+		
+		$content = $this->load->view('historypost',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+        $this->site->render();
+	}
+	function approved(){
+		$data = new stdClass();
+		
+		$content = $this->load->view('approved',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+        $this->site->render();
+	}
+	function waiting(){
+		$data = new stdClass();
+		
+		$content = $this->load->view('waiting',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+        $this->site->render();
+	}
+	function expired(){
+		$data = new stdClass();
+		
+		$content = $this->load->view('expired',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+        $this->site->render();
+	}
 }
