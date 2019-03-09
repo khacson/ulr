@@ -44,12 +44,12 @@
                 var fg_username = $('#fg_username').val().trim();
                 if (fg_username.length === 0) {
                     $('#fg_username').addClass('err');
-                    alert('Vui lòng nhập email');
+                    notify.warning('Vui lòng nhập đại chỉ email');
                     return false;
                 }
                 if (!checkEmailValid(fg_username)) {
                     $('#fg_username').addClass('err');
-                    alert('Vui lòng nhập email hợp lệ');
+                    notify.warning('Vui lòng nhập email hợp lệ');
                     return false;
                 }
                 f_run = true;
@@ -61,13 +61,13 @@
                     f_run = false;
                     var obj = JSON.parse(r);
                     if (obj.errcode === '1') { // thanh cong
-                        alert(obj.msg);
+                        notify.success(obj.msg);
                     } else { // that bai
-                        alert(obj.msg);
+                        notify.error(obj.msg);
                     }
                 }).fail(function (x) {
                     f_run = false;
-                    alert("Mạng internet không ổn định, vui lòng thực hiện lại");
+                    notify.error("Có lỗi xảy ra, vui lòng thực hiện lại");
                 });
             }
         });

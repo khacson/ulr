@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/owlcarousel/dist/assets/owl.carousel.min.css">
 		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/owlcarousel/dist/assets/owl.theme.default.min.css">
 	
+                <link rel="stylesheet" href="<?=url_tmpl();?>scripts/toastr/toastr.min.css">
 		
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/style.css">
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/skins/all.css">
@@ -57,10 +58,11 @@
 		<script src="<?=url_tmpl();?>scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 		<script src="<?=url_tmpl();?>scripts/easescroll/jquery.easeScroll.js"></script>
 		<script src="<?=url_tmpl();?>scripts/sweetalert/dist/sweetalert.min.js"></script>
-		<script src="<?=url_tmpl();?>scripts/toast/jquery.toast.min.js"></script>
+		<script src="<?=url_tmpl();?>scripts/toastr/toastr.min.js"></script>
 		<script src="<?=url_tmpl();?>js/demo.js"></script>
 		<script src="<?=url_tmpl();?>js/e-magz.js"></script>
 		<script type="text/javascript" src="<?=url_tmpl();?>js/main.js"></script>
+                <script type="text/javascript" src="<?=url_tmpl();?>js/notify.js"></script>
 		<script type="text/javascript">
 			handleSelect2();
 		</script>
