@@ -119,7 +119,7 @@
 							</div>
 						</aside>
 					</div>
-					<div class="col-md-9">
+					<div class="col-md-9 content-profile">
 						<div class="nav-tabs-group">
 							<ul class="nav-tabs-list">
 								<li class="active"><a href="#">Thông tin hồ sơ</a></li>
@@ -130,8 +130,147 @@
 							</ul>
 						</div>
 						
-						<div class="row">
-							--------------
+						<div class="row mtop10">
+							<div class="col-md-12">
+							<!--S Thông tin cá nhân-->
+							<form action="" method="">                        
+                               
+                                <ul class="nav nav-pills">
+                                    <li class="active" style="width: 25%;"><a href="#step1" >Thông tin cá nhân</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active mtop10">
+                                        <div class="row p-b-15  ">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Họ và tên <span class="red">(*)</span></label>
+                                                    <input name="fullname" type="text" class="form-control" value="Nguyễn Tất Huy">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Tên thường gọi</label>
+                                                    <input name="asfullname" type="text" class="form-control" value = "Huy Nguyễn">
+                                                </div> 
+                                                <div class="form-group">
+                                                    <label>Ngày sinh</label>
+                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd-mm-yyyy">
+														<input type="text" name="birthday" value="" id="birthday" class="form-input form-control" />				
+														<div class="input-group-addon">
+															<i class="fa fa-calendar "></i>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+                                                    <label>Giới tính&nbsp;&nbsp;&nbsp;&nbsp;</label>
+													<input id="sex_1" type="radio" name="sex" value="1" checked="checked"><label for="sex_1">&nbsp; Nam</label>
+													&nbsp;
+													<input id="sex_2" type="radio" name="sex" value="2"><label for="sex_2">&nbsp; Nữ</label>
+													&nbsp;
+													<input id="sex_3" type="radio" name="sex" value="3"><label for="sex_3">&nbsp; Giới tính khác</label>
+													
+												</div>
+												<div class="form-group">
+                                                    <label>Tỉnh/Thành phố <span class="red">(*)</span></label>
+                                                    <select class="select2me form-control" id="provinceid" name="provinceid" data-placeholder="Chọn tỉnh thành phố" >
+														<option value=""></option>
+														<option value="1">A</option>
+													</select>
+												</div> 
+												<div class="form-group">
+                                                    <label>Quận huyện <span class="red">(*)</span></label>
+                                                    <select class="select2me form-control" id="districid" name="districid" data-placeholder="Chọn tỉnh thành phố" >
+														<option value=""></option>
+														<option value="1">A</option>
+													</select>
+												</div> 
+												<div class="form-group">
+                                                    <label>Địa chỉ <span class="red">(*)</span></label>
+                                                    <input name="address" type="text" class="form-control" value = "Nguyễn Huệ">
+												</div> 
+												<div class="form-group">
+                                                    <label>Avatar</label>
+                                                    <input type="button" class="btn btn-next btn-primary btn-avatar" name="save" value="chọn hình">
+												</div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  End step 1 -->
+
+                                </div>	
+                            </form>
+							<!--E Thông tin cá nhân-->
+							<!--S Thông tin liên hệ-->
+							<form action="" method="">                        
+                               
+                                <ul class="nav nav-pills">
+                                    <li class="active" style="width: 25%;"><a href="#step1" >Thông tin liên hệ</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active mtop10">
+                                        <div class="row p-b-15  ">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Điện thoại <span class="red">(*)</span></label>
+                                                    <input name="phone" id="phone" type="text" class="form-control" value="0827 533 555">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Email <span class="red">(*)</span></label>
+                                                    <input name="email" id="email" type="text" class="form-control" >
+                                                </div>
+											   
+												<div class="form-group">
+                                                    <label>Facebook</label>
+                                                    <input name="facebook" id="facebook" type="text" class="form-control">
+												</div>
+												
+												<div class="form-group">
+                                                    <label>Twitter</label>
+                                                    <input name="twitter" id="twitter" type="text" class="form-control">
+												</div>
+												
+												<div class="form-group">
+                                                    <label>Youtube</label>
+                                                    <input name="twitter" id="twitter" type="text" class="form-control">
+												</div>
+												
+												<div class="form-group">
+                                                    <label>Instagram</label>
+                                                    <input name="instagram" id="instagram" type="text" class="form-control">
+												</div>
+												
+												<div class="form-group">
+                                                    <label>Skype</label>
+                                                    <input name="skype" id="skype" type="text" class="form-control">
+												</div>
+												
+												<div class="form-group">
+                                                    <label>Zalo</label>
+                                                    <input name="zalo" id="zalo" type="text" class="form-control">
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  End step 1 -->
+
+                                </div>
+
+                                <div class="wizard-footer">
+									<div class="col-md-6">
+										<div class="pull-right">
+											<input type="button" class="btn btn-next btn-primary" name="save" value="Lưu">
+										</div>
+										<div class="pull-left">
+											<div clas="row">
+												<input type="button" class="row btn btn-previous btn-default disabled" name="previous" value="Xóa">
+											</div>
+										</div>
+										<div class="clearfix"></div>     
+									</div>                                   
+                                </div>	
+                            </form>
+							<!--E Thông tin liên hệ-->
+							</div>
 						</div>
 					</div>
 				</div>

@@ -9,7 +9,7 @@ class Profile extends CI_Controller {
 	function __construct(){
 		parent::__construct();			
 	    $this->load->model('base_model');
-		$this->site->setTemplate('home');
+		$this->site->setTemplate('profile');
 	}
     function  _remap($method, $params = array()){
         if(method_exists($this, $method)){

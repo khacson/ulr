@@ -19,10 +19,7 @@
 		<!-- IonIcons -->
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/font-awesome.min.css">
 
-		<!-- OwlCarousel -->
-		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/owlcarousel/dist/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/owlcarousel/dist/assets/owl.theme.default.min.css">
-	
+		<link rel="stylesheet" href="<?=url_tmpl();?>scripts/datepicker/datepicker3.css">
 		
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/style.css">
 		<link rel="stylesheet" href="<?=url_tmpl();?>css/skins/all.css">
@@ -54,24 +51,16 @@
 		<script src="<?=url_tmpl();?>scripts/bootstrap/bootstrap.min.js"></script>
 		<script>var $target_end=$(".best-of-the-week");</script>
 		<script src="<?=url_tmpl();?>scripts/jquery-number/jquery.number.min.js"></script>
-		<script src="<?=url_tmpl();?>scripts/owlcarousel/dist/owl.carousel.min.js"></script>
 		<script src="<?=url_tmpl();?>scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 		<script src="<?=url_tmpl();?>scripts/easescroll/jquery.easeScroll.js"></script>
 		<script src="<?=url_tmpl();?>scripts/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="<?=url_tmpl();?>scripts/toast/jquery.toast.min.js"></script>
-		<script src="<?=url_tmpl();?>js/demo.js"></script>
-		<script src="<?=url_tmpl();?>js/e-magz.js"></script>
+		<script src="<?=url_tmpl();?>js/e-magz-profile.js"></script>
 		<script type="text/javascript" src="<?=url_tmpl();?>scripts/select2/select2.min.js"></script>
 		<script type="text/javascript" src="<?=url_tmpl();?>js/main.js"></script>
+		<script src="<?=url_tmpl();?>scripts/datepicker/bootstrap-datepicker.js"></script>
 		<script type="text/javascript">
 			handleSelect2();
-			$("#intro-carousel").owlCarousel({
-				autoplay: true,
-				dots: false,
-				loop: true,
-				animateOut: 'fadeOut',
-				items: 1
-			}); 
 		</script>
 	</body>
 </html>
