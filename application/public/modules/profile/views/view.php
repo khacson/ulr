@@ -15,8 +15,8 @@
                                             </div>
 											<div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
-                                                    <a href="">Nathan James</a>
-                                                    <span>Real Estate Agent</span>        
+                                                    <a href="">Nguyễn Tất Huy</a><br>
+                                                    <span>Cá nhân</span>        
                                                 </h3>
                                                 <div class="dealer-social-media">
                                                     <a class="twitter" target="_blank" href="">
@@ -40,9 +40,9 @@
 
                                         <div class="clear">
                                             <ul class="dealer-contacts">                                       
-                                                <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                                <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                                <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                                <li><i class="fa fa-map-marker" aria-hidden="true"></i> 9089 your adress her</li>
+                                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> </i> email@yourcompany.com</li>
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i> +1 908 967 5906</li>
                                             </ul>
                                             <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
                                         </div>
@@ -52,41 +52,68 @@
                             </div>
 						</aside>
 						<aside>
-							<h2 class="aside-title">Filter</h2>
+							<a href="" class="btn btn-info btn-sm btn-rounded w100pt fweight600 cwhite"><i class="ion-search"></i> Nạp tiền</a>
+						</aside>
+						<aside class="aside-profile">
+							<h4 class="aside-title">Quản lý thông tin cả nhân</h4>
 							<div class="aside-body">
 								<form class="checkbox-group">
-									<div class="group-title">Date</div>
 									<div class="form-group">
-										<label><input type="radio" name="date" checked> Anytime</label>
+										<label>Thay đổi thông tin cá nhân</label>
 									</div>
 									<div class="form-group">
-										<label><input type="radio" name="date"> Today</label>
+										<label>Thay đổi mật khẩu</label>
+									</div>
+								</form>
+							</div>
+						</aside>
+						<aside class="aside-profile">
+							<h4 class="aside-title">Đăng tin</h4>
+							<div class="aside-body">
+								<form class="checkbox-group">
+									<div class="form-group">
+										<label>Đăng tin bán</label>
 									</div>
 									<div class="form-group">
-										<label><input type="radio" name="date"> Last Week</label>
+										<label>Đăng tin cho thuê</label>
 									</div>
 									<div class="form-group">
-										<label><input type="radio" name="date"> Last Month</label>
-									</div>
-									<br>
-									<div class="group-title">Categories</div>
-									<div class="form-group">
-										<label><input type="checkbox" name="category" checked> All Categories</label>
+										<label>Đăng tin sang mặt bằng</label>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="category"> Lifestyle</label>
+										<label>Đăng tin dự án</label>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="category"> Travel</label>
+										<label>Đăng danh bạ</label>
+									</div>
+								</form>
+							</div>
+						</aside>
+						<aside class="aside-profile">
+							<h4 class="aside-title">Quản lý tài chính</h4>
+							<div class="aside-body">
+								<form class="checkbox-group">
+									<div class="form-group">
+										<label><b>Số dự: 1,000,000vnđ</b></label>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="category"> Computer</label>
+										<label>Lịch sử giao dịch</label>
+									</div>
+								</form>
+							</div>
+						</aside>
+						<aside class="aside-profile">
+							<h4 class="aside-title">Hướng dẫn & báo giá</h4>
+							<div class="aside-body">
+								<form class="checkbox-group">
+									<div class="form-group">
+										<label><b>Hướng dẫn sử dụng</b></label>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="category"> Film</label>
+										<label>Hướng dẫn thanh toán</label>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="category"> Sport</label>
+										<label>Báo giá</label>
 									</div>
 								</form>
 							</div>
@@ -95,7 +122,8 @@
 					<div class="col-md-9">
 						<div class="nav-tabs-group">
 							<ul class="nav-tabs-list">
-								<li class="active"><a href="#">Tin đã đăng</a></li>
+								<li class="active"><a href="#">Thông tin hồ sơ</a></li>
+								<li><a href="#">Tin đã đăng</a></li>
 								<li><a href="#">Tin được duyệt</a></li>
 								<li><a href="#">Tin chưa duyệt</a></li>
 								<li><a href="#">Tin hết hạn</a></li>

@@ -52,101 +52,80 @@ a, .btn {
   -moz-transition: all 0.5s;
 }
 
-a {
-  color: #f27423;
+.category a {
+   color: #123737;
+}
+.sidebar-profile a{
+  color: #123737;
 }
 a:hover, a:focus {
   color: #C8081C;
 }
-a.facebook {
+.footer a.facebook {
   background-color: #3b5998;
   color: #fff !important;
 }
-a.twitter {
+.footer a.twitter {
   background-color: #4099FF;
   color: #fff !important;
 }
-a.youtube {
+.footer a.youtube {
   background-color: #C4302B;
   color: #fff !important;
 }
-a.googleplus {
+.footer a.googleplus {
   background-color: #DE5245;
   color: #fff !important;
 }
-a.instagram {
+.footer a.instagram {
   background-color: #885343;
   color: #fff !important;
 }
-a.tumblr {
+.footer a.tumblr {
   background-color: #36465D;
   color: #fff !important;
 }
-a.dribbble {
+.footer a.dribbble {
   background-color: #E14C86;
   color: #fff !important;
 }
-a.linkedin {
+.footer a.linkedin {
   background-color: #007BB6;
   color: #fff !important;
 }
-a.skype {
+.footer a.skype {
   background-color: #00AFF0;
   color: #fff !important;
 }
-a.rss {
+.footer a.rss {
   background-color: #ee802f;
   color: #fff !important;
 }
-a.github {
+.footer a.github {
   background-color: #000;
   color: #fff !important;
 }
-a.whatsapp {
+.footer a.whatsapp {
   background-color: #25D366;
   color: #fff !important;
 }
-a.snapchat {
+.footer a.snapchat {
   background-color: #FFFC01;
   color: #000 !important;
 }
-a.foursquare {
+.footer a.foursquare {
   background-color: #EF4B78;
   color: #fff !important;
 }
-a.pinterest {
+.footer a.pinterest {
   background-color: #B82B38;
   color: #fff !important;
 }
-a.wordpress {
-  background-color: #21759A;
-  color: #fff !important;
-}
-a.reddit {
-  background-color: #1288DF;
-  color: #fff !important;
-}
-a.hackernews {
-  background-color: #FF6600;
-  color: #fff !important;
-}
-a.designernews {
-  background-color: #3275D6;
-  color: #fff !important;
-}
-a.yahoo {
-  background-color: #420297;
-  color: #fff !important;
-}
-a.buffer {
-  background-color: #000000;
-  color: #fff !important;
-}
-a.vimeo {
+.footer a.vimeo {
   background-color: #1AB7EA;
   color: #fff !important;
 }
-a.twitch {
+.footer a.twitch {
   background-color: #6441A4;
   color: #fff !important;
 }
@@ -3657,7 +3636,7 @@ blockquote {
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
-  background-color: #f58104;
+  background-color: #ff6766;
   letter-spacing: 1px;
 }
 .featured-author .featured-author-cover .featured-author-center {
