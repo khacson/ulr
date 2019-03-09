@@ -56,14 +56,14 @@
                 var log_username = $('#log_username').val().trim();
                 if (log_username.length === 0) {
                     $('#log_username').addClass('err');
-                    alert('Vui lòng nhập email/số điện thoại');
+                    notify.warning('Vui lòng nhập email/số điện thoại');
                     return false;
                 }
                 // check password
                 var log_password = $('#log_password').val().trim();
                 if (log_password.length === 0) {
                     $('#log_password').addClass('err');
-                    alert('Vui lòng nhập mật khẩu');
+                    notify.warning('Vui lòng nhập mật khẩu');
                     return false;
                 }
                 f_run = true;
@@ -75,13 +75,13 @@
                     f_run = false;
                     var obj = JSON.parse(r);
                     if (obj.errcode === '1') { // thanh cong
-                        alert(obj.msg);
+                        notify.success(obj.msg);
                     } else { // that bai
-                        alert(obj.msg);
+                        notify.error(obj.msg);
                     }
                 }).fail(function (x) {
                     f_run = false;
-                    alert("Mạng internet không ổn định, vui lòng thực hiện lại");
+                    notify.error("Đăng nhập bị lỗi, vui lòng thực hiện lại");
                 });
             }
         });

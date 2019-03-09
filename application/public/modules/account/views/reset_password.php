@@ -48,7 +48,7 @@
                 var datas = checkValid();
                 if (datas.status === 'fail') {
                     $('#' + datas.ele).addClass('err');
-                    alert(datas.msg);
+                    notify.warning(datas.msg);
                     return false;
                 }
                 f_run = true;
@@ -60,16 +60,16 @@
                     f_run = false;
                     var obj = JSON.parse(r);
                     if (obj.errcode === '1') {
-                        alert(obj.msg);
+                        notify.success(obj.msg);
                     } else if (obj.errcode === '2') {
                         $('#reg_email').addClass('err');
-                        alert(obj.msg);
+                        notify.error(obj.msg);
                     } else {
-                        alert(obj.msg);
+                        notify.error(obj.msg);
                     }
                 }).fail(function (x) {
                     f_run = false;
-                    alert("Mạng internet không ổn định, vui lòng thực hiện lại");
+                    notify.error("Xảy ra sự cố, vui lòng thực hiện lại");
                 });
             }
         });
