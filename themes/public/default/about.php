@@ -19,7 +19,7 @@
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="scripts/bootstrap/bootstrap.min.css">
 		<!-- IonIcons -->
-		<link rel="stylesheet" href="scripts/ionicons/css/ionicons.min.css">
+		<link rel="stylesheet" href="<?=url_tmpl();?>css/font-awesome.min.css">
 		<!-- Toast -->
 		<link rel="stylesheet" href="scripts/toast/jquery.toast.min.css">
 		<!-- OwlCarousel -->
