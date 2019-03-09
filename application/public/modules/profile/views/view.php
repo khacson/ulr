@@ -42,9 +42,9 @@
                                             <ul class="dealer-contacts">                                       
                                                 <li><i class="fa fa-map-marker" aria-hidden="true"></i> 9089 your adress her</li>
                                                 <li><i class="fa fa-envelope-o" aria-hidden="true"></i> </i> email@yourcompany.com</li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> +1 908 967 5906</li>
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i> +0827 533 555</li>
                                             </ul>
-                                            <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
+                                            <p>Giới thiệu về cá nhận/ công ty Giới thiệu về cá nhận/ công ty Giới thiệu về cá nhận/ công ty Giới thiệu về cá nhận/ công ty</p>
                                         </div>
 
                                     </div>
@@ -59,10 +59,10 @@
 							<div class="aside-body">
 								<form class="checkbox-group">
 									<div class="form-group">
-										<label>Thay đổi thông tin cá nhân</label>
+										<a href="<?=base_url();?>profile/edit/id_member">Thay đổi thông tin cá nhân</a>
 									</div>
 									<div class="form-group">
-										<label>Thay đổi mật khẩu</label>
+										<a href="<?=base_url();?>profile/changepassword/id_member">Thay đổi mật khẩu</a>
 									</div>
 								</form>
 							</div>
@@ -72,19 +72,19 @@
 							<div class="aside-body">
 								<form class="checkbox-group">
 									<div class="form-group">
-										<label>Đăng tin bán</label>
+										<a href="<?=base_url();?>profile/post/ban">Đăng tin bán</a>
 									</div>
 									<div class="form-group">
-										<label>Đăng tin cho thuê</label>
+										<a href="<?=base_url();?>profile/post/cho-thue">Đăng tin cho thuê</a>
 									</div>
 									<div class="form-group">
-										<label>Đăng tin sang mặt bằng</label>
+										<a href="<?=base_url();?>profile/post/san-nhuong">Đăng tin sang mặt bằng</a>
 									</div>
 									<div class="form-group">
-										<label>Đăng tin dự án</label>
+										<a href="<?=base_url();?>profile/post/du-an">Đăng tin dự án</a>
 									</div>
 									<div class="form-group">
-										<label>Đăng danh bạ</label>
+										<a href="<?=base_url();?>profile/post/danh-ba">Đăng danh bạ</a>
 									</div>
 								</form>
 							</div>
@@ -97,7 +97,7 @@
 										<label><b>Số dự: 1,000,000vnđ</b></label>
 									</div>
 									<div class="form-group">
-										<label>Lịch sử giao dịch</label>
+										<a href="<?=base_url();?>profile/history/id_member">Lịch sử giao dịch</a>
 									</div>
 								</form>
 							</div>
@@ -107,13 +107,13 @@
 							<div class="aside-body">
 								<form class="checkbox-group">
 									<div class="form-group">
-										<label><b>Hướng dẫn sử dụng</b></label>
+										<a href="<?=base_url();?>profile/help/1">Hướng dẫn sử dụng</a>
 									</div>
 									<div class="form-group">
-										<label>Hướng dẫn thanh toán</label>
+										<a href="<?=base_url();?>profile/help/2">Hướng dẫn thanh toán</a>
 									</div>
 									<div class="form-group">
-										<label>Báo giá</label>
+										<a href="<?=base_url();?>profile/quote/2">Báo giá</a>
 									</div>
 								</form>
 							</div>
@@ -122,11 +122,11 @@
 					<div class="col-md-9 content-profile">
 						<div class="nav-tabs-group">
 							<ul class="nav-tabs-list">
-								<li class="active"><a href="#">Thông tin hồ sơ</a></li>
-								<li><a href="#">Tin đã đăng</a></li>
-								<li><a href="#">Tin được duyệt</a></li>
-								<li><a href="#">Tin chưa duyệt</a></li>
-								<li><a href="#">Tin hết hạn</a></li>
+								<li class="active"><a href="<?=base_url();?>profile/2">Thông tin hồ sơ</a></li>
+								<li><a href="<?=base_url();?>profile/historypost/2">Tin đã đăng (20)</a></li>
+								<li><a href="<?=base_url();?>profile/approved/2">Tin được duyệt (15)</a></li>
+								<li><a href="<?=base_url();?>profile/waiting/2">Tin chưa duyệt (1)</a></li>
+								<li><a href="<?=base_url();?>profile/expired/2">Tin hết hạn (4)</a></li>
 							</ul>
 						</div>
 						
