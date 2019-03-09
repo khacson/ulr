@@ -101,18 +101,53 @@ class Account extends CI_Controller {
         $this->site->write('keywords', '', true);
         $this->site->render();
     }
-	/**
-	* Đăng ký thành công
-	* 
-	*/
-	function register_success_ui() {
+
+    /**
+     * Đăng ký thành công
+     * 
+     */
+    function register_success_ui() {
         $data = new stdClass();
+        $data->fullname = $this->input->get('name');
         $content = $this->load->view('register_success', $data, true);
         $this->site->write('content', $content, true);
         $this->site->write('title', '', true);
         $this->site->write('description', '', true);
         $this->site->write('keywords', '', true);
         $this->site->render();
+    }
+
+    /*
+     * Giao diện active tài khoản
+     */
+
+    function register_member_active() {
+        $token = $this->input->get('token');
+        $query_token = $this->db->select('id, email, token_expired')
+                ->where('token', $token)
+                ->get('vland_member');
+        $num_token = $query_token->num_rows();
+        // Chỉ xử lý khi có duy nhất 1 token
+        // echo $num_token; die;
+        if ($num_token == 1) {
+            $row = $query_token->row();
+            // Nếu thời gian hết hạn token hãy còn hiệu lưc
+            if (time() <= $row->token_expired) {
+                // Điều hướng tới trang reset password
+                $data = new stdClass();
+                $data->fullname = $row->fullname;
+                $content = $this->load->view('accive_email_success', $data, true);
+                $this->site->write('content', $content, true);
+                $this->site->write('title', '', true);
+                $this->site->write('description', '', true);
+                $this->site->write('keywords', '', true);
+                $this->site->render();
+            } else {
+                echo 'Token đã hết hạn';
+            }
+        } else {
+            echo 'Token không hợp lệ';
+        }
     }
 
     /*
@@ -148,7 +183,7 @@ class Account extends CI_Controller {
                 $data['prefix'] = uniqid(mt_rand(), true);
                 // tạo password với salt
                 $data['password'] = md5($data['prefix'] . $data['password']);
-				$data['token'] = bin2hex(random_bytes(128)); // tạo token
+                $data['token'] = bin2hex(random_bytes(128)); // tạo token
                 $data['token_expired'] = strtotime("+1 week", time()); // token có thời hạn 1 tuần
                 // lưu vào db
                 if ($this->db->insert('vland_member', $data)) {
@@ -167,7 +202,7 @@ class Account extends CI_Controller {
         }
         echo json_encode($rt);
         exit();
-    }   
+    }
 
     // Hiện giao diện quên password
     function forgot_password_ui() {

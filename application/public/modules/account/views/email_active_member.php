@@ -1,3 +1,3 @@
 <div>
-    <?=$rp_link;?>
+    <?= $active_link; ?>
 </div>

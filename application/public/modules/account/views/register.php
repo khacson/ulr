@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" id="reg_email" class="form-control f-reg" value="huyabc@gmail.com">
+                        <input type="email" name="email" id="reg_email" class="form-control f-reg" value="nguyentathuy1986@gmail.com">
                     </div>
                     <div class="form-group">
                         <label class="fw">Mật khẩu</label>
@@ -78,6 +78,7 @@
                     var obj = JSON.parse(r);
                     if (obj.errcode === '1') {
                         notify.success(obj.msg);
+                        window.location = url + 'dang-ky-thanh-cong.html?fullname=' + datas.data['name'];
                     } else if (obj.errcode === '2') {
                         $('#reg_email').addClass('err');
                         notify.error(obj.msg);
