@@ -90,6 +90,12 @@
 														<input type="button" class="btn btn-next btn-primary btn-avatar" name="save" value="chọn hình">
 													</div>
 												</div> 
+												<div class="row">
+                                                    <label class="col-md-4 mtop10">Giới thiệu</label>
+													<div class="col-md-8 mtop10">
+														<input name="introduction" id="introduction" type="text" class="form-control" value = "Nguyễn Huệ">
+													</div>
+												</div> 
                                             </div>
                                         </div>
                                     </div>

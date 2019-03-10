@@ -68,19 +68,19 @@
 	<div class="aside-body">
 		<form class="checkbox-group">
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/post/ban">Đăng tin bán</a>
+				<a href="<?=base_url();?>profile/ban">Đăng tin bán</a>
 			</div>
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/post/cho-thue">Đăng tin cho thuê</a>
+				<a href="<?=base_url();?>profile/chothue">Đăng tin cho thuê</a>
 			</div>
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/post/san-nhuong">Đăng tin sang mặt bằng</a>
+				<a href="<?=base_url();?>profile/sannhuong">Đăng tin sang mặt bằng</a>
 			</div>
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/post/du-an">Đăng tin dự án</a>
+				<a href="<?=base_url();?>profile/duan">Đăng tin dự án</a>
 			</div>
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/post/danh-ba">Đăng danh bạ</a>
+				<a href="<?=base_url();?>profile/danhba">Đăng danh bạ</a>
 			</div>
 		</form>
 	</div>
@@ -90,7 +90,7 @@
 	<div class="aside-body">
 		<form class="checkbox-group">
 			<div class="form-group">
-				<label><b>Số dự: 1,000,000vnđ</b></label>
+				<label><b>Điểm: 1,000,000</b></label>
 			</div>
 			<div class="form-group">
 				<a href="<?=base_url();?>profile/history/id_member">Lịch sử giao dịch</a>
