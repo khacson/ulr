@@ -239,6 +239,9 @@ ul.price li{
 	border: 1px solid #d7e1e3;
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
+.tab-content label{
+	font-weight: 400 !important;
+}
 .btn-avatar {
     padding-left: 20px;
     padding-right: 20px;

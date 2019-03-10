@@ -55,10 +55,10 @@
 	<div class="aside-body">
 		<form class="checkbox-group">
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/edit/id_member">Thay đổi thông tin cá nhân</a>
+				<a href="<?=base_url();?>profile/edit">Thay đổi thông tin cá nhân</a>
 			</div>
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/changepassword/id_member">Thay đổi mật khẩu</a>
+				<a href="<?=base_url();?>profile/changepassword">Thay đổi mật khẩu</a>
 			</div>
 		</form>
 	</div>

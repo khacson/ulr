@@ -27,19 +27,19 @@
                                     <div class="tab-pane active mtop10">
                                         <div class="row p-b-15  ">
                                             <div class="col-sm-8 col-md-8">
-                                                <div class="form-group">
+                                                <div class="row">
                                                     <label class="col-md-4 mtop10">Họ và tên <span class="red">(*)</span></label>
 													<div class="col-md-8 mtop10">
 														<input name="fullname" type="text" class="form-control" value="Nguyễn Tất Huy">
 													</div>
 												</div>	
-                                                <div class="form-group">
+                                                <div class="row">
                                                     <label class="col-md-4 mtop10">Tên thường gọi</label>
 													<div class="col-md-8 mtop10">
 														<input name="asfullname" type="text" class="form-control" value = "Huy Nguyễn">
 													</div>
                                                 </div> 
-                                                <div class="form-group">
+                                                <div class="row">
                                                     <label class="col-md-4 mtop10">Ngày sinh</label>
                                                     <div class="col-md-8 mtop10">
 														<div class="input-group date" data-provide="datepicker" data-date-format="dd-mm-yyyy">
@@ -50,7 +50,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Giới tính&nbsp;&nbsp;&nbsp;&nbsp;</label>
 													<div class="col-md-8 mtop10">
 														<input id="sex_1" type="radio" name="sex" value="1" checked="checked"><label for="sex_1">&nbsp; Nam</label>
@@ -60,7 +60,7 @@
 														<input id="sex_3" type="radio" name="sex" value="3"><label for="sex_3">&nbsp; Giới tính khác</label>
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Tỉnh/Thành phố <span class="red">(*)</span></label>
 													<div class="col-md-8 mtop10">
 														<select class="select2me form-control" id="provinceid" name="provinceid" data-placeholder="Chọn tỉnh/thành phố" >
@@ -69,7 +69,7 @@
 														</select>
 													</div>
 												</div> 
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Quận huyện <span class="red">(*)</span></label>
 													<div class="col-md-8 mtop10">
 														<select class="select2me form-control" id="districid" name="districid" data-placeholder="Chọn quận huyện" >
@@ -78,13 +78,13 @@
 														</select>
 													</div>
 												</div>  
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Địa chỉ <span class="red">(*)</span></label>
 													<div class="col-md-8 mtop10">
 														<input name="address" type="text" class="form-control" value = "Nguyễn Huệ">
 													</div>
 												</div> 
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Avatar</label>
 													<div class="col-md-8 mtop10">
 														<input type="button" class="btn btn-next btn-primary btn-avatar" name="save" value="chọn hình">
@@ -107,63 +107,63 @@
                                     <div class="tab-pane active mtop10">
                                         <div class="row p-b-15  ">
                                             <div class="col-sm-8 col-md-8">
-                                                <div class="form-group">
+                                                <div class="row">
                                                     <label class="col-md-4 mtop10">Điện thoại <span class="red">(*)</span></label>
 													<div class="col-md-8 mtop10">
 														<input name="phone" id="phone" type="text" class="form-control" value="0827 533 555">
 													</div>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="row">
                                                     <label class="col-md-4 mtop10">Email </label>
                                                     <div class="col-md-8 mtop10">
 														<input name="email" id="email" type="text" class="form-control" >
 													</div>
                                                 </div>
 											   
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Facebook</label>
 													<div class="col-md-8 mtop10">
 														<input name="facebook" id="facebook" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Zalo</label>
 													<div class="col-md-8 mtop10">
 														<input name="zalo" id="zalo" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Twitter</label>
                                                     <div class="col-md-8 mtop10">
 														<input name="twitter" id="twitter" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Youtube</label>
 													<div class="col-md-8 mtop10">
 														<input name="twitter" id="twitter" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Instagram</label>
 													<div class="col-md-8 mtop10">
 														<input name="instagram" id="instagram" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
                                                     <label class="col-md-4 mtop10">Skype</label>
 													<div class="col-md-8 mtop10">	
 														<input name="skype" id="skype" type="text" class="form-control">
 													</div>
 												</div>
 												
-												<div class="form-group">
+												<div class="row">
 													<div class="col-md-4 mtop10"></div>
 													<div class="col-md-8 mtop10">
 														<div class="pull-right">
