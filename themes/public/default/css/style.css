@@ -448,7 +448,7 @@ section.search .search-result {
 
 .form-control {
   border-radius: 0;
-  height: 33px;
+  height: 34px;
 }
 .form-control:focus {
   border-color: #989898;

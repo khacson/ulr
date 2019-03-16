@@ -55,6 +55,9 @@
 	<div class="aside-body">
 		<form class="checkbox-group">
 			<div class="form-group">
+				<a href="<?=base_url();?>profile">Thông tin hồ sơ</a>
+			</div>
+			<div class="form-group">
 				<a href="<?=base_url();?>profile/edit">Thay đổi thông tin cá nhân</a>
 			</div>
 			<div class="form-group">
@@ -68,7 +71,7 @@
 	<div class="aside-body">
 		<form class="checkbox-group">
 			<div class="form-group">
-				<a href="<?=base_url();?>profile/ban">Đăng tin bán</a>
+				<a href="<?=base_url();?>profile/dangban">Đăng tin bán</a>
 			</div>
 			<div class="form-group">
 				<a href="<?=base_url();?>profile/chothue">Đăng tin cho thuê</a>

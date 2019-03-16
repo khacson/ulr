@@ -46,22 +46,19 @@
 						<?php }?>
 					</ul>
 				</li>
-				<li ><a href="<?=base_url();?>tin-tuc">Tin tức</a>
-					
-				</li>
-				<li class="dropdown magz-dropdown"><a href="<?=base_url();?>danh-ba">Danh bạ<i class="ion-ios-arrow-right"></i></a>
+				<li class="dropdown"><a href="<?=base_url();?>tin-tuc">Tin tức <i class="ion-ios-arrow-right"></i></a></li>
+				<li class="dropdown magz-dropdown"><a href="<?=base_url();?>danh-ba">Danh bạ <i class="ion-ios-arrow-right"></i></a>
 					<ul class="dropdown-menu">
 						<?php foreach($menusCatalogs as $item){?>
 							<li><a href="<?=base_url();?>danh-ba/<?=$item->friendlyurl;?>"><?=$item->catalog_name;?></a></li>
 						<?php }?>
-					 </ul>
+					</ul>
 				</li>
-				<li class="dropdown"><a href="<?=base_url();?>tu-van">Tư vấn <i class="ion-ios-arrow-right"></i></a>
+				<li class="dropdown magz-dropdown"><a href="<?=base_url();?>danh-ba">Tư vấn <i class="ion-ios-arrow-right"></i></a>
 					<ul class="dropdown-menu">
 						<?php foreach($advisoryCatalogs as $item){?>
-							<li><a href="<?=base_url();?>tu-van/<?=$item->friendlyurl;?>"><?=$item->catalog_name;?></a></li>
+							<li><a href="<?=base_url();?>danh-ba/<?=$item->friendlyurl;?>"><?=$item->catalog_name;?></a></li>
 						<?php }?>
-						<li><a href="<?=base_url();?>tu-van/dat-cau-hoi">Đặt câu hỏi</a></li>
 					</ul>
 				</li>
 				
@@ -71,6 +68,11 @@
 				<li class="fright"><a href="<?=base_url();?>dang-nhap">
 				<i class="ion-person-add"></i> 
 				Đăng nhập </a></li>
+				<li class="dropdown magz-dropdown fright" ><a href="#">Sơn <i class="ion-ios-arrow-right"></i></a>
+					<ul class="dropdown-menu">
+						<li><a href="<?=base_url();?>ho-so">Hồ sơ</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>

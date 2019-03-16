@@ -7,6 +7,12 @@
 .mtop3{ margin-top:3px;}
 .mtop5{ margin-top:5px;}
 .mtop10{ margin-top:10px;}
+.w50pc{
+	width:50% !important;
+}
+.flex{
+	display:flex;
+}
 
 .fleft{ float:left !important;}
 .fright{ float:right !important;}

@@ -94,4 +94,15 @@ class Profile extends CI_Controller {
 		
         $this->site->render();
 	}
+	function dangban(){
+		$data = new stdClass();
+		
+		$content = $this->load->view('dangban',$data,true);
+        $this->site->write('content',$content,true);
+		$this->site->write('title','',true);
+		$this->site->write('description','',true);
+		$this->site->write('keywords','',true);
+		
+        $this->site->render();
+	}
 }

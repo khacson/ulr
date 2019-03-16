@@ -19,7 +19,6 @@
 							<div class="col-md-12">
 							<!--S Thông tin cá nhân-->
 							<form action="" method="">                        
-                               
                                 <ul class="nav nav-pills">
                                     <li class="active nav-left" ><a href="#step1" >Thông tin cá nhân</a></li>
                                 </ul>
@@ -93,7 +92,7 @@
 												<div class="row">
                                                     <label class="col-md-4 mtop10">Giới thiệu</label>
 													<div class="col-md-8 mtop10">
-														<input name="introduction" id="introduction" type="text" class="form-control" value = "Nguyễn Huệ">
+														<textarea name="introduction" id="introduction" class="form-control">xxx</textarea>
 													</div>
 												</div> 
                                             </div>
