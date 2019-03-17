@@ -113,4 +113,8 @@ $route['dat-lai-mat-khau/(:any)'] = "account/reset_password_ui/$1";
 $route['quen-mat-khau'] = "account/forgot_password_ui";
 $route['quen-mat-khau/(:any)'] = "account/forgot_password_ui/$1";
 
+$route['ho-so'] = "profile";
+$route['ho-so/(:any)'] = "profile/login/$1";
+$route['ho-so/(:any)/(:any)'] = "profile/$1/$2";
+
 $route['translate_uri_dashes'] = FALSE;
