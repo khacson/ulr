@@ -1,7 +1,0 @@
-[15-Jul-2018 08:59:02 UTC] PHP Fatal error:  Call to undefined method Product::detail() in /home/hiteknov/galaxyhotel.vn/application/public/modules/product/product.php on line 26
-[18-Jul-2018 07:11:20 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
-[19-Jul-2018 19:03:10 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
-[11-Aug-2018 03:56:50 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
-[11-Aug-2018 21:57:44 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
-[29-Sep-2018 14:26:57 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
-[30-Sep-2018 22:44:07 UTC] PHP Fatal error:  Call to undefined method PictureModel::getFindNews() in /home/hiteknov/galaxyhotel.vn/application/public/modules/picture/picture.php on line 60
