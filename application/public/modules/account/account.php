@@ -52,7 +52,7 @@ class Account extends CI_Controller {
         // Các thông tin đều có dữ liệu mới xử lý
         if (!empty($data['username']) && !empty($data['password'])) {
             // lấy những dòng theo email và số phone
-            $query = $this->db->select('id, phone, email, password, prefix, isactive')
+            $query = $this->db->select('*')
                     ->from('vland_member')
                     ->where('email', $data['username'])
                     ->or_where('phone', $data['username'])
@@ -70,9 +70,18 @@ class Account extends CI_Controller {
                 if ($password == $row->password) {
                     $rt = array('status' => 'success', 'errcode' => '1', 'msg' => 'Đăng nhập thành công');
                 } else {
-                    $rt = array('status' => 'fail', 'errcode' => '3', 'msg' => 'Mật khẩu không đúng');
+                    $rt = array('status' => 'fail', 'errcode' => '3', 'msg' => 'Tài khoản hoạc mật khẩu không đúng');
                 }
             }
+			$array = $query->row_array();
+			unset($array['password']);
+			unset($array['prefix']);
+			unset($array['social_network_token']);
+			unset($array['social_network_id']);
+			unset($array['token']);
+			unset($array['token_expired']);
+			//Lưu session 
+			$this->site->SetSession('viewlang_login', $array);
             // lưu log đăng nhập
             $this->login_log($data['username'], $rt['errcode']);
         }
